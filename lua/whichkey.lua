@@ -50,26 +50,36 @@ local setup = {
     },
 
     layout = {
+        -- min and max height of the columns
         height = {
             min = 4,
             max = 25
-        }, -- min and max height of the columns
+        },
+
+        -- min and max width of the columns
         width = {
             min = 20,
             max = 50
-        }, -- min and max width of the columns
+        },
+
         spacing = 3, -- spacing between columns
         align = "left", -- align columns left, center or right 
     },
 
-    ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, 
-    
-    -- hide mapping boilerplate
-    show_help = true, -- show help message on the command line when the popup is visible
-    triggers = "auto", -- automatically setup triggers
+    ignore_missing = true,
 
-    -- triggers = {"<leader>"} -- or specify a list manually
+    -- enable this to hide mappings for which you didn't specify a label
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
+
+    -- hide mapping boilerplate
+    -- show help message on the command line when the popup is visible
+    show_help = true,
+
+    -- automatically setup triggers
+    triggers = "auto",
+
+    -- triggers = {"<leader>"}
+    -- or specify a list manually
     triggers_blacklist = {
         -- list of mode / prefixes that should never be hooked by WhichKey 
         -- this is mostly relevant for key maps that start with a native binding 

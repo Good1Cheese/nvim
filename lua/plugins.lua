@@ -2,13 +2,13 @@ return {
     -- Which-key
     {
         "folke/which-key.nvim",
-        lazy = true,
+        lazy = false
     },
 
     -- BufferLine
     {
         "akinsho/bufferline.nvim",
-        dependencies = "nvim-tree/nvim-web-devicons",
+        dependencies = "nvim-tree/nvim-web-devicons"
     },
 
     -- Colorscheme

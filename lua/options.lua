@@ -5,6 +5,8 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 opt.clipboard = "unnamedplus"    -- use system clipboard 
 opt.mouse = 'a'                  -- allow the mouse to be used in Nvim
 
+opt.spelllang = { "en" }
+
 -- Tab
 opt.tabstop = 4                  -- number of visual spaces per TAB
 opt.softtabstop = 4              -- number of spacesin tab when editing
