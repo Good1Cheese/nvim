@@ -1,37 +1,23 @@
-local lazypath = vim.fn.stdpath( "data" ) .. "/lazy/lazy.nvim"
+return {
+    -- Which-key
+    {
+        "folke/which-key.nvim",
+        lazy = true,
+    },
 
-if not vim.loop.fs_stat( lazypath ) then
-    vim.fn.system( {
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    } )
-end
-
-vim.opt.rtp:prepend( lazypath )
-vim.g.mapleader = " "
-
-// Поместить opts в отдельные файлы
-// Понять как переключатся между вкладками
-// разбить файлы ещё больше 
-
-require( "lazy" ).setup( {
-
+    -- BufferLine
     {
         "akinsho/bufferline.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
-        opts = {
-    
-        }
     },
 
+    -- Colorscheme
     {
-        "ellisonleao/gruvbox.nvim", name = "gruvbox"
+        --  "ellisonleao/gruvbox.nvim"
+        "folke/tokyonight.nvim"
     },
 
+    -- Noice
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -45,6 +31,7 @@ require( "lazy" ).setup( {
                     ["cmp.entry.get_documentation"] = true,
                 },
             },
+
             -- you can enable a preset for easier configuration
             presets = {
                 bottom_search = true, -- use a classic bottom cmdline for search
@@ -54,13 +41,6 @@ require( "lazy" ).setup( {
                 lsp_doc_border = false, -- add a border to hover docs and signature help
             },
         },
-        dependencies = {
-          -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-          "MunifTanjim/nui.nvim",
-          -- OPTIONAL:
-          --   `nvim-notify` is only needed, if you want to use the notification view.
-          --   If not available, we use `mini` as the fallback
-          "rcarriga/nvim-notify",
-          }
-      }
-} )
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
+    }
+}

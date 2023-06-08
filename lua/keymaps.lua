@@ -1,8 +1,22 @@
--- define common options
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true, -- non-recursive
+    silent = true, -- do not show message
 }
+
+local keymap = vim.api.nvim_set_keymap
+
+-- Remap space as leader key
+keymap( "", "<Space>", "<Nop>", opts )
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Modes
+--   normal_mode = "n",
+--   insert_mode = "i",
+--   visual_mode = "v",
+--   visual_block_mode = "x",
+--   term_mode = "t",
+--   command_mode = "c",
 
 -----------------
 -- Normal mode --
@@ -10,22 +24,27 @@ local opts = {
 
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+
+keymap( "n", "<C-h>", "<C-w>h", opts )                 -- Left window
+keymap( "n", "<C-k>", "<C-w>k", opts )                 -- Up window
+keymap( "n", "<C-j>", "<C-w>j", opts )                 -- Down window
+keymap( "n", "<C-l>", "<C-w>l", opts )                 -- Right window
+
+keymap( "n", "<tab>", ":bnext<cr>", opts )             -- Next Tab 
+keymap( "n", "<s-tab>", ":bprevious<cr>", opts )       -- Previous tab
+keymap( "n", "<leader>h", ":nohlsearch<cr>", opts )    -- No highlight search
 
 -- Resize with arrows
 -- delta: 2 lines
-vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)
-vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+keymap( "n", "<C-Up>", ":resize -2<CR>", opts )
+keymap( "n", "<C-Down>", ":resize +2<CR>", opts )
+keymap( "n", "<C-Left>", ":vertical resize -2<CR>", opts )
+keymap( "n", "<C-Right>", ":vertical resize +2<CR>", opts )
 
 -----------------
 -- Visual mode --
 -----------------
 
 -- Hint: start visual mode with the same area as the previous area and the same mode
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
+keymap( "v", "<", "<gv", opts )
+keymap( "v", ">", ">gv", opts )

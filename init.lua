@@ -1,3 +1,5 @@
-require("plugins")
-require("options")
-require("keymaps")
+require( "configs.cfg-lazy" )
+require( "configs.cfg-bufferline" )
+require( "whichkey" )
+require( "options" )
+require( "keymaps" )
