@@ -1,5 +1,5 @@
-require( "configs.cfg-lazy" )
-require( "configs.cfg-bufferline" )
-require( "whichkey" )
+require( "config.cfg-lazy" )
+require( "config.cfg-bufferline" )
+require( "config.cfg-whichkey" )
 require( "options" )
 require( "keymaps" )

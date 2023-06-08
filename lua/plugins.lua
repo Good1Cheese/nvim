@@ -2,7 +2,11 @@ return {
     -- Which-key
     {
         "folke/which-key.nvim",
-        lazy = false
+        event = "VeryLazy",
+        init = function()
+          vim.o.timeout = true
+          vim.o.timeoutlen = 100
+        end
     },
 
     -- BufferLine
