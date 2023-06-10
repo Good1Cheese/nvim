@@ -9,7 +9,7 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        init = function()
+        init = function( )
             vim.o.timeout = true
             vim.o.timeoutlen = 100
         end
@@ -20,6 +20,11 @@ return {
         "nvim-tree/nvim-tree.lua",
         lazy = true,
         dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
+
+    -- Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
     },
 
     -- Telescope (Fuzzy Finder)
