@@ -5,6 +5,7 @@ require( "config.cfg-nvim-tree" )
 require( "config.cfg-telescope" )
 require( "config.cfg-alpha" )
 require( "config.cfg-treesitter" )
+require( "config.cfg-lsp" )
 
 require( "options" )
 require( "keymaps" )

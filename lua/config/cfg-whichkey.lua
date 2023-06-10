@@ -106,7 +106,9 @@ local mappings = {
     ["w"] = { "<cmd>w!<CR>", "Save" }, -- Save current file
     ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }, -- Open nvim-tree
     ["a"] = { "<cmd>Alpha<CR>", "Start menu" }, -- Open alpha
-
+    ["r"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
+    ["m"] = { "<cmd>Mason<cr>", "Mason UI for Lsp" },
+    
     -- Telescope
     f = {
         name = "File Search",
@@ -123,6 +125,20 @@ local mappings = {
         r = { "<cmd>Telescope registers<cr>", "Registers" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         c = { "<cmd>Telescope commands<cr>", "Commands" },
+    },
+
+    -- LSP
+    l = {
+        name = "LSP",
+        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        i = { "<cmd>LspInfo<cr>", "Info" },
+        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+        S = {
+            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+            "Workspace Symbols",
+        },
     },
 }
 
