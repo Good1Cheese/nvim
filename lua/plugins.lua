@@ -5,6 +5,11 @@ return {
         lazy = true
     },
 
+    -- Auto-Pairs
+    {
+        "windwp/nvim-autopairs"
+    },
+
     -- Which-key
     {
         "folke/which-key.nvim",
