@@ -1,5 +1,5 @@
-local status_ok, which_key = pcall( require, "which-key" )
-if not status_ok then return end
+local statusOk, which_key = pcall( require, "which-key" )
+if not statusOk then return end
 
 local setup = {
     plugins = {
@@ -104,6 +104,26 @@ local mappings = {
     ["p"] = { "<cmd>Lazy<CR>", "Plugin Manager" }, -- Invoking plugin manager
     ["q"] = { "<cmd>wqall!<CR>", "Quit" }, -- Quit Neovim after saving the file
     ["w"] = { "<cmd>w!<CR>", "Save" }, -- Save current file
+    ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }, -- Open nvim-tree
+    ["a"] = { "<cmd>Alpha<CR>", "Start menu" }, -- Open alpha
+
+    -- Telescope
+    f = {
+        name = "File Search",
+        c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+        f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
+        t = { "<cmd>Telescope live_grep <cr>", "Find Text Pattern In All Files" },
+        r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    },
+    
+    s = {
+        name = "Search",
+        h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+        m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+        r = { "<cmd>Telescope registers<cr>", "Registers" },
+        k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+        c = { "<cmd>Telescope commands<cr>", "Commands" },
+    },
 }
 
 which_key.setup( setup )

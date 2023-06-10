@@ -1,12 +1,32 @@
 return {
+    -- Alpha (Dashboard)
+    {
+        "goolord/alpha-nvim",
+        lazy = true
+    },
+
     -- Which-key
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
-          vim.o.timeout = true
-          vim.o.timeoutlen = 100
+            vim.o.timeout = true
+            vim.o.timeoutlen = 100
         end
+    },
+
+    -- Nvimtree (File Explorer)
+    {
+        "nvim-tree/nvim-tree.lua",
+        lazy = true,
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
+
+    -- Telescope (Fuzzy Finder)
+    {
+        "nvim-telescope/telescope.nvim",
+        lazy = true,
+        dependencies = { "nvim-lua/plenary.nvim" }
     },
 
     -- BufferLine
@@ -21,6 +41,12 @@ return {
         "folke/tokyonight.nvim"
     },
 
+    -- Lualine
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
+
     -- Noice
     {
         "folke/noice.nvim",
@@ -32,8 +58,8 @@ return {
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                     ["vim.lsp.util.stylize_markdown"] = true,
-                    ["cmp.entry.get_documentation"] = true,
-                },
+                    ["cmp.entry.get_documentation"] = true
+                }
             },
 
             -- you can enable a preset for easier configuration
@@ -43,8 +69,8 @@ return {
                 long_message_to_split = true, -- long messages will be sent to a split
                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = false, -- add a border to hover docs and signature help
-            },
+            }
         },
-        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
     }
 }
