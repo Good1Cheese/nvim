@@ -10,6 +10,11 @@ return {
         "windwp/nvim-autopairs"
     },
 
+    -- Move
+    {
+        "fedepujol/move.nvim"
+    },
+
     -- Which-key
     {
         "folke/which-key.nvim",
