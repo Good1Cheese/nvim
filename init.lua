@@ -7,6 +7,7 @@ require( "config.cfg-alpha" )
 require( "config.cfg-treesitter" )
 require( "config.cfg-lsp" )
 require( "config.cfg-autopairs" )
+require( "config.cfg-lualine" )
 
 require( "options" )
 require( "keymaps" )
