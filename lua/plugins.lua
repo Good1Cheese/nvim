@@ -5,6 +5,12 @@ return {
         lazy = true
     },
 
+    -- Delete without coping
+    {
+        "gbprod/cutlass.nvim",
+        opts = { }
+    },
+
     -- Auto-Pairs
     {
         "windwp/nvim-autopairs"
