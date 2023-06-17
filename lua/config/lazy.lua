@@ -6,16 +6,12 @@ end
 
 vim.opt.rtp:prepend( lazyPath )
 
-
 local options = {
-    defaults = {
-    },
-
     dev = {
-        path = "~/test", -- dir where local plugins are stored
-        patterns = { "Frydac" }, -- plugins that match will be searched in repos dir
-        fallback = true, -- fallback to url
-    },
+        path = "D:/Projects/Lua",     -- dir where local plugins are stored
+        patterns = { "development" }, -- plugins that match will be searched in repos dir
+        fallback = false,             -- fallback to url
+    }
 }
 
 require( "lazy" ).setup( "plugins", options )
