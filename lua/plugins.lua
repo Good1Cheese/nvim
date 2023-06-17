@@ -11,6 +11,10 @@ return {
         opts = { }
     },
 
+    {
+        "development/aliasRemove.nvim"
+    },
+
     -- Auto-Pairs
     {
         "windwp/nvim-autopairs"
@@ -47,6 +51,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         lazy = true,
+        tag = '0.1.1',
         dependencies = { "nvim-lua/plenary.nvim" }
     },
 
