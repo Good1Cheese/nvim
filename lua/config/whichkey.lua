@@ -119,7 +119,8 @@ local mappings = {
     },
     
     s = {
-        name = "Search",
+        name = "Telescope",
+        v = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
         h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
         m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
         r = { "<cmd>Telescope registers<cr>", "Registers" },
