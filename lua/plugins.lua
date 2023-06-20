@@ -5,6 +5,10 @@ return {
         lazy = true
     },
 
+    -- Colors for intendation
+    {
+        "lukas-reineke/indent-blankline.nvim"
+    },
     -- Delete without coping
     {
         "gbprod/cutlass.nvim",
@@ -63,8 +67,10 @@ return {
 
     -- Colorscheme
     {
-        --  "ellisonleao/gruvbox.nvim"
-        "folke/tokyonight.nvim"
+        "folke/tokyonight.nvim",
+        config = function()
+            vim.cmd.colorscheme( "tokyonight-night" )
+        end
     },
 
     -- Lualine

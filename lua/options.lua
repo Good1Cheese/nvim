@@ -22,10 +22,8 @@ opt.splitright = true            -- open new horizontal splits right
 opt.termguicolors = true         -- enabl 24-bit RGB color in the TUI
 opt.showmode = false             -- we are experienced, wo don't need the "-- INSERT --" mode hint
 
-vim.cmd.colorscheme( "tokyonight-night" ) -- use gruvbox theme
-
 -- Searching
 opt.incsearch = true             -- search as characters are entered
 opt.hlsearch = false             -- do not highlight matches
 opt.ignorecase = true            -- ignore case in searches by default
-opt.smartcase = true             -- but make it case sensitive if an uppercase is entered
+opt.smartcase = true             -- but make it case sensitive if an uppercase is enteredopt.smartcase = true             -- but make it case sensitive if an uppercase is entered

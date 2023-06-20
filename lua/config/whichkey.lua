@@ -108,18 +108,13 @@ local mappings = {
     ["a"] = { "<cmd>Alpha<CR>", "Start menu" }, -- Open alpha
     ["r"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
     ["m"] = { "<cmd>Mason<cr>", "Mason UI for Lsp" },
-    
-    -- Telescope
-    f = {
-        name = "File Search",
-        c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
-        t = { "<cmd>Telescope live_grep <cr>", "Find Text Pattern In All Files" },
-        r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    },
-    
+
     s = {
         name = "Telescope",
+        x = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+        f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
+        t = { "<cmd>Telescope live_grep <cr>", "Find Text Pattern In All Files" },
+        a = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
         v = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
         h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
         m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
