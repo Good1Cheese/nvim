@@ -26,4 +26,5 @@ opt.showmode = false             -- we are experienced, wo don't need the "-- IN
 opt.incsearch = true             -- search as characters are entered
 opt.hlsearch = false             -- do not highlight matches
 opt.ignorecase = true            -- ignore case in searches by default
-opt.smartcase = true             -- but make it case sensitive if an uppercase is enteredopt.smartcase = true             -- but make it case sensitive if an uppercase is entered
+opt.smartcase = true             -- but make it case sensitive if an uppercase is enteredopt.smartcase = true
+-- but make it case sensitive if an uppercase is entered
