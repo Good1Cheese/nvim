@@ -22,9 +22,6 @@ vim.g.maplocalleader = " "
 -- Normal mode --
 -----------------
 
--- Hint: see `:h vim.map.set()`
--- Better window navigation
-
 keymap( "n", "<C-h>", "<C-w>h", opts )                 -- Left window
 keymap( "n", "<C-k>", "<C-w>k", opts )                 -- Up window
 keymap( "n", "<C-j>", "<C-w>j", opts )                 -- Down window
