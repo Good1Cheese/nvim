@@ -22,6 +22,8 @@ opt.splitright = true            -- open new horizontal splits right
 opt.termguicolors = true         -- enabl 24-bit RGB color in the TUI
 opt.showmode = false             -- we are experienced, wo don't need the "-- INSERT --" mode hint
 
+vim.cmd.colorscheme( "tokyonight-night" )
+
 -- Searching
 opt.incsearch = true             -- search as characters are entered
 opt.hlsearch = false             -- do not highlight matches

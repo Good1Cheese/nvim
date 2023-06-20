@@ -1,57 +1,69 @@
 return {
-    -- Alpha (Dashboard)
-    {
-        "goolord/alpha-nvim",
-        lazy = true
-    },
+    -----------------
+    -- DEV PLUGINS --
+    -----------------
 
-    -- Colors for intendation
-    {
-        "lukas-reineke/indent-blankline.nvim"
-    },
+
+    { "development/aliasRemove.nvim" },
+
+
+    ---------------------
+    -- VISUTAL PLUGINS --
+    ---------------------
+
+
+    -- Icons
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+
+    -- Dashboard
+    { "goolord/alpha-nvim", lazy = true },
+
+    -- Marks for indents
+    { "lukas-reineke/indent-blankline.nvim" },
+
+    -- Colorscheme
+    { "folke/tokyonight.nvim" },
+
+    -- Lualine
+    { "nvim-lualine/lualine.nvim" },
+
+
+    -------------------------
+    ---- EDITING PLUGINS ----
+    -------------------------
+
+
     -- Delete without coping
-    {
-        "gbprod/cutlass.nvim",
-        opts = { }
-    },
-
-    {
-        "development/aliasRemove.nvim"
-    },
+    { "gbprod/cutlass.nvim", opts = { } },
 
     -- Auto-Pairs
+    { "windwp/nvim-autopairs" },
+
+    -- Moving things across lines
+    { "fedepujol/move.nvim" },
+
+    -- Quick quotes, brackets, etc
     {
-        "windwp/nvim-autopairs"
+        "kylechui/nvim-surround",
+        event = "VeryLazy"
     },
 
-    -- Move
-    {
-        "fedepujol/move.nvim"
-    },
 
-    -- Which-key
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function( )
-            vim.o.timeout = true
-            vim.o.timeoutlen = 100
-        end
-    },
+    ----------------------
+    ---- CORE PLUGINS ----
+    ----------------------
 
-    -- Nvimtree (File Explorer)
-    {
-        "nvim-tree/nvim-tree.lua",
-        lazy = true,
-        dependencies = { "nvim-tree/nvim-web-devicons" }
-    },
 
-    -- Treesitter
-    {
-        "nvim-treesitter/nvim-treesitter",
-    },
+    -- File Explorer
+    { "nvim-tree/nvim-tree.lua", lazy = true },
 
-    -- Telescope (Fuzzy Finder)
+    -- Treesitter (Parser)
+    { "nvim-treesitter/nvim-treesitter" },
+
+    -- BufferLine
+    { "akinsho/bufferline.nvim" },
+
+    -- Fuzzy Finder
     {
         "nvim-telescope/telescope.nvim",
         lazy = true,
@@ -59,24 +71,14 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" }
     },
 
-    -- BufferLine
+    -- Which-key
     {
-        "akinsho/bufferline.nvim",
-        dependencies = "nvim-tree/nvim-web-devicons"
-    },
-
-    -- Colorscheme
-    {
-        "folke/tokyonight.nvim",
-        config = function()
-            vim.cmd.colorscheme( "tokyonight-night" )
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 100
         end
-    },
-
-    -- Lualine
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" }
     },
 
     -- Language Support
@@ -107,7 +109,6 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        name = "noice",
         opts = {
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
