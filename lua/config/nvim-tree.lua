@@ -1,12 +1,12 @@
-local statusOk, nvimTree = pcall( require, "nvim-tree" )
+local statusOk, nvimTree = pcall(require, "nvim-tree")
 if not statusOk then return end
 
-local configStatusOk, nvim_tree_config = pcall( require, "nvim-tree.config" )
+local configStatusOk, nvim_tree_config = pcall(require, "nvim-tree.config")
 if not configStatusOk then return end
 
 local treeCb = nvim_tree_config.nvim_tree_callback
 
-nvimTree.setup{
+nvimTree.setup {
     update_focused_file = {
         enable = true,
         update_cwd = true,
@@ -57,15 +57,15 @@ nvimTree.setup{
             list = {
                 {
                     key = { "l", "<CR>", "o" },
-                    cb = treeCb( "edit" )
+                    cb = treeCb("edit")
                 },
                 {
                     key = "h",
-                    cb = treeCb( "close_node" )
+                    cb = treeCb("close_node")
                 },
                 {
                     key = "v",
-                    cb = treeCb( "vsplit" )
+                    cb = treeCb("vsplit")
                 },
             },
         },

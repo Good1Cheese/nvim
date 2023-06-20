@@ -1,9 +1,9 @@
-local statusOk, telescope = pcall( require, "telescope" )
+local statusOk, telescope = pcall(require, "telescope")
 if not statusOk then return end
 
-local actions = require( "telescope.actions" )
+local actions = require("telescope.actions")
 
-telescope.setup{
+telescope.setup {
     defaults = {
 
         -- Default configuration for telescope goes here:
@@ -63,10 +63,10 @@ telescope.setup{
             },
         }
     },
-    
-    -- Default configuration for builtin pickers goes here: 
-    -- picker_name = { --   picker_config_ key = value, --   ... -- } 
-    -- Now the picker_config_key will be applied every time you call this 
+
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = { --   picker_config_ key = value, --   ... -- }
+    -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
     pickers = {},
 

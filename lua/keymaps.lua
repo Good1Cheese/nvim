@@ -1,12 +1,12 @@
 local opts = {
     noremap = true, -- non-recursive
-    silent = true, -- do not show message
+    silent = true,  -- do not show message
 }
 
 local keymap = vim.api.nvim_set_keymap
 
 -- Remap space as leader key
-keymap( "", "<Space>", "<Nop>", opts )
+keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -22,26 +22,26 @@ vim.g.maplocalleader = " "
 -- Normal mode --
 -----------------
 
-keymap( "n", "<C-h>", "<C-w>h", opts )                 -- Left window
-keymap( "n", "<C-k>", "<C-w>k", opts )                 -- Up window
-keymap( "n", "<C-j>", "<C-w>j", opts )                 -- Down window
-keymap( "n", "<C-l>", "<C-w>l", opts )                 -- Right window
+keymap("n", "<C-h>", "<C-w>h", opts)              -- Left window
+keymap("n", "<C-k>", "<C-w>k", opts)              -- Up window
+keymap("n", "<C-j>", "<C-w>j", opts)              -- Down window
+keymap("n", "<C-l>", "<C-w>l", opts)              -- Right window
 
-keymap( "n", "<tab>", ":bnext<cr>", opts )             -- Next Tab 
-keymap( "n", "<s-tab>", ":bprevious<cr>", opts )       -- Previous tab
-keymap( "n", "<leader>h", ":nohlsearch<cr>", opts )    -- No highlight search
+keymap("n", "<tab>", ":bnext<cr>", opts)          -- Next Tab
+keymap("n", "<s-tab>", ":bprevious<cr>", opts)    -- Previous tab
+keymap("n", "<leader>h", ":nohlsearch<cr>", opts) -- No highlight search
 
 -- Resize with arrows
 -- delta: 2 lines
-keymap( "n", "<C-Up>", ":resize -2<CR>", opts )
-keymap( "n", "<C-Down>", ":resize +2<CR>", opts )
-keymap( "n", "<C-Left>", ":vertical resize -2<CR>", opts )
-keymap( "n", "<C-Right>", ":vertical resize +2<CR>", opts )
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -----------------
 -- Visual mode --
 -----------------
 
 -- Hint: start visual mode with the same area as the previous area and the same mode
-keymap( "v", "<", "<gv", opts )
-keymap( "v", ">", ">gv", opts )
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)

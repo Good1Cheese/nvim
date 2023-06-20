@@ -13,10 +13,10 @@ return {
 
 
     -- Icons
-    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "nvim-tree/nvim-web-devicons",        lazy = true },
 
     -- Dashboard
-    { "goolord/alpha-nvim", lazy = true },
+    { "goolord/alpha-nvim",                 lazy = true },
 
     -- Marks for indents
     { "lukas-reineke/indent-blankline.nvim" },
@@ -34,7 +34,7 @@ return {
 
 
     -- Delete without coping
-    { "gbprod/cutlass.nvim", opts = { } },
+    { "gbprod/cutlass.nvim",                opts = {} },
 
     -- Auto-Pairs
     { "windwp/nvim-autopairs" },
@@ -55,7 +55,7 @@ return {
 
 
     -- File Explorer
-    { "nvim-tree/nvim-tree.lua", lazy = true },
+    { "nvim-tree/nvim-tree.lua",        lazy = true },
 
     -- Treesitter (Parser)
     { "nvim-treesitter/nvim-treesitter" },
@@ -87,20 +87,20 @@ return {
         branch = "v1.x",
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" }, -- Required
-            { "williamboman/mason.nvim" }, -- Optional
+            { "neovim/nvim-lspconfig" },             -- Required
+            { "williamboman/mason.nvim" },           -- Optional
             { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
             -- Autocompletion
-            { "hrsh7th/nvim-cmp" }, -- Required
-            { "hrsh7th/cmp-nvim-lsp" }, -- Required
-            { "hrsh7th/cmp-buffer" }, -- Optional
-            { "hrsh7th/cmp-path" }, -- Optional
+            { "hrsh7th/nvim-cmp" },         -- Required
+            { "hrsh7th/cmp-nvim-lsp" },     -- Required
+            { "hrsh7th/cmp-buffer" },       -- Optional
+            { "hrsh7th/cmp-path" },         -- Optional
             { "saadparwaiz1/cmp_luasnip" }, -- Optional
-            { "hrsh7th/cmp-nvim-lua" }, -- Optional
+            { "hrsh7th/cmp-nvim-lua" },     -- Optional
 
             -- Snippets
-            { "L3MON4D3/LuaSnip" }, -- Required
+            { "L3MON4D3/LuaSnip" },             -- Required
             { "rafamadriz/friendly-snippets" }, -- Optional
         }
     },
@@ -121,11 +121,11 @@ return {
 
             -- you can enable a preset for easier configuration
             presets = {
-                bottom_search = true, -- use a classic bottom cmdline for search
-                command_palette = true, -- position the cmdline and popupmenu together
+                bottom_search = true,         -- use a classic bottom cmdline for search
+                command_palette = true,       -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
-                inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = false, -- add a border to hover docs and signature help
+                inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+                lsp_doc_border = false,       -- add a border to hover docs and signature help
             }
         },
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }

@@ -1,4 +1,4 @@
-require( "bufferline" ).setup( {
+require("bufferline").setup({
     options = {
         hover = {
             enabled = true,
@@ -6,4 +6,4 @@ require( "bufferline" ).setup( {
             reveal = { "close" }
         }
     }
-} )
+})
