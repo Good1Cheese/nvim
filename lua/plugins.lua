@@ -13,10 +13,10 @@ return {
 
 
     -- Icons
-    { "nvim-tree/nvim-web-devicons",        lazy = true },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
 
     -- Dashboard
-    { "goolord/alpha-nvim",                 lazy = true },
+    { "goolord/alpha-nvim", lazy = true },
 
     -- Marks for indents
     { "lukas-reineke/indent-blankline.nvim" },
@@ -34,7 +34,7 @@ return {
 
 
     -- Delete without coping
-    { "gbprod/cutlass.nvim",                opts = {} },
+    { "gbprod/cutlass.nvim", opts = {} },
 
     -- Auto-Pairs
     { "windwp/nvim-autopairs" },
@@ -45,9 +45,12 @@ return {
     -- Quick quotes, brackets, etc
     {
         "kylechui/nvim-surround",
-        event = "VeryLazy"
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup()
+        end
     },
-
 
     ----------------------
     ---- CORE PLUGINS ----
@@ -55,7 +58,7 @@ return {
 
 
     -- File Explorer
-    { "nvim-tree/nvim-tree.lua",        lazy = true },
+    { "nvim-tree/nvim-tree.lua", lazy = true },
 
     -- Treesitter (Parser)
     { "nvim-treesitter/nvim-treesitter" },
