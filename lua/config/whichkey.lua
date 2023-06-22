@@ -100,12 +100,12 @@ local opts = {
 }
 
 local mappings = {
-    ["k"] = { "<cmd>bdelete<CR>", "Kill Buffer" },     -- Close current file
-    ["p"] = { "<cmd>Lazy<CR>", "Plugin Manager" },     -- Invoking plugin manager
-    ["q"] = { "<cmd>wqall!<CR>", "Quit" },             -- Quit Neovim after saving the file
-    ["w"] = { "<cmd>w!<CR>", "Save" },                 -- Save current file
-    ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }, -- Open nvim-tree
-    ["a"] = { "<cmd>Alpha<CR>", "Start menu" },        -- Open alpha
+    ["k"] = { "<cmd>bdelete<cr>", "Kill Buffer" },     -- Close current file
+    ["p"] = { "<cmd>Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
+    ["q"] = { "<cmd>wqall!<cr>", "Quit" },             -- Quit Neovim after saving the file
+    ["w"] = { "<cmd>w!<cr>", "Save" },                 -- Save current file
+    ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" }, -- Open nvim-tree
+    ["a"] = { "<cmd>Alpha<cr>", "Start menu" },        -- Open alpha
     ["r"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
     ["m"] = { "<cmd>Mason<cr>", "Mason UI for Lsp" },
 
