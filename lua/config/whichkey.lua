@@ -100,7 +100,6 @@ local opts = {
 }
 
 local mappings = {
-    ["p"] = { "<cmd>Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
     ["k"] = { ":bdelete<cr>", "Kill Buffer" },     -- Close current file
     ["p"] = { ":Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
     ["q"] = { ":wqall!<cr>", "Quit" },             -- Quit Neovim after saving the file
