@@ -100,39 +100,40 @@ local opts = {
 }
 
 local mappings = {
-    ["k"] = { "<cmd>bdelete<cr>", "Kill Buffer" },     -- Close current file
     ["p"] = { "<cmd>Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
-    ["q"] = { "<cmd>wqall!<cr>", "Quit" },             -- Quit Neovim after saving the file
-    ["w"] = { "<cmd>w!<cr>", "Save" },                 -- Save current file
-    ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" }, -- Open nvim-tree
-    ["a"] = { "<cmd>Alpha<cr>", "Start menu" },        -- Open alpha
-    ["r"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
-    ["m"] = { "<cmd>Mason<cr>", "Mason UI for Lsp" },
+    ["k"] = { ":bdelete<cr>", "Kill Buffer" },     -- Close current file
+    ["p"] = { ":Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
+    ["q"] = { ":wqall!<cr>", "Quit" },             -- Quit Neovim after saving the file
+    ["w"] = { ":w!<cr>", "Save" },                 -- Save current file
+    ["e"] = { ":NvimTreeToggle<cr>", "Explorer" }, -- Open nvim-tree
+    ["a"] = { ":Alpha<cr>", "Start menu" },        -- Open alpha
+    ["r"] = { ":lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
+    ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 
     s = {
         name = "Telescope",
-        x = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
-        t = { "<cmd>Telescope live_grep <cr>", "Find Text Pattern In All Files" },
-        a = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-        v = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-        h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-        m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-        r = { "<cmd>Telescope registers<cr>", "Registers" },
-        k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-        c = { "<cmd>Telescope commands<cr>", "Commands" },
+        x = { ":Telescope colorscheme<cr>", "Colorscheme" },
+        f = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
+        t = { ":Telescope live_grep <cr>", "Find Text Pattern In All Files" },
+        a = { ":Telescope oldfiles<cr>", "Open Recent File" },
+        v = { ":Telescope diagnostics<cr>", "Diagnostics" },
+        h = { ":Telescope help_tags<cr>", "Find Help" },
+        m = { ":Telescope man_pages<cr>", "Man Pages" },
+        r = { ":Telescope registers<cr>", "Registers" },
+        k = { ":Telescope keymaps<cr>", "Keymaps" },
+        c = { ":Telescope commands<cr>", "Commands" },
     },
 
     -- LSP
     l = {
         name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        i = { "<cmd>LspInfo<cr>", "Info" },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+        a = { ":lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        i = { ":LspInfo<cr>", "Info" },
+        l = { ":lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        r = { ":lua vim.lsp.buf.rename()<cr>", "Rename" },
+        s = { ":Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
-            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+            ":Telescope lsp_dynamic_workspace_symbols<cr>",
             "Workspace Symbols",
         },
     },
