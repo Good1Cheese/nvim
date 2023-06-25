@@ -108,6 +108,7 @@ local mappings = {
     ["a"] = { ":Alpha<cr>", "Start menu" },        -- Open alpha
     ["r"] = { ":lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
     ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
+    ["u"] = { ":lua require('undotree').toggle()<cr>", "Undo-Tree" },
 
     s = {
         name = "Telescope",

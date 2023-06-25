@@ -25,7 +25,7 @@ return {
     { "folke/tokyonight.nvim" },
 
     -- Lualine
-    { "nvim-lualine/lualine.nvim" },
+    { "nvim-lualine/lualine.nvim", opts = {} },
 
 
     -------------------------
@@ -45,6 +45,9 @@ return {
     -- For quick commentting
     { "numToStr/Comment.nvim" },
 
+    -- Undo-Tree
+    { "jiaoshijie/undotree", opts = {} },
+
     -- Quick quotes, brackets, etc
     {
         "kylechui/nvim-surround",
@@ -57,9 +60,13 @@ return {
     ---- CORE PLUGINS ----
     ----------------------
 
+    { "nvim-lua/plenary.nvim", lazy = true },
 
     -- File Explorer
-    { "nvim-tree/nvim-tree.lua", lazy = true },
+    { "nvim-tree/nvim-tree.lua", opts = {}, lazy = true },
+
+    -- BufferLine
+    { "akinsho/bufferline.nvim", opts = {} },
 
     -- Treesitter (Parser)
     {
@@ -69,15 +76,11 @@ return {
         },
     },
 
-    -- BufferLine
-    { "akinsho/bufferline.nvim" },
-
     -- Fuzzy Finder
     {
         "nvim-telescope/telescope.nvim",
         lazy = true,
-        tag = "0.1.1",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        tag = "0.1.1"
     },
     
     {
@@ -130,6 +133,7 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
+        opts = {},
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
     }
 }
