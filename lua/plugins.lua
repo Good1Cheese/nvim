@@ -42,14 +42,15 @@ return {
     -- Moving things across lines
     { "fedepujol/move.nvim" },
 
+    -- For quick commentting
+    { "numToStr/Comment.nvim" },
+
     -- Quick quotes, brackets, etc
     {
         "kylechui/nvim-surround",
         version = "*",
         event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup()
-        end
+        config = function() require("nvim-surround").setup() end
     },
 
     ----------------------
@@ -61,7 +62,12 @@ return {
     { "nvim-tree/nvim-tree.lua", lazy = true },
 
     -- Treesitter (Parser)
-    { "nvim-treesitter/nvim-treesitter" },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
+    },
 
     -- BufferLine
     { "akinsho/bufferline.nvim" },
@@ -70,8 +76,20 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         lazy = true,
-        tag = '0.1.1',
+        tag = "0.1.1",
         dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    
+    {
+        "ray-x/guihua.lua",
+        build = "cd lua/fzy && make"
+    },
+
+    {
+        "ray-x/sad.nvim",
+        config = function()
+            require("sad").setup()
+        end
     },
 
     -- Which-key

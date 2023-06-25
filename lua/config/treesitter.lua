@@ -1,6 +1,10 @@
 local configs = require("nvim-treesitter.configs")
 
 configs.setup {
+    context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+    },
     -- Add a language of your choice
     ensure_installed = { "cpp", "python", "lua", "javascript", },
     sync_install = false,

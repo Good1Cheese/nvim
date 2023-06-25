@@ -3,7 +3,7 @@ local opt = vim.opt
 
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.clipboard = "unnamedplus" -- use system clipboard
-opt.mouse = 'a'               -- allow the mouse to be used in Nvim
+opt.mouse = "a"               -- allow the mouse to be used in Nvim
 
 opt.spelllang = { "en" }
 

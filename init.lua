@@ -1,5 +1,6 @@
 require("config.lazy")
 require("config.bufferline")
+require("config.comment")
 require("config.noice")
 require("config.whichkey")
 require("config.nvim-tree")
