@@ -30,7 +30,7 @@ local mappings = {
     ["e"] = { ":NvimTreeToggle<cr>", "Explorer" }, -- Open nvim-tree
     ["a"] = { ":Alpha<cr>", "Start menu" },        -- Open alpha
     ["r"] = { ":source $MYVIMRC<cr>", "Reload config" },
-    ["f"] = { ":DiffViewOpen<cr>", "View git changes" },
+    ["f"] = { ":DiffviewOpen<cr>", "View git changes" },
     ["v"] = { ":Neogit<cr>", "Open git" },
     ["c"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
     ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
