@@ -38,6 +38,8 @@ keymap("n", "<C-Down>", ":resize +2<cr>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
 
+keymap("n", "f", "i<cr><Esc>", {})
+
 -----------------
 -- Visual mode --
 -----------------

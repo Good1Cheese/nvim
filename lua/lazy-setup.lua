@@ -14,9 +14,9 @@ vim.opt.rtp:prepend(lazyPath)
 
 local options = {
     dev = {
-        path = "D:/Projects/Lua",     -- dir where local plugins are stored
+        path = "~/dev", -- dir where local plugins are stored
         patterns = { "development" }, -- plugins that match will be searched in repos dir
-        fallback = false,             -- fallback to url
+        fallback = false, -- fallback to url
     }
 }
 

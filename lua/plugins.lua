@@ -4,7 +4,7 @@ return {
     -----------------
 
 
-    { "development/aliasRemove.nvim" },
+    { "development/aliasRemove.nvim", dev = true },
 
 
     ---------------------
@@ -13,10 +13,13 @@ return {
 
 
     -- Icons
-    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "nvim-tree/nvim-web-devicons",        lazy = true },
 
     -- Dashboard
-    { "goolord/alpha-nvim", lazy = true },
+    {
+        "goolord/alpha-nvim",
+        lazy = true
+    },
 
     -- Marks for indents
     { "lukas-reineke/indent-blankline.nvim" },
@@ -25,7 +28,10 @@ return {
     { "folke/tokyonight.nvim" },
 
     -- Lualine
-    { "nvim-lualine/lualine.nvim", opts = {} },
+    {
+        "nvim-lualine/lualine.nvim",
+        config = true
+    },
 
 
     -------------------------
@@ -34,7 +40,10 @@ return {
 
 
     -- Delete without coping
-    { "gbprod/cutlass.nvim", opts = {} },
+    {
+        "gbprod/cutlass.nvim",
+        config = true
+    },
 
     -- Auto-Pairs
     { "windwp/nvim-autopairs" },
@@ -46,27 +55,58 @@ return {
     { "numToStr/Comment.nvim" },
 
     -- Undo-Tree
-    { "jiaoshijie/undotree", opts = {} },
+    {
+        "jiaoshijie/undotree",
+        config = true
+    },
 
     -- Quick quotes, brackets, etc
     {
         "kylechui/nvim-surround",
         version = "*",
+        config = true,
         event = "VeryLazy",
-        config = function() require("nvim-surround").setup() end
     },
+
 
     ----------------------
     ---- CORE PLUGINS ----
     ----------------------
 
-    { "nvim-lua/plenary.nvim", lazy = true },
+    {
+        "NeogitOrg/neogit",
+        config = true
+    },
+
+    -- Git difftoool
+    {
+        "sindrets/diffview.nvim"
+    },
+
+    -- Terminal support
+    {
+        "akinsho/toggleterm.nvim",
+        config = true
+    },
+
+    -- Tool for async Lua
+    {
+        "nvim-lua/plenary.nvim",
+        lazy = true
+    },
 
     -- File Explorer
-    { "nvim-tree/nvim-tree.lua", opts = {}, lazy = true },
+    {
+        "nvim-tree/nvim-tree.lua",
+        config = true,
+        lazy = true
+    },
 
     -- BufferLine
-    { "akinsho/bufferline.nvim", opts = {} },
+    {
+        "romgrk/barbar.nvim",
+        config = true
+    },
 
     -- Treesitter (Parser)
     {
@@ -82,7 +122,7 @@ return {
         lazy = true,
         tag = "0.1.1"
     },
-    
+
     {
         "ray-x/guihua.lua",
         build = "cd lua/fzy && make"
@@ -108,7 +148,7 @@ return {
     -- Language Support
     {
         "VonHeikemen/lsp-zero.nvim",
-        branch = "v1.x",
+        branch = "v2.x",
         dependencies = {
             -- LSP Support
             { "neovim/nvim-lspconfig" },             -- Required
@@ -133,7 +173,7 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        opts = {},
+        config = true,
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
     }
 }
