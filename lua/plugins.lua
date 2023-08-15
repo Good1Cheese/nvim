@@ -4,7 +4,7 @@ return {
     -----------------
 
 
-    { "development/aliasRemove.nvim", dev = true },
+    { "development/aliasRemove.nvim",       dev = true },
 
 
     ---------------------
@@ -76,8 +76,15 @@ return {
     ---- CORE PLUGINS ----
     ----------------------
 
+    -- Awesome tool for comming/pushing
     {
         "NeogitOrg/neogit",
+        config = true
+    },
+
+    -- Previewing changes
+    {
+        "lewis6991/gitsigns.nvim",
         config = true
     },
 
