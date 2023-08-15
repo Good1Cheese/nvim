@@ -3,8 +3,8 @@ require("cutlass").setup({
     override_del = nil,
     exclude = {},
     registers = {
-    	select = "_",
-    	delete = "_",
-    	change = "_",
+        select = "_",
+        delete = "_",
+        change = "_",
     }
 })
