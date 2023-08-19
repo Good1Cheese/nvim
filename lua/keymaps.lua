@@ -1,6 +1,6 @@
 local opts = {
     noremap = true, -- non-recursive
-    silent = true,  -- do not show message
+    silent = true   -- do not show message
 }
 
 local keymap = vim.api.nvim_set_keymap
@@ -21,6 +21,11 @@ vim.g.maplocalleader = " "
 -----------------
 -- Normal mode --
 -----------------
+
+keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)
+keymap("n", "<down>", ":echomsg 'use hjkl dude'<cr>", opts)
+keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)
+keymap("n", "<right>", ":echomsg 'use hjkl dude'<cr>", opts)
 
 keymap("n", "<C-h>", "<C-w>h", opts)              -- Left window
 keymap("n", "<C-k>", "<C-w>k", opts)              -- Up window

@@ -4,6 +4,7 @@ local opt = vim.opt
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.clipboard = "unnamedplus" -- use system clipboard
 opt.mouse = "a"               -- allow the mouse to be used in Nvim
+opt.swapfile = false          -- don't create swap files
 
 opt.spelllang = { "en" }
 
@@ -31,3 +32,11 @@ opt.hlsearch = false  -- do not highlight matches
 opt.ignorecase = true -- ignore case in searches by default
 opt.smartcase = true  -- but make it case sensitive if an uppercase is enteredopt.smartcase = true
 -- but make it case sensitive if an uppercase is entered
+
+-- Highlight yanked text
+vim.api.nvim_exec([[
+    augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
+    augroup end
+]], false)

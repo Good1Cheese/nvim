@@ -42,6 +42,9 @@ return {
     -------------------------
 
 
+    -- Fix for Russian Layout
+    { "powerman/vim-plugin-ruscmd" },
+
     -- Delete without coping
     {
         "gbprod/cutlass.nvim",
@@ -49,7 +52,7 @@ return {
     },
 
     -- Auto-Pairs
-    { "windwp/nvim-autopairs" },
+    { "windwp/nvim-autopairs", config = true },
 
     -- Moving things across lines
     { "fedepujol/move.nvim" },
