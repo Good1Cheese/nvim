@@ -52,7 +52,10 @@ return {
     },
 
     -- Auto-Pairs
-    { "windwp/nvim-autopairs", config = true },
+    {
+        "windwp/nvim-autopairs",
+        config = true
+    },
 
     -- Moving things across lines
     { "fedepujol/move.nvim" },
@@ -78,6 +81,13 @@ return {
     ----------------------
     ---- CORE PLUGINS ----
     ----------------------
+
+
+    -- Sessions manager
+    {
+        "rmagatti/auto-session",
+        config = true
+    },
 
     -- Awesome tool for comming/pushing
     {
