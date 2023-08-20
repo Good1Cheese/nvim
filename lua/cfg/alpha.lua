@@ -3,30 +3,36 @@ if not statusOk then return end
 
 local dashboard = require("alpha.themes.dashboard")
 
-dashboard.section.header.val = {
-    [[          ▀████▀▄▄              ▄█ ]],
-    [[            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ]],
-    [[    ▄        █          ▀▀▀▀▄  ▄▀  ]],
-    [[   ▄▀ ▀▄      ▀▄              ▀▄▀  ]],
-    [[  ▄▀    █     █▀   ▄█▀▄      ▄█    ]],
-    [[  ▀▄     ▀▄  █     ▀██▀     ██▄█   ]],
-    [[   ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ]],
-    [[    █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ]],
-    [[   █   █  █      ▄▄           ▄▀   ]],
-}
+local logo = [[
+           ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
+           ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z
+           ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z
+           ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z
+           ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
+           ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
+      ]]
+
+dashboard.section.header.val = vim.split(logo, "\n")
 
 dashboard.section.buttons.val = {
-    dashboard.button("f", "󰈞 Find file", ":Telescope find_files<cr>"),
-    dashboard.button("e", " New file", ":ene <BAR> startinsert<cr>"),
-    dashboard.button("r", "󰄉 Recently used files", ":Telescope oldfiles<cr>"),
-    dashboard.button("t", "󰊄 Find text", ":Telescope live_grep <cr>"),
-    dashboard.button("c", " Configuration", ":e ~/.config/nvim/init.lua<cr>"),
-    dashboard.button("q", "󰅙 Quit Neovim", ":qa<cr>"),
+    dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+    dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
+    dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
+    dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
+    dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
+    dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+    dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
+    dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 
+for _, button in ipairs(dashboard.section.buttons.val) do
+    button.opts.hl = "AlphaButtons"
+    button.opts.hl_shortcut = "AlphaShortcut"
+end
+
 dashboard.section.footer.val = function() return "Don't know what to say..." end
-dashboard.section.footer.opts.hl = "Type"
-dashboard.section.header.opts.hl = "Include"
-dashboard.section.buttons.opts.hl = "Keyword"
+dashboard.section.header.opts.hl = "AlphaHeader"
+dashboard.section.buttons.opts.hl = "AlphaButtons"
+dashboard.section.footer.opts.hl = "AlphaFooter"
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
