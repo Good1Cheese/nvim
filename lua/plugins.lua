@@ -92,6 +92,7 @@ return {
     -- Awesome tool for comming/pushing
     {
         "NeogitOrg/neogit",
+        branch = "v3.x",
         config = true
     },
 
@@ -120,9 +121,8 @@ return {
 
     -- File Explorer
     {
-        "nvim-tree/nvim-tree.lua",
-        config = true,
-        lazy = true
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x"
     },
 
     -- BufferLine
