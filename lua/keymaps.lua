@@ -32,8 +32,6 @@ keymap("n", "<C-k>", "<C-w>k", opts)              -- Up window
 keymap("n", "<C-j>", "<C-w>j", opts)              -- Down window
 keymap("n", "<C-l>", "<C-w>l", opts)              -- Right window
 
-keymap("n", "<tab>", ":bnext<cr>", opts)          -- Next Tab
-keymap("n", "<s-tab>", ":bprevious<cr>", opts)    -- Previous tab
 keymap("n", "<leader>h", ":nohlsearch<cr>", opts) -- No highlight search
 
 -- Resize with arrows
