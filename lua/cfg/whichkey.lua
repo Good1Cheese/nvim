@@ -23,55 +23,52 @@ local opts = {
 }
 
 local mappings = {
-    ["k"] = { ":bdelete<cr>", "Kill Buffer" },     -- Close current file
     ["p"] = { ":Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
     ["q"] = { ":wqall!<cr>", "Quit" },             -- Quit Neovim after saving the file
+    ["k"] = { ":q<cr>", "Close window" },             -- Quit Neovim after saving the file
     ["w"] = { ":w!<cr>", "Save" },                 -- Save current file
     ["e"] = { ":Neotree toggle<cr>", "Explorer" }, -- Open nvim-tree
     ["a"] = { ":Alpha<cr>", "Start menu" },        -- Open alpha
-    ["r"] = { ":source $MYVIMRC<cr>", "Reload config" },
-    ["f"] = { ":DiffviewOpen<cr>", "View git changes" },
-    ["v"] = { ":Neogit<cr>", "Open git" },
-    ["c"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
+    ["g"] = { ":Neogit<cr>", "Open git" },
+    ["c"] = { ":lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
     ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
-    ["u"] = { ":lua require('undotree').toggle()<cr>", "Undo-Tree" },
 
-    s = {
-        name = "Telescope",
-        x = { ":Telescope colorscheme<cr>", "Colorscheme" },
-        f = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
-        t = { ":Telescope live_grep <cr>", "Find Text Pattern In All Files" },
-        a = { ":Telescope oldfiles<cr>", "Open Recent File" },
-        v = { ":Telescope diagnostics<cr>", "Diagnostics" },
-        h = { ":Telescope help_tags<cr>", "Find Help" },
-        m = { ":Telescope man_pages<cr>", "Man Pages" },
-        r = { ":Telescope registers<cr>", "Registers" },
-        k = { ":Telescope keymaps<cr>", "Keymaps" },
-        c = { ":Telescope commands<cr>", "Commands" },
-    },
+    -- s = {
+    --     name = "Telescope",
+    --     x = { ":Telescope colorscheme<cr>", "Colorscheme" },
+    --     f = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
+    --     t = { ":Telescope live_grep <cr>", "Find Text Pattern In All Files" },
+    --     a = { ":Telescope oldfiles<cr>", "Open Recent File" },
+    --     v = { ":Telescope diagnostics<cr>", "Diagnostics" },
+    --     h = { ":Telescope help_tags<cr>", "Find Help" },
+    --     m = { ":Telescope man_pages<cr>", "Man Pages" },
+    --     r = { ":Telescope registers<cr>", "Registers" },
+    --     k = { ":Telescope keymaps<cr>", "Keymaps" },
+    --     c = { ":Telescope commands<cr>", "Commands" },
+    -- },
 
-    t = {
-        name = "Terminal",
-        f = { "<cmd>ToggleTerm direction=float<cr>", "Float" }, -- Floating Terminal
-
-        -- Play with size according to your needs.
-        h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" }, -- Horizontal Terminal
-        v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },     -- Vertical Terminal
-    },
+    -- t = {
+    --     name = "Terminal",
+    --     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" }, -- Floating Terminal
+    --
+    --     -- Play with size according to your needs.
+    --     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" }, -- Horizontal Terminal
+    --     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },     -- Vertical Terminal
+    -- },
 
     -- LSP
-    l = {
-        name = "LSP",
-        a = { ":lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        i = { ":LspInfo<cr>", "Info" },
-        l = { ":lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        r = { ":lua vim.lsp.buf.rename()<cr>", "Rename" },
-        s = { ":Telescope lsp_document_symbols<cr>", "Document Symbols" },
-        S = {
-            ":Telescope lsp_dynamic_workspace_symbols<cr>",
-            "Workspace Symbols",
-        },
-    },
+    -- l = {
+    --     name = "LSP",
+    --     a = { ":lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    --     i = { ":LspInfo<cr>", "Info" },
+    --     l = { ":lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    --     r = { ":lua vim.lsp.buf.rename()<cr>", "Rename" },
+    --     s = { ":Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    --     S = {
+    --         ":Telescope lsp_dynamic_workspace_symbols<cr>",
+    --         "Workspace Symbols",
+    --     },
+    -- },
 }
 
 which_key.setup(setup)
