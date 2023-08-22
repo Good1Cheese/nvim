@@ -22,6 +22,9 @@ vim.g.maplocalleader = " "
 -- Normal mode --
 -----------------
 
+keymap("n", "<C-s>", ":w<cr>", opts)
+keymap("n", "<C-S-s>", ":wall<cr>", opts)
+
 keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<down>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)

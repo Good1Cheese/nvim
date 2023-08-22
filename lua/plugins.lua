@@ -63,12 +63,6 @@ return {
     -- For quick commentting
     { "numToStr/Comment.nvim" },
 
-    -- Undo-Tree
-    {
-        "jiaoshijie/undotree",
-        config = true
-    },
-
     -- Quick quotes, brackets, etc
     {
         "kylechui/nvim-surround",
@@ -82,12 +76,6 @@ return {
     ---- CORE PLUGINS ----
     ----------------------
 
-
-    -- Sessions manager
-    {
-        "rmagatti/auto-session",
-        config = true
-    },
 
     -- Awesome tool for comming/pushing
     {
@@ -105,12 +93,6 @@ return {
     -- Git difftoool
     {
         "sindrets/diffview.nvim"
-    },
-
-    -- Terminal support
-    {
-        "akinsho/toggleterm.nvim",
-        config = true
     },
 
     -- Tool for async Lua
@@ -143,7 +125,6 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         lazy = true,
-        tag = "0.1.1"
     },
 
     {
