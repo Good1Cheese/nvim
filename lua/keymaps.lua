@@ -22,14 +22,25 @@ vim.g.maplocalleader = " "
 -- Normal mode --
 -----------------
 
+-- Copy all
+keymap("n", "<C-a>", "ggVG", opts)
+
+-- New line
+keymap("n", "F", "i<cr><esc>", opts)
+
+keymap("n", "<esc>", ":noh<cr>", opts)
+
+-- Save file/files
 keymap("n", "<C-s>", ":w<cr>", opts)
 keymap("n", "<C-S-s>", ":wall<cr>", opts)
 
+-- Disable arrows
 keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<down>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<right>", ":echomsg 'use hjkl dude'<cr>", opts)
 
+-- Navigation
 keymap("n", "<C-h>", "<C-w>h", opts)              -- Left window
 keymap("n", "<C-k>", "<C-w>k", opts)              -- Up window
 keymap("n", "<C-j>", "<C-w>j", opts)              -- Down window
@@ -43,8 +54,6 @@ keymap("n", "<C-Up>", ":resize -2<cr>", opts)
 keymap("n", "<C-Down>", ":resize +2<cr>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
-
-keymap("n", "f", "i<cr><Esc>", {})
 
 -----------------
 -- Visual mode --
