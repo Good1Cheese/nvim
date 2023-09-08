@@ -1,10 +1,10 @@
 local Config = {}
 
 Config.path = "~/.config/nvim/lua/cfg/"
-Config.getFilesCommand = string.format("ls %s | cut -d '.' -f -1", Config.path)
+Config.getFileNames = string.format("ls %s | cut -d '.' -f -1", Config.path)
 
 function Config:Load()
-    for fileName in io.popen(self.getFilesCommand):lines() do
+    for fileName in io.popen(self.getFileNames):lines() do
         local file = string.format("cfg.%s", fileName)
         require(file)
     end
