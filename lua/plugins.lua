@@ -1,12 +1,4 @@
 return {
-    -----------------
-    -- DEV PLUGINS --
-    -----------------
-
-
-    { "development/aliasRemove.nvim",       dev = true },
-
-
     ---------------------
     -- VISUTAL PLUGINS --
     ---------------------
@@ -28,7 +20,20 @@ return {
     { "lukas-reineke/indent-blankline.nvim" },
 
     -- Colorscheme
-    { "folke/tokyonight.nvim" },
+    {
+        "folke/tokyonight.nvim",
+        -- config = function()
+        --     vim.cmd.colorscheme("tokyonight-night")
+        -- end
+    },
+
+    {
+        "navarasu/onedark.nvim",
+        config = function()
+            require("onedark").setup({ style = "warmer" })
+            vim.cmd.colorscheme("onedark")
+        end
+    },
 
     -- Lualine
     {
@@ -41,6 +46,14 @@ return {
     ---- EDITING PLUGINS ----
     -------------------------
 
+    -- Undotree
+    { "mbbill/undotree" },
+
+    -- Better escape
+    {
+        "max397574/better-escape.nvim",
+        config = true
+    },
 
     -- Fix for Russian Layout
     { "powerman/vim-plugin-ruscmd" },
@@ -71,16 +84,29 @@ return {
         event = "VeryLazy",
     },
 
+    -- Refactoring tool
+    {
+        "ThePrimeagen/refactoring.nvim",
+        config = function()
+            require("refactoring").setup()
+        end,
+    },
+
 
     ----------------------
     ---- CORE PLUGINS ----
     ----------------------
 
 
+    --  Neovim lua API Support
+    {
+        "folke/neodev.nvim",
+        opts = {}
+    },
+
     -- Awesome tool for comming/pushing
     {
         "NeogitOrg/neogit",
-        branch = "v3.x",
         config = true
     },
 
@@ -91,9 +117,7 @@ return {
     },
 
     -- Git difftoool
-    {
-        "sindrets/diffview.nvim"
-    },
+    { "sindrets/diffview.nvim" },
 
     -- Tool for async Lua
     {
@@ -102,10 +126,7 @@ return {
     },
 
     -- File Explorer
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x"
-    },
+    { "nvim-neo-tree/neo-tree.nvim" },
 
     -- BufferLine
     {
@@ -117,42 +138,40 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
             "JoosepAlviste/nvim-ts-context-commentstring",
         },
     },
 
     -- Fuzzy Finder
-    {
-        "nvim-telescope/telescope.nvim",
-        lazy = true,
-    },
+    { "nvim-telescope/telescope.nvim" },
 
+    -- Gui library for plugins
     {
         "ray-x/guihua.lua",
         build = "cd lua/fzy && make"
     },
 
-    {
-        "ray-x/sad.nvim",
-        config = function()
-            require("sad").setup()
-        end
-    },
+    -- Gui commands support
+    { "equalsraf/neovim-gui-shim" },
+
+    --    {
+    --        "ray-x/sad.nvim",
+    --        config = function()
+    --            require("sad").setup()
+    --        end
+    --    },
 
     -- Which-key
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 100
-        end
+        event = "VeryLazy"
     },
 
     -- Language Support
     {
         "VonHeikemen/lsp-zero.nvim",
-        branch = "v2.x",
+        -- branch = "v2.x",
         dependencies = {
             -- LSP Support
             { "neovim/nvim-lspconfig" },             -- Required
