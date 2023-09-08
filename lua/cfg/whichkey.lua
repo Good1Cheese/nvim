@@ -23,28 +23,29 @@ local opts = {
 }
 
 local mappings = {
-    ["p"] = { ":Lazy<cr>", "Plugin Manager" },     -- Invoking plugin manager
-    ["q"] = { ":wqall!<cr>", "Quit" },             -- Quit Neovim after saving the file
-    ["k"] = { ":q<cr>", "Close window" },          -- Quit Neovim after saving the file
-    ["e"] = { ":Neotree toggle<cr>", "Explorer" }, -- Open nvim-tree
-    ["a"] = { ":Alpha<cr>", "Start menu" },        -- Open alpha
+    ["p"] = { ":Lazy<cr>", "Plugin Manager" },
+    ["q"] = { ":qall!<cr>", "Quit" },
+    ["c"] = { ":q<cr>", "Close window" },
+    ["e"] = { ":Neotree toggle<cr>", "Explorer" },
+    ["a"] = { ":Alpha<cr>", "Start menu" },
     ["g"] = { ":Neogit<cr>", "Open git" },
-    ["c"] = { ":lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code" },
     ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
+    ["u"] = { ":UndotreeToggle<cr>", "Undotree" },
 
-    -- s = {
-    --     name = "Telescope",
-    --     x = { ":Telescope colorscheme<cr>", "Colorscheme" },
-    --     f = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
-    --     t = { ":Telescope live_grep <cr>", "Find Text Pattern In All Files" },
-    --     a = { ":Telescope oldfiles<cr>", "Open Recent File" },
-    --     v = { ":Telescope diagnostics<cr>", "Diagnostics" },
-    --     h = { ":Telescope help_tags<cr>", "Find Help" },
-    --     m = { ":Telescope man_pages<cr>", "Man Pages" },
-    --     r = { ":Telescope registers<cr>", "Registers" },
-    --     k = { ":Telescope keymaps<cr>", "Keymaps" },
-    --     c = { ":Telescope commands<cr>", "Commands" },
+    -- r = {
+    --     name = "Refactoring",
+    --     e = { ":Refactor extract_block" }
     -- },
+
+    s = {
+        name = "Telescope",
+        d = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
+        s = { ":Telescope live_grep <cr>", "Find Text" },
+        -- a = { ":Telescope oldfiles<cr>", "Open Recent File" },
+        -- v = { ":Telescope diagnostics<cr>", "Diagnostics" },
+        -- k = { ":Telescope keymaps<cr>", "Keymaps" },
+        -- c = { ":Telescope commands<cr>", "Commands" },
+    },
 
     -- t = {
     --     name = "Terminal",
@@ -68,6 +69,21 @@ local mappings = {
     --         "Workspace Symbols",
     --     },
     -- },
+    -- lsp.on_attach(function(client, bufnr)
+    -- --     local opts = { buffer = bufnr, remap = false }
+    -- --
+    -- --     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    -- --     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    -- --     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+    -- --     vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    -- --     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+    -- --     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    -- --     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+    -- --     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+    -- --     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    -- --     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    -- -- end)
+    --
 }
 
 which_key.setup(setup)
