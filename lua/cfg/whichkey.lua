@@ -40,6 +40,7 @@ local mappings = {
     s = {
         name = "Telescope",
         d = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
+        a = { ":lua require('telescope.builtin').grep_string()<cr>", "Find string" },
         s = { ":Telescope live_grep <cr>", "Find Text" },
         -- a = { ":Telescope oldfiles<cr>", "Open Recent File" },
         -- v = { ":Telescope diagnostics<cr>", "Diagnostics" },

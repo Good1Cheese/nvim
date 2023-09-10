@@ -22,17 +22,25 @@ vim.g.maplocalleader = " "
 -- Normal mode --
 -----------------
 
+-- keymap("n", "<F3>", ":echomsg 'use hjkl dude'<cr>", opts)
+
+keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
+
 -- Copy all
 keymap("n", "<C-a>", "ggVG", opts)
 
 -- New line
 keymap("n", "F", "i<cr><esc>", opts)
 
+-- Leave pos alone
+keymap("n", "J", "mzJ`z", opts)
+
+-- Disable search highlight
 keymap("n", "<esc>", ":noh<cr>", opts)
 
 -- Save file/files
-keymap("n", "<C-s>", ":w<cr>", opts)
-keymap("n", "<C-S-s>", ":wall<cr>", opts)
+keymap("n", "<C-s>", ":silent w<cr>", opts)
+keymap("n", "<C-S-s>", ":silent wall<cr>", opts)
 
 -- Disable arrows
 keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)
@@ -40,13 +48,19 @@ keymap("n", "<down>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<right>", ":echomsg 'use hjkl dude'<cr>", opts)
 
--- Navigation
-keymap("n", "<C-h>", "<C-w>h", opts)              -- Left window
-keymap("n", "<C-k>", "<C-w>k", opts)              -- Up window
-keymap("n", "<C-j>", "<C-w>j", opts)              -- Down window
-keymap("n", "<C-l>", "<C-w>l", opts)              -- Right window
+-- Better page navigation
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-b>", "<C-b>zz", opts)
 
-keymap("n", "<leader>h", ":nohlsearch<cr>", opts) -- No highlight search
+-- Better search navigation
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
+
+-- Navigation
+keymap("n", "<C-h>", "<C-w>h", opts) -- Left window
+keymap("n", "<C-k>", "<C-w>k", opts) -- Up window
+keymap("n", "<C-j>", "<C-w>j", opts) -- Down window
+keymap("n", "<C-l>", "<C-w>l", opts) -- Right window
 
 -- Resize with arrows
 -- delta: 2 lines
