@@ -1,18 +1,24 @@
 -- Hint: use `:h <option>` to figure out the meaning if needed
 local opt = vim.opt
 
+-- opt.guicursor = ""
+
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.clipboard = "unnamedplus" -- use system clipboard
 opt.mouse = "a"               -- allow the mouse to be used in Nvim
 
-opt.swapfile = false          -- don't create swap files
-opt.undofile = true           -- save undo files
+opt.swapfile = false
+opt.backup = false
+-- opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
+opt.undofile = true
 
 opt.spelllang = { "en" }
 
 -- decrease delays
-opt.updatetime = 250
+opt.updatetime = 50
+opt.timeout = true
 opt.timeoutlen = 100
+
 
 -- Tab
 opt.tabstop = 4      -- number of visual spaces per TAB
@@ -35,7 +41,8 @@ opt.showmode = false      -- we are experienced, wo don"t need the "-- INSERT --
 
 -- Searching
 opt.incsearch = true  -- search as characters are entered
-opt.hlsearch = true   -- do not highlight matches
+opt.hlsearch = false  -- do not highlight matches
+opt.incsearch = true
 opt.ignorecase = true -- ignore case in searches by default
 opt.smartcase = true  -- but make it case sensitive if an uppercase is enteredopt.smartcase = true
 -- but make it case sensitive if an uppercase is entered
