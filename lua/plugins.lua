@@ -5,10 +5,7 @@ return {
 
 
     -- Icons
-    {
-        "nvim-tree/nvim-web-devicons",
-        lazy = true
-    },
+    { "nvim-tree/nvim-web-devicons" },
 
     -- Dashboard
     {
@@ -98,10 +95,17 @@ return {
     ----------------------
 
 
+    -- Sessions manager
+    {
+        "folke/persistence.nvim",
+        event = "BufReadPre",
+        config = true
+    },
+
     --  Neovim lua API Support
     {
         "folke/neodev.nvim",
-        opts = {}
+        config = true
     },
 
     -- Awesome tool for comming/pushing
@@ -120,10 +124,7 @@ return {
     { "sindrets/diffview.nvim" },
 
     -- Tool for async Lua
-    {
-        "nvim-lua/plenary.nvim",
-        lazy = true
-    },
+    { "nvim-lua/plenary.nvim" },
 
     -- File Explorer
     { "nvim-neo-tree/neo-tree.nvim" },
@@ -133,6 +134,9 @@ return {
         "romgrk/barbar.nvim",
         config = true
     },
+
+    -- Treesitter hepler
+    { "m-demare/hlargs.nvim" },
 
     -- Treesitter (Parser)
     {
@@ -154,13 +158,6 @@ return {
 
     -- Gui commands support
     { "equalsraf/neovim-gui-shim" },
-
-    --    {
-    --        "ray-x/sad.nvim",
-    --        config = function()
-    --            require("sad").setup()
-    --        end
-    --    },
 
     -- Which-key
     {
