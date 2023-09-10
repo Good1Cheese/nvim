@@ -1,13 +1,18 @@
 -- LSP
-
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 lsp.setup_servers({ "lua_ls" })
+
+lsp.set_server_config({
+    on_init = function(client)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+})
+
 lsp.setup()
 
 -- CMP
-
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
