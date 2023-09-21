@@ -3,27 +3,99 @@ return {
     -- VISUTAL PLUGINS --
     ---------------------
 
+    -- Highlight under cursor
+    {
+        "RRethy/vim-illuminate",
+        opts = {},
+        event = { "BufReadPost", "BufNewFile" },
+        config = function(_, opts)
+            vim.cmd("hi IlluminatedWordRead guibg=#525252")
+            vim.cmd("hi IlluminatedWordWrite guibg=#525252")
+
+            require("illuminate").configure(opts)
+
+            local function map(key, dir, buffer)
+                vim.keymap.set("n", key, function()
+                    require("illuminate")["goto_" .. dir .. "_reference"](false)
+                end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
+            end
+
+            map("]]", "next")
+            map("[[", "prev")
+
+            -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    local buffer = vim.api.nvim_get_current_buf()
+                    map("]]", "next", buffer)
+                    map("[[", "prev", buffer)
+                end,
+            })
+        end,
+
+        keys = {
+            { "]]", desc = "Next Reference" },
+            { "[[", desc = "Prev Reference" },
+        },
+    },
 
     -- Icons
     { "nvim-tree/nvim-web-devicons" },
 
     -- Dashboard
-    {
-        "goolord/alpha-nvim",
-        lazy = true
-    },
+    { "goolord/alpha-nvim",                 lazy = true },
 
     -- Marks for indents
     { "lukas-reineke/indent-blankline.nvim" },
 
-    -- Colorscheme
+    -- Indents Highlight
     {
-        "folke/tokyonight.nvim",
-        -- config = function()
-        --     vim.cmd.colorscheme("tokyonight-night")
-        -- end
+        "echasnovski/mini.indentscope",
+        version = false,
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            symbol = "│",
+            options = { try_as_border = true },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "help",
+                    "alpha",
+                    "dashboard",
+                    "neo-tree",
+                    "Trouble",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "toggleterm",
+                    "lazyterm",
+                },
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
+        end,
     },
 
+    -- {
+    --     "theHamsta/nvim-semantic-tokens",
+    --     config = true
+    -- },
+
+    -- -- Treesitter hepler
+    -- { "m-demare/hlargs.nvim", config = {} },
+
+    -- Treesitter (Parser)
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     dependencies = {
+    --         "nvim-treesitter/nvim-treesitter-textobjects",
+    --         "JoosepAlviste/nvim-ts-context-commentstring",
+    --     },
+    -- },
+
+    -- Colorscheme
     {
         "navarasu/onedark.nvim",
         config = function()
@@ -32,12 +104,20 @@ return {
         end
     },
 
-    -- Lualine
+    -- Treesitter hepler
+    { "m-demare/hlargs.nvim", config = {} },
+
+    -- Treesitter (Parser)
     {
-        "nvim-lualine/lualine.nvim",
-        config = true
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
     },
 
+    -- Lualine
+    { "nvim-lualine/lualine.nvim", event = "VeryLazy" },
 
     -------------------------
     ---- EDITING PLUGINS ----
@@ -135,18 +215,6 @@ return {
         config = true
     },
 
-    -- Treesitter hepler
-    { "m-demare/hlargs.nvim" },
-
-    -- Treesitter (Parser)
-    {
-        "nvim-treesitter/nvim-treesitter",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            "JoosepAlviste/nvim-ts-context-commentstring",
-        },
-    },
-
     -- Fuzzy Finder
     { "nvim-telescope/telescope.nvim" },
 
@@ -168,7 +236,7 @@ return {
     -- Language Support
     {
         "VonHeikemen/lsp-zero.nvim",
-        -- branch = "v2.x",
+        version = false,
         dependencies = {
             -- LSP Support
             { "neovim/nvim-lspconfig" },             -- Required
@@ -181,7 +249,6 @@ return {
             { "hrsh7th/cmp-buffer" },       -- Optional
             { "hrsh7th/cmp-path" },         -- Optional
             { "saadparwaiz1/cmp_luasnip" }, -- Optional
-            { "hrsh7th/cmp-nvim-lua" },     -- Optional
 
             -- Snippets
             { "L3MON4D3/LuaSnip" },             -- Required
