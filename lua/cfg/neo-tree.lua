@@ -3,6 +3,7 @@ require("neo-tree").setup({
         mappings = {
             ["<space>"] = "none",
             ["/"] = "none",
+            ["H"] = "none",
             ["l"] = "open",
         },
     },
