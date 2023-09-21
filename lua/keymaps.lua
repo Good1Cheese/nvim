@@ -24,13 +24,24 @@ vim.g.maplocalleader = " "
 
 -- keymap("n", "<F3>", ":echomsg 'use hjkl dude'<cr>", opts)
 
+keymap("t", "<esc>", "<C-\\><C-N>", opts)
+
+-- Search selected text
+keymap("v", "<C-s>", "y:lua require('telescope.builtin').grep_string()<cr><C-r>+", opts)
+
+-- Replace selected text
 keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
+
+-- Paste in insert mode
+keymap("i", "<C-v>", "<C-r>+", opts)
+keymap("c", "<C-v>", "<C-r>+<left>", opts)
 
 -- Copy all
 keymap("n", "<C-a>", "ggVG", opts)
 
 -- New line
-keymap("n", "F", "i<cr><esc>", opts)
+-- keymap("n", "F", "0i<cr><esc>k", opts)
+keymap("n", "<C-1>", "0i<cr><esc>k", opts)
 
 -- Leave pos alone
 keymap("n", "J", "mzJ`z", opts)
@@ -40,7 +51,10 @@ keymap("n", "<esc>", ":noh<cr>", opts)
 
 -- Save file/files
 keymap("n", "<C-s>", ":silent w<cr>", opts)
-keymap("n", "<C-S-s>", ":silent wall<cr>", opts)
+keymap("n", "<C-s>", ":silent w<cr>", opts)
+
+keymap("i", "<C-s>", "<esc>:silent wall<cr>", opts)
+keymap("i", "<C-S-s>", "<esc>:silent wall<cr>", opts)
 
 -- Disable arrows
 keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)
