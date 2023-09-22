@@ -9,7 +9,7 @@ require("lspconfig").lua_ls.setup({
         Lua = {
             workspace = {
                 checkThirdParty = false,
-                library = { "/home/pashkevich/.local/state/Lua_Addons/garrysmode/" }
+                library = { "~/.local/state/Lua_Addons/garrysmode/" }
             },
             diagnostics = {
                 enable = false
