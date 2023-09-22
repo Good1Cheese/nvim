@@ -40,8 +40,8 @@ keymap("c", "<C-v>", "<C-r>+<left>", opts)
 keymap("n", "<C-a>", "ggVG", opts)
 
 -- New line
--- keymap("n", "F", "0i<cr><esc>k", opts)
 keymap("n", "<C-1>", "0i<cr><esc>k", opts)
+keymap("n", "<C-2>", "i<cr><esc>k", opts)
 
 -- Leave pos alone
 keymap("n", "J", "mzJ`z", opts)
