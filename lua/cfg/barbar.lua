@@ -2,8 +2,8 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
-map("n", "<tab>", ":BufferNext<cr>", opts)
-map("n", "<s-tab>", ":BufferPrevious<cr>", opts)
+map("n", "<A-.>", ":BufferNext<cr>", opts)
+map("n", "<A-,>", ":BufferPrevious<cr>", opts)
 -- Re-order to previous/next
 map("n", "<A-<>", ":BufferMovePrevious<cr>", opts)
 map("n", "<A->>", ":BufferMoveNext<cr>", opts)
