@@ -3,10 +3,9 @@ local opt = vim.opt
 
 -- opt.guicursor = ""
 
-opt.sidescrolloff = 8 -- Columns of context
-opt.scrolloff = 4 -- Lines of context
+opt.sidescrolloff = 8         -- Columns of context
+opt.scrolloff = 4             -- Lines of context
 
-opt.completeopt = { "menu", "menuone", "noselect" }
 opt.clipboard = "unnamedplus" -- use system clipboard
 opt.mouse = "a"               -- allow the mouse to be used in Nvim
 
