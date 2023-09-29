@@ -49,7 +49,7 @@ return {
     -- Lualine
     { "nvim-lualine/lualine.nvim", event = "VeryLazy" },
 
-    
+
     -------------------------
     ---- EDITING PLUGINS ----
     -------------------------
