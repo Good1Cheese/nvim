@@ -27,7 +27,7 @@ vim.g.maplocalleader = " "
 keymap("t", "<esc>", "<C-\\><C-N>", opts)
 
 -- Search selected text
-keymap("v", "<C-s>", "y:lua require('telescope.builtin').grep_string()<cr><C-r>+", opts)
+-- keymap("v", "<C-s>", "y:lua require('telescope.builtin').grep_string()<cr><C-r>+", opts)
 
 -- Replace selected text
 keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
@@ -52,6 +52,7 @@ keymap("n", "<esc>", ":noh<cr>", opts)
 -- Save file/files
 keymap("n", "<C-s>", ":silent w<cr>", opts)
 keymap("n", "<C-s>", ":silent w<cr>", opts)
+keymap("v", "<C-s>", ":silent w<cr>", opts)
 
 keymap("i", "<C-s>", "<esc>:silent wall<cr>", opts)
 keymap("i", "<C-S-s>", "<esc>:silent wall<cr>", opts)
