@@ -36,8 +36,7 @@ keymap("t", "<esc>", "<C-\\><C-N>", opts)
 keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 
 -- Paste in insert mode
-keymap("i", "<C-v>", "<C-r>+", opts)
-keymap("c", "<C-v>", "<C-r>+<left>", opts)
+keymap("i", "<C-v>", "<C-r>+<esc>", opts)
 
 -- Copy all
 keymap("n", "<C-a>", "ggVG", opts)
