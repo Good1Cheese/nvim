@@ -31,6 +31,7 @@ local mappings = {
     ["g"] = { ":Neogit<cr>", "Open git" },
     ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
     ["u"] = { ":UndotreeToggle<cr>", "Undotree" },
+    ["\""] = { ":%s/\"/\"/g", "Replace all quotes" },
 
     -- r = {
     --     name = "Refactoring",
