@@ -47,8 +47,11 @@ return {
     },
 
     -- Lualine
-    { "nvim-lualine/lualine.nvim", event = "VeryLazy" },
-
+    {
+        "nvim-lualine/lualine.nvim",
+        opts = { theme = "onedark" },
+        event = "VeryLazy"
+    },
 
     -------------------------
     ---- EDITING PLUGINS ----

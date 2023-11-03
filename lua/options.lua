@@ -11,8 +11,8 @@ opt.mouse = "a"               -- allow the mouse to be used in Nvim
 
 opt.swapfile = false
 opt.backup = false
--- opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
 opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
 
 opt.spelllang = { "en" }
 
@@ -20,7 +20,6 @@ opt.spelllang = { "en" }
 opt.updatetime = 50
 opt.timeout = true
 opt.timeoutlen = 100
-
 
 -- Tab
 opt.tabstop = 4      -- number of visual spaces per TAB

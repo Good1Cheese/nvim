@@ -22,6 +22,9 @@ vim.g.maplocalleader = " "
 -- Normal mode --
 -----------------
 
+-- Avoid yanking test when pasting
+keymap("v", "p", "P", opts)
+
 -- keymap("n", "<F3>", ":echomsg 'use hjkl dude'<cr>", opts)
 
 keymap("t", "<esc>", "<C-\\><C-N>", opts)
@@ -40,7 +43,7 @@ keymap("c", "<C-v>", "<C-r>+<left>", opts)
 keymap("n", "<C-a>", "ggVG", opts)
 
 -- New line
-keymap("n", "<C-1>", "A<cr><esc>", opts)
+keymap("n", "<C-1>", "A<cr><esc>k", opts)
 keymap("n", "<C-2>", "i<cr><esc>k", opts)
 
 -- Leave pos alone
