@@ -1,7 +1,7 @@
 require("notify").setup({
-    background_colour = "NotifyBackground",
     fps = 75,
-    minimum_width = 35,
+    max_height = 35,
+    max_width = 55,
     render = "minimal",
     stages = "slide",
     timeout = 1300,
