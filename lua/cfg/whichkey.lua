@@ -31,7 +31,20 @@ local mappings = {
     ["g"] = { ":Neogit<cr>", "Open git" },
     ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
     ["u"] = { ":UndotreeToggle<cr>", "Undotree" },
+    ["\'"] = { ":%s/\'/\"/g", "Replace all quotes" },
 
+    d = {
+        name = "Debugger",
+        s = { "<cmd>lua require('dap').continue()<cr>", "Start Debug" },
+        -- { '<cmd>lua require"dap".step_over()<cr>' },
+        -- { '<cmd>lua require"dap".step_into()<cr>' },
+        -- { '<cmd>lua require"dap".step_out()<cr>' },
+        d = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Breakpoint" },
+        -- { '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>' },
+        -- { '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<cr>' },
+        -- { '<cmd>lua require"dap".repl.open()<cr>' },
+        -- { '<cmd>lua require"dap".repl.run_last()<cr>' }
+    },
     -- r = {
     --     name = "Refactoring",
     --     e = { ":Refactor extract_block" }

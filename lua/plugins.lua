@@ -105,7 +105,7 @@ return {
     },
 
     -- Treesitter hepler
-    { "m-demare/hlargs.nvim", config = {} },
+    { "m-demare/hlargs.nvim",      config = {} },
 
     -- Treesitter (Parser)
     {
@@ -156,9 +156,7 @@ return {
     -- Quick quotes, brackets, etc
     {
         "kylechui/nvim-surround",
-        version = "*",
         config = true,
-        event = "VeryLazy",
     },
 
     -- Refactoring tool
@@ -254,6 +252,21 @@ return {
             { "L3MON4D3/LuaSnip" },             -- Required
             { "rafamadriz/friendly-snippets" }, -- Optional
         }
+    },
+
+    -- Debug tool
+    {
+        "mfussenegger/nvim-dap"
+    },
+
+    {
+        "rcarriga/nvim-dap-ui",
+        config = true
+    },
+
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        config = true
     },
 
     -- Noice
