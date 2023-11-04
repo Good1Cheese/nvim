@@ -2,6 +2,11 @@ local cmp = require("cmp")
 local lsp = require("lsp-zero")
 
 cmp.setup({
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "neorg" },
+    }),
     experimental = {
         ghost_text = true,
     },

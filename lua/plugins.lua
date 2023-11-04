@@ -105,7 +105,7 @@ return {
     },
 
     -- Treesitter hepler
-    { "m-demare/hlargs.nvim", config = {} },
+    { "m-demare/hlargs.nvim",      config = {} },
 
     -- Treesitter (Parser)
     {
@@ -174,6 +174,12 @@ return {
     ---- CORE PLUGINS ----
     ----------------------
 
+
+    -- TODO tool
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers"
+    },
 
     -- Sessions manager
     {
