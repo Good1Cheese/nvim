@@ -1,9 +1,8 @@
 " Enable Mouse
-set mouse=a
+" set mouse=a
 
+set guifont=JetBrainsMono:h6
 " Set Editor Font
-if exists(':GuiFont')
-    " Use GuiFont! to ignore font errors
-    GuiFont JetBrainsMono Nerd Font:h12
-    " GuiFont BitstromWera Nerd Font:h13
+if exists("g:neovide")
+    set guifont=JetBrainsMono:h6
 endif
