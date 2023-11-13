@@ -21,7 +21,8 @@ map("n", "<A-0>", ":BufferLast<cr>", opts)
 -- Pin/unpin buffer
 map("n", "<A-p>", ":BufferPin<cr>", opts)
 -- Close buffer
-map("n", "<A-c>", ":BufferClose!<cr>", opts)
+map("n", "<C-c>", ":BufferClose!<cr>", opts)
+map("n", "<C-x>", ":BufferCloseAllButCurrentOrPinned<cr>", opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
@@ -33,7 +34,7 @@ map("n", "<A-c>", ":BufferClose!<cr>", opts)
 -- Magic buffer-picking mode
 map("n", "<C-p>", ":BufferPick<cr>", opts)
 -- Sort automatically by...
-map("n", "<Space>bb", ":BufferOrderByBufferNumber<cr>", opts)
-map("n", "<Space>bd", ":BufferOrderByDirectory<cr>", opts)
-map("n", "<Space>bl", ":BufferOrderByLanguage<cr>", opts)
-map("n", "<Space>bw", ":BufferOrderByWindowNumber<cr>", opts)
+-- map("n", "<Space>bb", ":BufferOrderByBufferNumber<cr>", opts)
+-- map("n", "<Space>bd", ":BufferOrderByDirectory<cr>", opts)
+-- map("n", "<Space>bl", ":BufferOrderByLanguage<cr>", opts)
+-- map("n", "<Space>bw", ":BufferOrderByWindowNumber<cr>", opts)
