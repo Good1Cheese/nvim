@@ -33,7 +33,7 @@ keymap("t", "<esc>", "<C-\\><C-N>", opts)
 -- keymap("v", "<C-s>", "y:lua require('telescope.builtin').grep_string()<cr><C-r>+", opts)
 
 -- Replace selected text
-keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
+-- keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 
 -- Paste in insert mode
 keymap("i", "<C-v>", "<C-r>+<esc>", opts)
