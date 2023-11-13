@@ -3,6 +3,9 @@ return {
     -- VISUTAL PLUGINS --
     ---------------------
 
+    -- Buatiful indents
+    require("plugins.indents-highlight"),
+    require("plugins.indents-scope"),
 
     -- Highlight under cursor
     require("plugins.vim-illuminate"),
@@ -15,9 +18,6 @@ return {
         "goolord/alpha-nvim",
         lazy = true
     },
-
-    -- Marks for indents
-    { "lukas-reineke/indent-blankline.nvim" },
 
     -- Colorscheme
     {
@@ -48,62 +48,6 @@ return {
         "nvim-lualine/lualine.nvim",
         opts = { theme = "onedark" },
         event = "VeryLazy"
-    },
-
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        opts = {
-            indent = {
-                char = "│",
-                tab_char = "│",
-            },
-            scope = { enabled = false },
-            exclude = {
-                filetypes = {
-                    "help",
-                    "alpha",
-                    "dashboard",
-                    "neo-tree",
-                    "Trouble",
-                    "trouble",
-                    "lazy",
-                    "mason",
-                    "notify",
-                    "toggleterm",
-                    "lazyterm",
-                },
-            },
-        },
-        main = "ibl",
-    },
-
-    {
-        "echasnovski/mini.indentscope",
-        version = false, -- wait till new 0.7.0 release to put it back on semver
-        opts = {
-            -- symbol = "▏",
-            symbol = "│",
-            options = { try_as_border = true },
-        },
-        init = function()
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = {
-                    "help",
-                    "alpha",
-                    "dashboard",
-                    "neo-tree",
-                    "Trouble",
-                    "trouble",
-                    "lazy",
-                    "mason",
-                    "notify",
-                    "toggleterm",
-                },
-                callback = function()
-                    vim.b.miniindentscope_disable = true
-                end,
-            })
-        end,
     },
 
 
