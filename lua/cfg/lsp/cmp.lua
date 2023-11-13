@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local cmp_action = require("lsp-zero").cmp_action()
 
 cmp.setup({
     snippet = {
@@ -11,6 +12,8 @@ cmp.setup({
         autocomplete = { cmp.TriggerEvent.TextChanged }
     },
     mapping = {
+        ["<Tab>"] = cmp_action.tab_complete(),
+        ["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
