@@ -173,7 +173,7 @@ return {
         dependencies = {
             -- LSP Support
             { "neovim/nvim-lspconfig" },             -- Required
-            { "williamboman/mason.nvim", opts ={} },           -- Optional
+            { "williamboman/mason.nvim", opts ={} }, -- Optional
             { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
             -- Autocompletion
