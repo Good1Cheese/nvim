@@ -31,7 +31,7 @@ return {
     -- Treesitter hepler
     {
         "m-demare/hlargs.nvim",
-        config = {}
+        config = true
     },
 
     -- Treesitter (Parser)
