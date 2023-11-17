@@ -28,6 +28,11 @@ return {
         end
     },
 
+    -- {
+    --     "mg979/vim-visual-multi",
+    --     event = "VeryLazy"
+    -- },
+    --
     -- Treesitter hepler
     {
         "m-demare/hlargs.nvim",
