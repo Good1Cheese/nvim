@@ -23,21 +23,20 @@ local opts = {
 }
 
 local mappings = {
-    ["p"] = { ":Lazy<cr>", "Plugin Manager" },
-    ["q"] = { ":qall!<cr>", "Quit" },
-    ["c"] = { ":q<cr>", "Close window" },
-    ["e"] = { ":Neotree toggle<cr>", "Explorer" },
-    ["a"] = { ":Alpha<cr>", "Start menu" },
-    ["g"] = { ":Neogit<cr>", "Open git" },
-    ["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
-    ["u"] = { ":UndotreeToggle<cr>", "Undotree" },
+    ["p"]  = { ":Lazy<cr>", "Plugin Manager" },
+    ["q"]  = { ":qall!<cr>", "Quit" },
+    ["c"]  = { ":q<cr>", "Close window" },
+    ["e"]  = { ":Neotree toggle<cr>", "Explorer" },
+    ["a"]  = { ":Alpha<cr>", "Start menu" },
+    ["g"]  = { ":Neogit<cr>", "Open git" },
+    ["m"]  = { ":Mason<cr>", "Mason UI for Lsp" },
+    ["u"]  = { ":UndotreeToggle<cr>", "Undotree" },
     ["\""] = { ":%s/\"/\"/g", "Replace all quotes" },
 
     -- r = {
     --     name = "Refactoring",
     --     e = { ":Refactor extract_block" }
     -- },
-
     s = {
         name = "Telescope",
         d = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
@@ -47,6 +46,19 @@ local mappings = {
         -- k = { ":Telescope keymaps<cr>", "Keymaps" },
         -- c = { ":Telescope commands<cr>", "Commands" },
     },
+
+    d = {
+        name = "Debug",
+        d = { ":lua require('dapui').toggle()<cr>", "Toggle" },
+        s = { ":lua require('dapui').open({ reset = true })<cr>", "Reset windows" },
+        a = { ":DapContinue<cr>", "Continue" },
+        f = { ":DapTerminate<cr>", "Terminate" },
+    },
+
+    ["h"] = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
+    ["l"] = { ":DapStepOver<cr>", "Step over" },
+    ["k"] = { ":DapStepInto<cr>", "Step into" },
+    ["j"] = { ":DapStepOut<cr>", "Step out" },
 
     -- t = {
     --     name = "Terminal",
