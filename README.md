@@ -13,4 +13,4 @@
 - ***Luarocks***<br>
 **Busted** for unit-tests { [source](https://github.com/lunarmodules/busted) }
 - ***Lua debugger*** for debugging {[ source ](https://github.com/tomblind/local-lua-debugger-vscode)}<br>
->**$HOME/Apps/$Your_Debugger$**
+>**$HOME/.local/state/$Your_Debugger$**
