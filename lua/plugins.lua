@@ -51,7 +51,6 @@ return {
     -- Lualine
     {
         "nvim-lualine/lualine.nvim",
-        opts = { theme = "onedark" },
         event = "VeryLazy"
     },
 
