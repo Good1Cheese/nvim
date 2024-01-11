@@ -184,6 +184,9 @@ return {
     -- Language Support
     {
         "VonHeikemen/lsp-zero.nvim",
+        config = function ()
+            require("lsp-zero").extend_lspconfig()
+        end,
         version = false,
         dependencies = {
             -- LSP Support

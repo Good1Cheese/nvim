@@ -1,6 +1,6 @@
+require("keymaps")
 require("lazy-setup")
 require("options")
-require("keymaps")
 require("ginit")
 
 local config = require("config")
