@@ -27,11 +27,11 @@ local mappings = {
     ["q"]  = { ":qall!<cr>", "Quit" },
     ["c"]  = { ":q<cr>", "Close window" },
     ["e"]  = { ":Neotree toggle<cr>", "Explorer" },
-    ["a"]  = { ":Alpha<cr>", "Start menu" },
+    ["a"]  = { ":Dashboard<cr>", "Start menu" },
     ["g"]  = { ":Neogit<cr>", "Open git" },
     ["m"]  = { ":Mason<cr>", "Mason UI for Lsp" },
     ["u"]  = { ":UndotreeToggle<cr>", "Undotree" },
-    ["\""] = { ":%s/\"/\"/g", "Replace all quotes" },
+    ["\""] = { ":%s/\'/\"/g", "Replace all quotes" },
 
     -- r = {
     --     name = "Refactoring",

@@ -15,8 +15,8 @@ return {
 
     -- Dashboard
     {
-        "goolord/alpha-nvim",
-        lazy = true
+        "MeanderingProgrammer/dashboard.nvim",
+        event = "VimEnter"
     },
 
     -- Colorscheme
@@ -184,15 +184,15 @@ return {
     -- Language Support
     {
         "VonHeikemen/lsp-zero.nvim",
-        config = function ()
+        config = function()
             require("lsp-zero").extend_lspconfig()
         end,
         version = false,
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" },             -- Required
-            { "williamboman/mason.nvim", opts ={} }, -- Optional
-            { "williamboman/mason-lspconfig.nvim" }, -- Optional
+            { "neovim/nvim-lspconfig" },                       -- Required
+            { "williamboman/mason.nvim",          opts = {} }, -- Optional
+            { "williamboman/mason-lspconfig.nvim" },           -- Optional
 
             -- Autocompletion
             { "hrsh7th/nvim-cmp" },         -- Required
