@@ -1,7 +1,7 @@
 require("notify").setup({
     fps = 75,
-    max_height = 35,
-    max_width = 45,
+    max_height = 15,
+    max_width = 200,
     render = "minimal",
     stages = "slide",
     timeout = 300,

@@ -1,6 +1,11 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("lspconfig").lua_ls.setup({
+local lspconfig = require("lspconfig")
+
+lspconfig.bashls.setup {}
+lspconfig.clangd.setup {}
+
+lspconfig.lua_ls.setup({
     capabilities = capabilities,
     completion = {
         callSnippet = "Replace",
