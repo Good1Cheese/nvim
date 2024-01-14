@@ -15,8 +15,8 @@ return {
 
     -- Dashboard
     {
-        "MeanderingProgrammer/dashboard.nvim",
-        event = "VimEnter"
+        "nvimdev/dashboard-nvim",
+        event = "VimEnter",
     },
 
     -- Colorscheme
