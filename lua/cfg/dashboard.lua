@@ -1,4 +1,7 @@
-local alpha = require("alpha")
+local statusOk,alpha = pcall(require, "alpha")
+
+if not statusOk then return end
+
 local dashboard = require("alpha.themes.dashboard")
 
 local logo = [[

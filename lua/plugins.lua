@@ -3,20 +3,23 @@ return {
     -- VISUTAL PLUGINS --
     ---------------------
 
-    -- Buatiful indents
-    require("plugins.indents-highlight"),
-    require("plugins.indents-scope"),
 
     -- Highlight under cursor
     require("plugins.vim-illuminate"),
+
+    -- Buatiful indents
+    -- *** IMPORTANT: this plugins do differents things,
+    -- one is for CURRENT level scope, another is for ALL indents highlight
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
+    { "echasnovski/mini.indentscope" },
 
     -- Icons
     { "nvim-tree/nvim-web-devicons" },
 
     -- Dashboard
     {
-        "MeanderingProgrammer/dashboard.nvim",
-        event = "VimEnter"
+        "goolord/alpha-nvim",
+        lazy = true
     },
 
     -- Colorscheme
@@ -61,13 +64,7 @@ return {
 
 
     -- Undotree
-    { "mbbill/undotree" },
-
-    -- Better escape
-    {
-        "max397574/better-escape.nvim",
-        config = true
-    },
+    { "mbbill/undotree", lazy = true },
 
     -- Fix for Russian Layout
     { "powerman/vim-plugin-ruscmd" },
@@ -90,21 +87,21 @@ return {
     -- For quick commentting
     { "numToStr/Comment.nvim" },
 
-    -- Quick quotes, brackets, etc
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        config = true,
-        event = "VeryLazy",
-    },
+    -- -- Quick quotes, brackets, etc
+    -- {
+    --     "kylechui/nvim-surround",
+    --     version = "*",
+    --     config = true,
+    --     event = "VeryLazy",
+    -- },
 
-    -- Refactoring tool
-    {
-        "ThePrimeagen/refactoring.nvim",
-        config = function()
-            require("refactoring").setup()
-        end,
-    },
+    -- -- Refactoring tool
+    -- {
+    --     "ThePrimeagen/refactoring.nvim",
+    --     config = function()
+    --         require("refactoring").setup()
+    --     end,
+    -- },
 
 
     ----------------------
@@ -122,13 +119,15 @@ return {
     --  Neovim lua API Support
     {
         "folke/neodev.nvim",
-        config = true
+        config = true,
+        lazy = true
     },
 
     -- Awesome tool for comming/pushing
     {
         "NeogitOrg/neogit",
-        config = true
+        config = true,
+        lazy = true
     },
 
     -- Previewing changes
@@ -138,7 +137,7 @@ return {
     },
 
     -- Git difftoool
-    { "sindrets/diffview.nvim" },
+    -- { "sindrets/diffview.nvim", },
 
     -- Tool for async Lua
     { "nvim-lua/plenary.nvim" },
@@ -153,7 +152,7 @@ return {
     },
 
     -- Fuzzy Finder
-    { "nvim-telescope/telescope.nvim" },
+    { "nvim-telescope/telescope.nvim", lazy = true },
 
     -- Gui library for plugins
     {
@@ -173,12 +172,12 @@ return {
     -- Debugger
     {
         "rcarriga/nvim-dap-ui",
+        lazy = true,
         dependencies = {
             "mfussenegger/nvim-dap"
         }
     },
-
-    { "theHamsta/nvim-dap-virtual-text" },
+    { "theHamsta/nvim-dap-virtual-text", lazy = true },
 
     -- Language Support
     {
