@@ -3,6 +3,7 @@
 ## ⚡️ Requirements
 - ***clipboard tool*** for nvim copy/paste {[ xclip ](https://github.com/astrand/xclip)}
 - ***ripgrep*** for telescope give_grep **(optional)**
+- ***fd*** for neotree fuzzy finder
 
 ### 💥 LSP
 - ***Lua Language Server*** for awesome LSP { through mason or [source ](https://github.com/LuaLS/lua-language-server)}<br>
