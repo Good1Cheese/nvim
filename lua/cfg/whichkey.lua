@@ -24,18 +24,35 @@ local opts     = {
 
 local Terminal = require("toggleterm.terminal").Terminal
 local fish     = Terminal:new({ cmd = "fish", hidden = true })
+local lazygit  = Terminal:new({
+    cmd = "lazygit",
+    dir = "git_dir",
+    close_on_exit = true,
+    direction = "float",
+    float_opts = {
+        border = "double",
+    },
+    -- function to run on opening the terminal
+    on_open = function(term)
+        vim.cmd("startinsert!")
+        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    end,
+    -- function to run on closing the terminal
+    on_close = function(term)
+        vim.cmd("startinsert!")
+    end,
+})
 
-function _fish_toggle()
-    fish:toggle()
-end
+function fish_toggle() fish:toggle() end
 
--- vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+function lazygit_toggle() lazygit:toggle() end
 
 local mappings = {
     ["p"]  = { ":Lazy<cr>", "Plugin Manager" },
     ["q"]  = { ":qall!<cr>", "Quit" },
     -- ["c"]  = { ":q<cr>", "Close window" },
-    ["c"]  = { ":lua _fish_toggle()<cr>", "Terminal" },
+    ["t"]  = { ":lua fish_toggle()<cr>", "Terminal" },
+    ["l"]  = { ":lua lazygit_toggle()<cr>", "Lazygit" },
     ["e"]  = { ":Neotree toggle<cr>", "Explorer" },
     ["a"]  = { ":Dashboard<cr>", "Start menu" },
     -- ["g"]  = { ":Neogit<cr>", "Open git" },
@@ -65,10 +82,10 @@ local mappings = {
         f = { ":DapTerminate<cr>", "Terminate" },
     },
 
-    ["h"]  = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
-    ["l"]  = { ":DapStepOver<cr>", "Step over" },
-    ["k"]  = { ":DapStepInto<cr>", "Step into" },
-    ["j"]  = { ":DapStepOut<cr>", "Step out" },
+    -- ["h"]  = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
+    -- ["l"]  = { ":DapStepOver<cr>", "Step over" },
+    -- ["k"]  = { ":DapStepInto<cr>", "Step into" },
+    -- ["j"]  = { ":DapStepOut<cr>", "Step out" },
 
     -- t = {
     --     name = "Terminal",
