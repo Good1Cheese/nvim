@@ -1,7 +1,7 @@
 local statusOk, which_key = pcall(require, "which-key")
 if not statusOk then return end
 
-local setup = {
+local setup    = {
     window = {
         border = "rounded",       -- none, single, double, shadow
         position = "bottom",      -- bottom, top
@@ -13,7 +13,7 @@ local setup = {
     ignore_missing = true,
 }
 
-local opts = {
+local opts     = {
     mode = "n",     -- NORMAL mode
     prefix = "<leader>",
     buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
@@ -22,14 +22,24 @@ local opts = {
     nowait = true,  -- use `nowait` when creating keymaps
 }
 
+local Terminal = require("toggleterm.terminal").Terminal
+local fish     = Terminal:new({ cmd = "fish", hidden = true })
+
+function _fish_toggle()
+    fish:toggle()
+end
+
+-- vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+
 local mappings = {
     ["p"]  = { ":Lazy<cr>", "Plugin Manager" },
     ["q"]  = { ":qall!<cr>", "Quit" },
-    ["c"]  = { ":q<cr>", "Close window" },
+    -- ["c"]  = { ":q<cr>", "Close window" },
+    ["c"]  = { ":lua _fish_toggle()<cr>", "Terminal" },
     ["e"]  = { ":Neotree toggle<cr>", "Explorer" },
-    ["a"]  = { ":Alpha<cr>", "Start menu" },
-    ["g"]  = { ":Neogit<cr>", "Open git" },
-    ["m"]  = { ":Mason<cr>", "Mason UI for Lsp" },
+    ["a"]  = { ":Dashboard<cr>", "Start menu" },
+    -- ["g"]  = { ":Neogit<cr>", "Open git" },
+    -- ["m"]  = { ":Mason<cr>", "Mason UI for Lsp" },
     ["u"]  = { ":UndotreeToggle<cr>", "Undotree" },
     ["\""] = { ":%s/\'/\"/g", "Replace all quotes" },
 
@@ -37,7 +47,7 @@ local mappings = {
     --     name = "Refactoring",
     --     e = { ":Refactor extract_block" }
     -- },
-    s = {
+    s      = {
         name = "Telescope",
         d = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
         a = { ":Telescope oldfiles<cr>", "Open Recent File" },
@@ -47,7 +57,7 @@ local mappings = {
         -- c = { ":Telescope commands<cr>", "Commands" },
     },
 
-    d = {
+    d      = {
         name = "Debug",
         d = { ":lua require('dapui').toggle()<cr>", "Toggle" },
         s = { ":lua require('dapui').open({ reset = true })<cr>", "Reset windows" },
@@ -55,10 +65,10 @@ local mappings = {
         f = { ":DapTerminate<cr>", "Terminate" },
     },
 
-    ["h"] = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
-    ["l"] = { ":DapStepOver<cr>", "Step over" },
-    ["k"] = { ":DapStepInto<cr>", "Step into" },
-    ["j"] = { ":DapStepOut<cr>", "Step out" },
+    ["h"]  = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
+    ["l"]  = { ":DapStepOver<cr>", "Step over" },
+    ["k"]  = { ":DapStepInto<cr>", "Step into" },
+    ["j"]  = { ":DapStepOut<cr>", "Step out" },
 
     -- t = {
     --     name = "Terminal",

@@ -18,8 +18,8 @@ return {
 
     -- Dashboard
     {
-        "goolord/alpha-nvim",
-        lazy = true
+        "MeanderingProgrammer/dashboard.nvim",
+        event = "VimEnter"
     },
 
     -- Colorscheme
@@ -64,7 +64,7 @@ return {
 
 
     -- Undotree
-    { "mbbill/undotree", lazy = true },
+    { "mbbill/undotree",           lazy = true },
 
     -- Fix for Russian Layout
     { "powerman/vim-plugin-ruscmd" },
@@ -109,6 +109,13 @@ return {
     ----------------------
 
 
+    -- Awesome terminal 
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = true
+    },
+
     -- Sessions manager
     {
         "folke/persistence.nvim",
@@ -123,12 +130,12 @@ return {
         lazy = true
     },
 
-    -- Awesome tool for comming/pushing
-    {
-        "NeogitOrg/neogit",
-        config = true,
-        lazy = true
-    },
+    -- -- Awesome tool for comming/pushing
+    -- {
+    --     "NeogitOrg/neogit",
+    --     config = true,
+    --     lazy = true
+    -- },
 
     -- Previewing changes
     {
@@ -144,6 +151,9 @@ return {
 
     -- File Explorer
     { "nvim-neo-tree/neo-tree.nvim" },
+    {
+        "kevinhwang91/rnvimr",
+    },
 
     -- BufferLine
     {
