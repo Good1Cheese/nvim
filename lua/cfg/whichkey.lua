@@ -43,16 +43,27 @@ local lazygit  = Terminal:new({
     end,
 })
 
-function fish_toggle() fish:toggle() end
+function toggleFish() fish:toggle() end
+function toggleLazyGit() lazygit:toggle() end
 
-function lazygit_toggle() lazygit:toggle() end
+local transparency = false
+
+function toggleTransparency()
+    transparency = not transparency
+    if transparency then
+        vim.g.neovide_transparency = 1
+        return
+    end
+    vim.g.neovide_transparency = 0.9
+end
 
 local mappings = {
     ["p"]  = { ":Lazy<cr>", "Plugin Manager" },
     ["q"]  = { ":qall!<cr>", "Quit" },
+    ["1"]  = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
     -- ["c"]  = { ":q<cr>", "Close window" },
-    ["t"]  = { ":lua fish_toggle()<cr>", "Terminal" },
-    ["l"]  = { ":lua lazygit_toggle()<cr>", "Lazygit" },
+    ["t"]  = { ":lua toggleFish()<cr>", "Terminal" },
+    ["l"]  = { ":lua toggleLazyGit()<cr>", "Lazygit" },
     ["e"]  = { ":Neotree toggle<cr>", "Explorer" },
     ["a"]  = { ":Dashboard<cr>", "Start menu" },
     -- ["g"]  = { ":Neogit<cr>", "Open git" },
