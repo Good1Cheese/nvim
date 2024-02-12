@@ -7,6 +7,7 @@ require("neo-tree").setup({
         }
     },
     window = {
+        position = "right",
         mappings = {
             ["<space>"] = "none",
             ["H"] = "none",
