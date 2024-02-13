@@ -82,7 +82,7 @@ local mappings = {
         s = { ":Telescope live_grep <cr>", "Find Text" },
         -- v = { ":Telescope diagnostics<cr>", "Diagnostics" },
         -- k = { ":Telescope keymaps<cr>", "Keymaps" },
-        -- c = { ":Telescope commands<cr>", "Commands" },
+        c = { ":Telescope colorscheme<cr>", "Colorschemes" },
     },
 
     d      = {
