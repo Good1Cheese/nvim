@@ -24,17 +24,58 @@ return {
 
     -- Colorscheme
     {
-        "navarasu/onedark.nvim",
+        "tiagovla/tokyodark.nvim",
         config = function()
-            require("onedark").setup({ style = "warmer" })
-            vim.cmd.colorscheme("onedark")
+            require("tokyodark").setup({
+                transparent_background = false,      -- set background to transparent
+                gamma = 1.00,                        -- adjust the brightness of the theme
+                styles = {
+                    comments = { italic = true },    -- style for comments
+                    keywords = { italic = true },    -- style for keywords
+                    identifiers = { italic = true }, -- style for identifiers
+                    functions = {},                  -- style for functions
+                    variables = {},                  -- style for variables
+                },
+            })
         end
     },
 
-    -- {
-    --     "mg979/vim-visual-multi",
-    --     event = "VeryLazy"
-    -- },
+    {
+        "ayu-theme/ayu-vim",
+        config = function()
+            vim.cmd [[
+                let ayucolor="dark"
+            ]]
+        end
+    },
+
+    { "whatyouhide/vim-gotham" },
+
+    {
+        "wuelnerdotexe/vim-enfocado",
+        config = function ()
+            vim.cmd [[
+            augroup enfocado_customization
+            autocmd!
+            autocmd ColorScheme enfocado highlight Normal ctermbg=NONE guibg=NONE
+            augroup END
+            ]]
+        end
+    },
+
+    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+
+    {
+        "navarasu/onedark.nvim",
+        config = function()
+            require("onedark").setup({ style = "darker" })
+        end
+    },
+
+    {
+        "mg979/vim-visual-multi",
+        event = "VeryLazy"
+    },
     --
     -- Treesitter hepler
     {
@@ -109,7 +150,7 @@ return {
     ----------------------
 
 
-    -- Awesome terminal 
+    -- Awesome terminal
     {
         "akinsho/toggleterm.nvim",
         version = "*",

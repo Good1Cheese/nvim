@@ -29,7 +29,6 @@ opt.expandtab = true -- tabs are spaces, mainly because of python
 opt.breakindent = true
 opt.smartindent = true
 
-
 -- UI config
 opt.number = true         -- show absolute number
 opt.relativenumber = true -- add numbers to each line on the left side
@@ -39,6 +38,11 @@ opt.splitright = true     -- open new horizontal splits right
 opt.termguicolors = true  -- enabl 24-bit RGB color in the TUI
 opt.showmode = false      -- we are experienced, wo don"t need the "-- INSERT --" mode hint
 
+-- vim.cmd.colorscheme("tokyodark")
+vim.cmd.colorscheme("ayu")
+-- vim.cmd.colorscheme("enfocado")
+-- vim.cmd.colorscheme("gotham")
+-- vim.cmd.colorscheme("moonfly")
 
 -- Searching
 opt.incsearch = true  -- search as characters are entered
