@@ -123,7 +123,7 @@ return {
     },
 
     -- Moving things across lines
-    { "fedepujol/move.nvim" },
+    { "fedepujol/move.nvim", config = true },
 
     -- For quick commentting
     { "numToStr/Comment.nvim" },
