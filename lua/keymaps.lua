@@ -25,6 +25,12 @@ vim.g.maplocalleader = " "
 -- Avoid yanking test when pasting
 keymap("v", "p", "P", opts)
 
+-- "ayw
+-- "ap
+
+-- Make duplicate without copying
+keymap("n", "<C-3>", [[ :call setreg('A', [])<cr> | "Ayy"Ap  ]], opts)
+
 -- keymap("n", "<F3>", ":echomsg 'use hjkl dude'<cr>", opts)
 
 keymap("t", "<esc>", "<C-\\><C-N>", opts)
@@ -47,6 +53,17 @@ keymap("n", "<C-2>", "i<cr><esc>k", opts)
 
 -- Leave pos alone
 keymap("n", "J", "mzJ`z", opts)
+
+-- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+
+vim.keymap.set({ "n", "v" }, "<F5>", function()
+    require("conform").format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+    })
+end, { desc = "Format file or range (in visual mode)" })
+
 
 -- Disable search highlight
 keymap("n", "<esc>", ":noh<cr>", opts)

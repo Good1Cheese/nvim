@@ -53,7 +53,7 @@ return {
 
     {
         "wuelnerdotexe/vim-enfocado",
-        config = function ()
+        config = function()
             vim.cmd [[
             augroup enfocado_customization
             autocmd!
@@ -105,7 +105,9 @@ return {
 
 
     -- Undotree
-    { "mbbill/undotree",           lazy = true },
+    {
+        "mbbill/undotree"
+    },
 
     -- Fix for Russian Layout
     { "powerman/vim-plugin-ruscmd" },
@@ -123,7 +125,7 @@ return {
     },
 
     -- Moving things across lines
-    { "fedepujol/move.nvim", config = true },
+    { "fedepujol/move.nvim",       config = true },
 
     -- For quick commentting
     { "numToStr/Comment.nvim" },
@@ -229,6 +231,14 @@ return {
         }
     },
     { "theHamsta/nvim-dap-virtual-text", lazy = true },
+
+
+    -- Code formatting
+    {
+        "stevearc/conform.nvim",
+        lazy = true,
+        -- event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+    },
 
     -- Language Support
     {

@@ -4,6 +4,7 @@ local lspconfig = require("lspconfig")
 
 lspconfig.bashls.setup {}
 lspconfig.clangd.setup {}
+lspconfig.clangformat.setup {}
 
 lspconfig.lua_ls.setup({
     capabilities = capabilities,
