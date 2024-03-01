@@ -3,7 +3,6 @@ return {
     -- VISUTAL PLUGINS --
     ---------------------
 
-
     -- Highlight under cursor
     require("plugins.vim-illuminate"),
 
@@ -19,7 +18,7 @@ return {
     -- Dashboard
     {
         "MeanderingProgrammer/dashboard.nvim",
-        event = "VimEnter"
+        event = "VimEnter",
     },
 
     -- Colorscheme
@@ -27,26 +26,26 @@ return {
         "tiagovla/tokyodark.nvim",
         config = function()
             require("tokyodark").setup({
-                transparent_background = false,      -- set background to transparent
-                gamma = 1.00,                        -- adjust the brightness of the theme
+                transparent_background = false, -- set background to transparent
+                gamma = 1.00,         -- adjust the brightness of the theme
                 styles = {
-                    comments = { italic = true },    -- style for comments
-                    keywords = { italic = true },    -- style for keywords
+                    comments = { italic = true }, -- style for comments
+                    keywords = { italic = true }, -- style for keywords
                     identifiers = { italic = true }, -- style for identifiers
-                    functions = {},                  -- style for functions
-                    variables = {},                  -- style for variables
+                    functions = {},   -- style for functions
+                    variables = {},   -- style for variables
                 },
             })
-        end
+        end,
     },
 
     {
         "ayu-theme/ayu-vim",
         config = function()
-            vim.cmd [[
+            vim.cmd([[
                 let ayucolor="dark"
-            ]]
-        end
+            ]])
+        end,
     },
 
     { "whatyouhide/vim-gotham" },
@@ -54,13 +53,13 @@ return {
     {
         "wuelnerdotexe/vim-enfocado",
         config = function()
-            vim.cmd [[
+            vim.cmd([[
             augroup enfocado_customization
             autocmd!
             autocmd ColorScheme enfocado highlight Normal ctermbg=NONE guibg=NONE
             augroup END
-            ]]
-        end
+            ]])
+        end,
     },
 
     { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
@@ -69,18 +68,18 @@ return {
         "navarasu/onedark.nvim",
         config = function()
             require("onedark").setup({ style = "darker" })
-        end
+        end,
     },
 
     {
         "mg979/vim-visual-multi",
-        event = "VeryLazy"
+        event = "VeryLazy",
     },
     --
     -- Treesitter hepler
     {
         "m-demare/hlargs.nvim",
-        config = true
+        config = true,
     },
 
     -- Treesitter (Parser)
@@ -95,18 +94,16 @@ return {
     -- Lualine
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy"
+        event = "VeryLazy",
     },
-
 
     -------------------------
     ---- EDITING PLUGINS ----
     -------------------------
 
-
     -- Undotree
     {
-        "mbbill/undotree"
+        "mbbill/undotree",
     },
 
     -- Fix for Russian Layout
@@ -115,13 +112,13 @@ return {
     -- Delete without coping
     {
         "gbprod/cutlass.nvim",
-        config = true
+        config = true,
     },
 
     -- Auto-Pairs
     {
         "windwp/nvim-autopairs",
-        config = true
+        config = true,
     },
 
     -- Moving things across lines
@@ -146,31 +143,48 @@ return {
     --     end,
     -- },
 
+    -- {
+    --     "nvim-neorg/neorg",
+    --     build = ":Neorg sync-parsers",
+    --     lazy = false, -- specify lazy = false because some lazy.nvim distributions set lazy = true by default
+    --     -- tag = "*",
+    -- },
+
+    {
+        "nvim-neorg/neorg",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            "nvim-cmp",
+            "nvim-lua/plenary.nvim",
+        },
+        build = ":Neorg sync-parsers",
+        cmd = "Neorg",
+    },
 
     ----------------------
     ---- CORE PLUGINS ----
     ----------------------
 
-
     -- Awesome terminal
     {
         "akinsho/toggleterm.nvim",
         version = "*",
-        config = true
+        config = true,
     },
 
     -- Sessions manager
     {
         "folke/persistence.nvim",
         event = "BufReadPre",
-        config = true
+        config = true,
     },
 
     --  Neovim lua API Support
     {
         "folke/neodev.nvim",
         config = true,
-        lazy = true
+        lazy = true,
     },
 
     -- -- Awesome tool for comming/pushing
@@ -183,7 +197,7 @@ return {
     -- Previewing changes
     {
         "lewis6991/gitsigns.nvim",
-        config = true
+        config = true,
     },
 
     -- Git difftoool
@@ -201,7 +215,7 @@ return {
     -- BufferLine
     {
         "romgrk/barbar.nvim",
-        config = true
+        config = true,
     },
 
     -- Fuzzy Finder
@@ -210,7 +224,7 @@ return {
     -- Gui library for plugins
     {
         "ray-x/guihua.lua",
-        build = "cd lua/fzy && make"
+        build = "cd lua/fzy && make",
     },
 
     -- Gui commands support
@@ -219,7 +233,7 @@ return {
     -- Which-key
     {
         "folke/which-key.nvim",
-        event = "VeryLazy"
+        event = "VeryLazy",
     },
 
     -- Debugger
@@ -227,17 +241,16 @@ return {
         "rcarriga/nvim-dap-ui",
         lazy = true,
         dependencies = {
-            "mfussenegger/nvim-dap"
-        }
+            "mfussenegger/nvim-dap",
+        },
     },
     { "theHamsta/nvim-dap-virtual-text", lazy = true },
-
 
     -- Code formatting
     {
         "stevearc/conform.nvim",
         lazy = true,
-        -- event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+        event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
     },
 
     -- Language Support
@@ -249,21 +262,21 @@ return {
         version = false,
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" },                       -- Required
+            { "neovim/nvim-lspconfig" },     -- Required
             { "williamboman/mason.nvim",          opts = {} }, -- Optional
-            { "williamboman/mason-lspconfig.nvim" },           -- Optional
+            { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
             -- Autocompletion
-            { "hrsh7th/nvim-cmp" },         -- Required
-            { "hrsh7th/cmp-nvim-lsp" },     -- Required
-            { "hrsh7th/cmp-buffer" },       -- Optional
-            { "hrsh7th/cmp-path" },         -- Optional
+            { "hrsh7th/nvim-cmp" }, -- Required
+            { "hrsh7th/cmp-nvim-lsp" }, -- Required
+            { "hrsh7th/cmp-buffer" }, -- Optional
+            { "hrsh7th/cmp-path" }, -- Optional
             { "saadparwaiz1/cmp_luasnip" }, -- Optional
 
             -- Snippets
-            { "L3MON4D3/LuaSnip" },             -- Required
+            { "L3MON4D3/LuaSnip" },    -- Required
             { "rafamadriz/friendly-snippets" }, -- Optional
-        }
+        },
     },
 
     -- Noice
@@ -271,6 +284,6 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         config = true,
-        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
-    }
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    },
 }
