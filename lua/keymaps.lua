@@ -24,6 +24,7 @@ vim.g.maplocalleader = " "
 
 -- Avoid yanking test when pasting
 keymap("v", "p", "P", opts)
+keymap("v", "Y", "y'>p", opts)
 
 -- "ayw
 -- "ap
@@ -83,8 +84,8 @@ keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<right>", ":echomsg 'use hjkl dude'<cr>", opts)
 
 -- Better page navigation
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-b>", "<C-b>zz", opts)
+-- keymap("n", "<C-d>", "<C-d>zz", opts)
+-- keymap("n", "<C-b>", "<C-b>zz", opts)
 
 -- Better search navigation
 keymap("n", "n", "nzzzv", opts)

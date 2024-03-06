@@ -22,22 +22,22 @@ return {
     },
 
     -- Colorscheme
-    {
-        "tiagovla/tokyodark.nvim",
-        config = function()
-            require("tokyodark").setup({
-                transparent_background = false, -- set background to transparent
-                gamma = 1.00,         -- adjust the brightness of the theme
-                styles = {
-                    comments = { italic = true }, -- style for comments
-                    keywords = { italic = true }, -- style for keywords
-                    identifiers = { italic = true }, -- style for identifiers
-                    functions = {},   -- style for functions
-                    variables = {},   -- style for variables
-                },
-            })
-        end,
-    },
+    -- {
+    --     "tiagovla/tokyodark.nvim",
+    --     config = function()
+    --         require("tokyodark").setup({
+    --             transparent_background = false, -- set background to transparent
+    --             gamma = 1.00,         -- adjust the brightness of the theme
+    --             styles = {
+    --                 comments = { italic = true }, -- style for comments
+    --                 keywords = { italic = true }, -- style for keywords
+    --                 identifiers = { italic = true }, -- style for identifiers
+    --                 functions = {},   -- style for functions
+    --                 variables = {},   -- style for variables
+    --             },
+    --         })
+    --     end,
+    -- },
 
     {
         "ayu-theme/ayu-vim",
@@ -48,28 +48,28 @@ return {
         end,
     },
 
-    { "whatyouhide/vim-gotham" },
+    -- { "whatyouhide/vim-gotham" },
 
-    {
-        "wuelnerdotexe/vim-enfocado",
-        config = function()
-            vim.cmd([[
-            augroup enfocado_customization
-            autocmd!
-            autocmd ColorScheme enfocado highlight Normal ctermbg=NONE guibg=NONE
-            augroup END
-            ]])
-        end,
-    },
+    -- {
+    --     "wuelnerdotexe/vim-enfocado",
+    --     config = function()
+    --         vim.cmd([[
+    --         augroup enfocado_customization
+    --         autocmd!
+    --         autocmd ColorScheme enfocado highlight Normal ctermbg=NONE guibg=NONE
+    --         augroup END
+    --         ]])
+    --     end,
+    -- },
+    --
+    -- { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 
-    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
-
-    {
-        "navarasu/onedark.nvim",
-        config = function()
-            require("onedark").setup({ style = "darker" })
-        end,
-    },
+    -- {
+    --     "navarasu/onedark.nvim",
+    --     config = function()
+    --         require("onedark").setup({ style = "darker" })
+    --     end,
+    -- },
 
     {
         "mg979/vim-visual-multi",
@@ -102,10 +102,9 @@ return {
     -------------------------
 
     -- Undotree
-    {
-        "mbbill/undotree",
-    },
-
+    { "mbbill/undotree" },
+    -- For quick commentting
+    { "numToStr/Comment.nvim" },
     -- Fix for Russian Layout
     { "powerman/vim-plugin-ruscmd" },
 
@@ -122,10 +121,10 @@ return {
     },
 
     -- Moving things across lines
-    { "fedepujol/move.nvim",       config = true },
-
-    -- For quick commentting
-    { "numToStr/Comment.nvim" },
+    {
+        "fedepujol/move.nvim",
+        config = true,
+    },
 
     -- -- Quick quotes, brackets, etc
     -- {
@@ -150,14 +149,9 @@ return {
     --     -- tag = "*",
     -- },
 
+    -- For Notes
     {
         "nvim-neorg/neorg",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            "nvim-cmp",
-            "nvim-lua/plenary.nvim",
-        },
         build = ":Neorg sync-parsers",
         cmd = "Neorg",
     },
@@ -165,6 +159,25 @@ return {
     ----------------------
     ---- CORE PLUGINS ----
     ----------------------
+
+    { -- This plugin
+        "Zeioth/compiler.nvim",
+        cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+        config = true
+    },
+
+    { -- The task runner we use
+        "stevearc/overseer.nvim",
+        cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+        opts = {
+            task_list = {
+                direction = "bottom",
+                min_height = 25,
+                max_height = 25,
+                default_detail = 1
+            },
+        },
+    },
 
     -- Awesome terminal
     {
@@ -187,30 +200,17 @@ return {
         lazy = true,
     },
 
-    -- -- Awesome tool for comming/pushing
-    -- {
-    --     "NeogitOrg/neogit",
-    --     config = true,
-    --     lazy = true
-    -- },
-
     -- Previewing changes
     {
         "lewis6991/gitsigns.nvim",
         config = true,
     },
 
-    -- Git difftoool
-    -- { "sindrets/diffview.nvim", },
-
     -- Tool for async Lua
     { "nvim-lua/plenary.nvim" },
 
     -- File Explorer
     { "nvim-neo-tree/neo-tree.nvim" },
-    {
-        "kevinhwang91/rnvimr",
-    },
 
     -- BufferLine
     {
@@ -219,16 +219,16 @@ return {
     },
 
     -- Fuzzy Finder
-    { "nvim-telescope/telescope.nvim", lazy = true },
+    {
+        "nvim-telescope/telescope.nvim",
+        lazy = true,
+    },
 
     -- Gui library for plugins
     {
         "ray-x/guihua.lua",
         build = "cd lua/fzy && make",
     },
-
-    -- Gui commands support
-    { "equalsraf/neovim-gui-shim" },
 
     -- Which-key
     {
