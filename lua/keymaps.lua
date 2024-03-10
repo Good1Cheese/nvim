@@ -57,7 +57,7 @@ keymap("n", "J", "mzJ`z", opts)
 
 -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 
-vim.keymap.set({ "n", "v" }, "<F5>", function()
+vim.keymap.set({ "n", "v" }, "<F3>", function()
     require("conform").format({
         lsp_fallback = true,
         async = false,

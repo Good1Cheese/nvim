@@ -102,10 +102,10 @@ local mappings = {
 	},
 
 	c = {
-		name = "Compiler",
-		c = { ":CompilerOpen<cr>", "..." },
-		x = { ":CompilerToggleResults<cr>", "..." },
-		v = { ":CompilerRedo<cr>", "..." },
+		name = "Runner",
+		c = { ":RunFile<cr>", "RunFile" },
+		-- x = { ":CompilerToggleResults<cr>", "..." },
+		-- v = { ":CompilerRedo<cr>", "..." },
 	},
 
 	-- ["h"]  = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
