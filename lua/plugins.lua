@@ -21,24 +21,6 @@ return {
 		event = "VimEnter",
 	},
 
-	-- Colorscheme
-	-- {
-	--     "tiagovla/tokyodark.nvim",
-	--     config = function()
-	--         require("tokyodark").setup({
-	--             transparent_background = false, -- set background to transparent
-	--             gamma = 1.00,         -- adjust the brightness of the theme
-	--             styles = {
-	--                 comments = { italic = true }, -- style for comments
-	--                 keywords = { italic = true }, -- style for keywords
-	--                 identifiers = { italic = true }, -- style for identifiers
-	--                 functions = {},   -- style for functions
-	--                 variables = {},   -- style for variables
-	--             },
-	--         })
-	--     end,
-	-- },
-
 	{
 		"ayu-theme/ayu-vim",
 		config = function()
@@ -48,33 +30,10 @@ return {
 		end,
 	},
 
-	-- { "whatyouhide/vim-gotham" },
-
 	-- {
-	--     "wuelnerdotexe/vim-enfocado",
-	--     config = function()
-	--         vim.cmd([[
-	--         augroup enfocado_customization
-	--         autocmd!
-	--         autocmd ColorScheme enfocado highlight Normal ctermbg=NONE guibg=NONE
-	--         augroup END
-	--         ]])
-	--     end,
-	-- },
-	--
-	-- { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
-
-	-- {
-	--     "navarasu/onedark.nvim",
-	--     config = function()
-	--         require("onedark").setup({ style = "darker" })
-	--     end,
+	-- 	"mg979/vim-visual-multi",
 	-- },
 
-	{
-		"mg979/vim-visual-multi",
-		event = "VeryLazy",
-	},
 	--
 	-- Treesitter hepler
 	{
@@ -94,7 +53,7 @@ return {
 	-- Lualine
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 	},
 
 	-------------------------
@@ -123,7 +82,8 @@ return {
 	-- Moving things across lines
 	{
 		"fedepujol/move.nvim",
-		config = true,
+        lazy = false,
+		config = true
 	},
 
 	-- -- Quick quotes, brackets, etc
@@ -150,40 +110,33 @@ return {
 	-- },
 
 	-- For Notes
-	{
-		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		cmd = "Neorg",
-	},
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	build = ":Neorg sync-parsers",
+	-- 	cmd = "Neorg",
+	-- },
 
 	----------------------
 	---- CORE PLUGINS ----
 	----------------------
 
-	{
-		"CRAG666/code_runner.nvim",
-		config = true,
-	},
+
+    -- Plugin for code cool runner
+	{ "CRAG666/code_runner.nvim" },
 
 	-- Awesome terminal
-	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		config = true,
-	},
+	{ "akinsho/toggleterm.nvim" },
 
 	-- Sessions manager
 	{
 		"folke/persistence.nvim",
-		event = "BufReadPre",
-		config = true,
+		config = true
 	},
 
 	--  Neovim lua API Support
 	{
 		"folke/neodev.nvim",
-		config = true,
-		lazy = true,
+		config = true
 	},
 
 	-- Previewing changes
@@ -199,16 +152,10 @@ return {
 	{ "nvim-neo-tree/neo-tree.nvim" },
 
 	-- BufferLine
-	{
-		"romgrk/barbar.nvim",
-		config = true,
-	},
+	{ "romgrk/barbar.nvim", lazy = false },
 
 	-- Fuzzy Finder
-	{
-		"nvim-telescope/telescope.nvim",
-		lazy = true,
-	},
+	{ "nvim-telescope/telescope.nvim" },
 
 	-- Gui library for plugins
 	{
@@ -217,39 +164,24 @@ return {
 	},
 
 	-- Which-key
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-	},
+	{ "folke/which-key.nvim" },
 
 	-- Debugger
-	{
-		"rcarriga/nvim-dap-ui",
-		lazy = true,
-		dependencies = {
-			"mfussenegger/nvim-dap",
-		},
-	},
-	{ "theHamsta/nvim-dap-virtual-text", lazy = true },
+	{ "rcarriga/nvim-dap-ui" },
+    { "mfussenegger/nvim-dap" },
+	{ "theHamsta/nvim-dap-virtual-text" },
 
 	-- Code formatting
-	{
-		"stevearc/conform.nvim",
-		lazy = true,
-		event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
-	},
+	{ "stevearc/conform.nvim" },
 
 	-- Language Support
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		config = function()
-			require("lsp-zero").extend_lspconfig()
-		end,
 		version = false,
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
-			{ "williamboman/mason.nvim", opts = {} }, -- Optional
+			{ "williamboman/mason.nvim", config = true }, -- Optional
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
@@ -268,7 +200,6 @@ return {
 	-- Noice
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
 		config = true,
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},

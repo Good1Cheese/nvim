@@ -31,6 +31,9 @@ opt.smartindent = true
 
 -- UI config
 opt.number = true         -- show absolute number
+opt.numberwidth = 2
+opt.ruler = false
+
 opt.relativenumber = true -- add numbers to each line on the left side
 opt.cursorline = true     -- highlight cursor line underneath the cursor horizontally
 opt.splitbelow = true     -- open new vertical split bottom
@@ -38,11 +41,7 @@ opt.splitright = true     -- open new horizontal splits right
 opt.termguicolors = true  -- enabl 24-bit RGB color in the TUI
 opt.showmode = false      -- we are experienced, wo don"t need the "-- INSERT --" mode hint
 
--- vim.cmd.colorscheme("tokyodark")
 vim.cmd.colorscheme("ayu")
--- vim.cmd.colorscheme("enfocado")
--- vim.cmd.colorscheme("gotham")
--- vim.cmd.colorscheme("moonfly")
 
 -- Searching
 opt.incsearch = true  -- search as characters are entered
@@ -52,6 +51,15 @@ opt.ignorecase = true -- ignore case in searches by default
 opt.smartcase = true  -- but make it case sensitive if an uppercase is enteredopt.smartcase = true
 -- but make it case sensitive if an uppercase is entered
 
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
+
+-- disable some default providers
+for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+	vim.g["loaded_" .. provider .. "_provider"] = 0
+end
 
 -- Highlight yanked text
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
