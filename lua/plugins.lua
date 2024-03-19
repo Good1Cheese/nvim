@@ -82,8 +82,8 @@ return {
 	-- Moving things across lines
 	{
 		"fedepujol/move.nvim",
-        lazy = false,
-		config = true
+		lazy = false,
+		config = true,
 	},
 
 	-- -- Quick quotes, brackets, etc
@@ -120,8 +120,7 @@ return {
 	---- CORE PLUGINS ----
 	----------------------
 
-
-    -- Plugin for code cool runner
+	-- Plugin for code cool runner
 	{ "CRAG666/code_runner.nvim" },
 
 	-- Awesome terminal
@@ -130,13 +129,13 @@ return {
 	-- Sessions manager
 	{
 		"folke/persistence.nvim",
-		config = true
+		config = true,
 	},
 
 	--  Neovim lua API Support
 	{
 		"folke/neodev.nvim",
-		config = true
+		config = true,
 	},
 
 	-- Previewing changes
@@ -168,8 +167,12 @@ return {
 
 	-- Debugger
 	{ "rcarriga/nvim-dap-ui" },
-    { "mfussenegger/nvim-dap" },
+	{ "mfussenegger/nvim-dap" },
 	{ "theHamsta/nvim-dap-virtual-text" },
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		event = "VeryLazy",
+	},
 
 	-- Code formatting
 	{ "stevearc/conform.nvim" },
@@ -201,6 +204,7 @@ return {
 	{
 		"folke/noice.nvim",
 		config = true,
+        lazy = false,
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 }

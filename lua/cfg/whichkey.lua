@@ -99,6 +99,10 @@ local mappings = {
 		s = { ":lua require('dapui').open({ reset = true })<cr>", "Reset windows" },
 		a = { ":DapContinue<cr>", "Continue" },
 		f = { ":DapTerminate<cr>", "Terminate" },
+		h = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
+		l = { ":DapStepOver<cr>", "Step over" },
+		k = { ":DapStepInto<cr>", "Step into" },
+		j = { ":DapStepOut<cr>", "Step out" },
 	},
 
 	c = {
