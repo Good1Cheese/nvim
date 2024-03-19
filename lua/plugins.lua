@@ -146,6 +146,7 @@ return {
 
 	-- Tool for async Lua
 	{ "nvim-lua/plenary.nvim" },
+    { "nvim-neotest/nvim-nio" },
 
 	-- File Explorer
 	{ "nvim-neo-tree/neo-tree.nvim" },
