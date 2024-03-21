@@ -5,6 +5,12 @@
 - ***ripgrep*** for telescope give_grep **(optional)**
 - ***fd*** for neotree fuzzy finder
 
+### BASH LSP:<br>
+```
+npm i -g bash-language-server
+pacman -S shellcheck
+```
+
 ### 💥 LSP
 - ***Lua Language Server*** for awesome LSP { through mason or [source ](https://github.com/LuaLS/lua-language-server)}<br>
 - ***Lua_LS Garrysmode addon*** for gmod API support {[ source ](https://github.com/LuaLS/LLS-Addons/tree/main/addons/garrysmod)}<br>
