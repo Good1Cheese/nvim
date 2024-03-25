@@ -1,9 +1,12 @@
 # My personal configutation for awesome Neovim<br>
+
+JetBrainsNerd Font, Noto Color Emoji
  
 ## ⚡️ Requirements
 - ***clipboard tool*** for nvim copy/paste {[ xclip ](https://github.com/astrand/xclip)}
 - ***ripgrep*** for telescope give_grep **(optional)**
 - ***fd*** for neotree fuzzy finder
+- ***silicon*** for awesome screenshots
 
 ### BASH LSP:<br>
 ```
