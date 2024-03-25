@@ -60,6 +60,13 @@ return {
 	---- EDITING PLUGINS ----
 	-------------------------
 
+
+    -- For making awesome code screenshots
+	{
+		"michaelrommel/nvim-silicon",
+		cmd = "Silicon"
+	},
+
 	-- Undotree
 	{ "mbbill/undotree" },
 	-- For quick commentting
@@ -146,7 +153,7 @@ return {
 
 	-- Tool for async Lua
 	{ "nvim-lua/plenary.nvim" },
-    { "nvim-neotest/nvim-nio" },
+	{ "nvim-neotest/nvim-nio" },
 
 	-- File Explorer
 	{ "nvim-neo-tree/neo-tree.nvim" },
@@ -205,7 +212,7 @@ return {
 	{
 		"folke/noice.nvim",
 		config = true,
-        lazy = false,
+		lazy = false,
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 }

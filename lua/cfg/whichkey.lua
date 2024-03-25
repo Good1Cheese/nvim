@@ -4,6 +4,14 @@ if not statusOk then
 end
 
 local setup = {
+	-- plugins = {
+	-- 	marks = true, -- shows a list of your marks on ' and `
+	-- 	presets = {
+	-- 		operators = true, -- adds help for operators like d, y, ...
+	-- 		motions = true, -- adds help for motions
+	-- 		text_objects = true, -- help for text objects triggered after entering an operator
+	-- 	},
+	-- },
 	window = {
 		border = "rounded", -- none, single, double, shadow
 		position = "bottom", -- bottom, top
@@ -78,6 +86,7 @@ local mappings = {
 	["u"] = { ":UndotreeToggle<cr>", "Undotree" },
 	['"'] = { ":%s/'/\"/g", "Replace all quotes" },
 	["!"] = { ":w !sudo tee %<cr>", "Sudo save" },
+	["c"] = { ":RunFile<cr>", "RunFile" },
 
 	-- r = {
 	--     name = "Refactoring",
@@ -105,12 +114,11 @@ local mappings = {
 		j = { ":DapStepOut<cr>", "Step out" },
 	},
 
-	c = {
-		name = "Runner",
-		c = { ":RunFile<cr>", "RunFile" },
-		-- x = { ":CompilerToggleResults<cr>", "..." },
-		-- v = { ":CompilerRedo<cr>", "..." },
-	},
+	-- c = {
+	-- 	name = "Runner",
+	-- x = { ":CompilerToggleResults<cr>", "..." },
+	-- v = { ":CompilerRedo<cr>", "..." },
+	-- },
 
 	-- ["h"]  = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
 	-- ["l"]  = { ":DapStepOver<cr>", "Step over" },
