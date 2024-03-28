@@ -19,5 +19,9 @@ require("code_runner").setup({
 			"cd $dir &&",
 			"bash $fileName",
 		},
+		ruby = {
+			"cd $dir &&",
+			"ruby $fileName",
+		}
 	},
 })
