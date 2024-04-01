@@ -40,9 +40,9 @@ lspconfig.lua_ls.setup({
 				checkThirdParty = false,
 				library = { "~/.local/state/Lua_Addons/garrysmode/" },
 			},
-			-- diagnostics = {
-			--     enable = false
-			-- },
+			diagnostics = {
+				globals = { "vim" }
+			},
 			runtime = {
 				nonstandardSymbol = { "||", "&&", "!", "!=", "!!", "continue", "//", "/**/" },
 			},

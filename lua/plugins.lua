@@ -60,11 +60,10 @@ return {
 	---- EDITING PLUGINS ----
 	-------------------------
 
-
-    -- For making awesome code screenshots
+	-- For making awesome code screenshots
 	{
 		"michaelrommel/nvim-silicon",
-		cmd = "Silicon"
+		cmd = "Silicon",
 	},
 
 	-- Undotree
@@ -166,8 +165,8 @@ return {
 
 	-- Gui library for plugins
 	{
-		"ray-x/guihua.lua",
-		build = "cd lua/fzy && make",
+		"Sup3Legacy/fontsize.nvim",
+		lazy = false,
 	},
 
 	-- Which-key
@@ -184,6 +183,22 @@ return {
 
 	-- Code formatting
 	{ "stevearc/conform.nvim" },
+
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		config = function(_, opts)
+			vim.keymap.set({ "n", "i" }, "<C-g>", function()
+				require("lsp_signature").toggle_float_win()
+			end, { silent = true, noremap = true, desc = "toggle signature" })
+
+			vim.keymap.set({ "i" }, "<C-h>", function()
+				vim.lsp.buf.signature_help()
+			end, { silent = true, noremap = true, desc = "toggle signature" })
+
+            require("lsp_signature").setup(opts)
+		end,
+	},
 
 	-- Language Support
 	{
@@ -211,7 +226,15 @@ return {
 	-- Noice
 	{
 		"folke/noice.nvim",
-		config = true,
+		config = function()
+			require("noice").setup({
+				lsp = {
+					signature = {
+						enabled = false
+					}
+				}
+			})
+		end,
 		lazy = false,
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
