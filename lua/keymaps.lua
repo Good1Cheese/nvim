@@ -49,6 +49,7 @@ keymap("i", "<C-v>", "<C-r>+<esc>", opts)
 keymap("n", "<C-a>", "ggVG", opts)
 
 -- New line
+keymap("n", "<C-`>", "kA<cr><esc>j", opts)
 keymap("n", "<C-1>", "A<cr><esc>k", opts)
 keymap("n", "<C-2>", "i<cr><esc>k", opts)
 
@@ -84,8 +85,8 @@ keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)
 keymap("n", "<right>", ":echomsg 'use hjkl dude'<cr>", opts)
 
 -- Better page navigation
--- keymap("n", "<C-d>", "<C-d>zz", opts)
--- keymap("n", "<C-b>", "<C-b>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-b>", "<C-b>zz", opts)
 
 -- Better search navigation
 keymap("n", "n", "nzzzv", opts)
