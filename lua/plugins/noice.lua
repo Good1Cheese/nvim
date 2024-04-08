@@ -10,8 +10,10 @@ Plugin.dependencies = {
 function Plugin.config()
 	require("noice").setup({
 		lsp = {
-			signature = { enabled = false },
-		},
+			signature = {
+                enabled = false
+            }
+		}
 	})
 end
 

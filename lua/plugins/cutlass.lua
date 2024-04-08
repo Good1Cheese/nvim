@@ -1,6 +1,6 @@
 local Plugin = { "gbprod/cutlass.nvim" }
 
-Plugin.event = "InsertEnter"
+Plugin.event = "VeryLazy"
 
 Plugin.opts = {
 	cut_key = "X",

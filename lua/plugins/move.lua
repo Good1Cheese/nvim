@@ -1,11 +1,12 @@
 local Plugin = { "fedepujol/move.nvim" }
 
+Plugin.config = true
+Plugin.cmd = { "MoveLine", "MoveHChar", "MoveBlock", "MoveHBlock" }
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
--- Normal-mode commands
 keymap("n", "<A-j>", ":MoveLine(1)<cr>", opts)
 keymap("n", "<A-k>", ":MoveLine(-1)<cr>", opts)
 keymap("n", "<A-h>", ":MoveHChar(-1)<cr>", opts)
