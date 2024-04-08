@@ -1,4 +1,8 @@
-require("mason-lspconfig").setup({
+local Plugin = { "williamboman/mason.nvim" }
+
+Plugin.cmd = "Mason"
+
+Plugin.opts = {
 	ensure_installed = { "lua_ls", "bashls", "clangd" },
 	icons = {
 		package_pending = " ",
@@ -15,4 +19,7 @@ require("mason-lspconfig").setup({
 		uninstall_server = "X",
 		cancel_installation = "<C-c>",
 	},
-})
+	ui = { border = "rounded" },
+}
+
+return Plugin

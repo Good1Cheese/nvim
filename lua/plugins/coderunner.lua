@@ -1,4 +1,8 @@
-require("code_runner").setup({
+local Plugin =  { "CRAG666/code_runner.nvim" }
+
+Plugin.cmd = "RunFile"
+
+Plugin.opts = {
 	-- mode = "better_term",
 	focus = false,
 	-- better_term = {
@@ -25,6 +29,8 @@ require("code_runner").setup({
 				return "rspec $file"
 			end
 			return "cd $dir && ruby $fileName"
-		end,
-	},
-})
+		end
+	}
+}
+
+return Plugin

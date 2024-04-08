@@ -1,7 +1,5 @@
-require("keymaps")
-require("lazy-setup")
-require("options")
-require("ginit")
+require("user.keymaps")
+require("user.lazy")
+require("user.options")
 
-local config = require("config")
-config:Load()
+vim.cmd.colorscheme("ayu")

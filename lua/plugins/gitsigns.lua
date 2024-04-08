@@ -1,4 +1,8 @@
-require("gitsigns").setup({
+local Plugin = { "lewis6991/gitsigns.nvim" }
+
+Plugin.event = { "BufReadPost", "BufNewFile" }
+
+Plugin.opts = {
 	signs = {
 		add = { text = "│" },
 		change = { text = "│" },
@@ -6,5 +10,7 @@ require("gitsigns").setup({
 		topdelete = { text = "‾" },
 		changedelete = { text = "~" },
 		untracked = { text = "│" },
-	},
-})
+	}
+}
+
+return Plugin

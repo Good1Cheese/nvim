@@ -1,34 +1,46 @@
-return {
-    "RRethy/vim-illuminate",
-    opts = {},
-    event = { "BufReadPost", "BufNewFile" },
-    config = function(_, opts)
-        vim.cmd("hi IlluminatedWordRead guibg=#525252")
-        vim.cmd("hi IlluminatedWordWrite guibg=#525252")
+local Plugin = { "RRethy/vim-illuminate" }
 
-        require("illuminate").configure(opts)
+Plugin.event = { "BufReadPost", "BufNewFile" }
 
-        local function map(key, dir, buffer)
-            vim.keymap.set("n", key, function()
-                require("illuminate")["goto_" .. dir .. "_reference"](false)
-            end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
-        end
-
-        map("]]", "next")
-        map("[[", "prev")
-
-        -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
-        vim.api.nvim_create_autocmd("FileType", {
-            callback = function()
-                local buffer = vim.api.nvim_get_current_buf()
-                map("]]", "next", buffer)
-                map("[[", "prev", buffer)
-            end,
-        })
-    end,
-
-    keys = {
-        { "]]", desc = "Next Reference" },
-        { "[[", desc = "Prev Reference" },
-    },
+Plugin.keys = {
+	{ "]]", desc = "Next Reference" },
+	{ "[[", desc = "Prev Reference" },
 }
+
+Plugin.opts = {
+	providers = {
+		"lsp",
+		"treesitter",
+		"regex",
+	},
+	filetypes_denylist = {
+		"neo-tree",
+	},
+}
+
+function Plugin.config(_, opts)
+	vim.cmd("hi IlluminatedWordRead guibg=#525252")
+	vim.cmd("hi IlluminatedWordWrite guibg=#525252")
+
+	require("illuminate").configure(opts)
+
+	local function map(key, dir, buffer)
+		vim.keymap.set("n", key, function()
+			require("illuminate")["goto_" .. dir .. "_reference"](false)
+		end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
+	end
+
+	map("]]", "next")
+	map("[[", "prev")
+
+	-- also set it after loading ftplugins, since a lot overwrite [[ and ]]
+	vim.api.nvim_create_autocmd("FileType", {
+		callback = function()
+			local buffer = vim.api.nvim_get_current_buf()
+			map("]]", "next", buffer)
+			map("[[", "prev", buffer)
+		end,
+	})
+end
+
+return Plugin

@@ -1,7 +1,7 @@
 local Config = {}
 
 Config.pathToLua = vim.env.HOME .. "/.config/nvim/lua/"
-Config.pathToCfg = Config.pathToLua .. "cfg"
+Config.pathToCfg = Config.pathToLua .. "configs"
 
 Config.getFileNames = string.format("find %s -name '*.lua' -not -name '.*' | cut -b %s- | cut -d '.' -f -1",
         Config.pathToCfg,

@@ -31,4 +31,4 @@ local options = {
 }
 
 require("lazy").setup("plugins", options)
-require("lsp-zero").extend_lspconfig()
+-- require("lsp-zero").extend_lspconfig()

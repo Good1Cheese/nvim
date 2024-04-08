@@ -1,3 +1,7 @@
+local Plugin = { "fedepujol/move.nvim" }
+
+Plugin.event = { "BufReadPre", "BufNewFile" }
+
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
@@ -14,3 +18,5 @@ keymap("v", "<A-j>", ":MoveBlock(1)<cr>", opts)
 keymap("v", "<A-k>", ":MoveBlock(-1)<cr>", opts)
 keymap("v", "<A-h>", ":MoveHBlock(-1)<cr>", opts)
 keymap("v", "<A-l>", ":MoveHBlock(1)<cr>", opts)
+
+return Plugin

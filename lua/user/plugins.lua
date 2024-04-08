@@ -60,6 +60,12 @@ return {
 	---- EDITING PLUGINS ----
 	-------------------------
 
+	-- Use your favorite package manager to install, for example in lazy.nvim
+	--  Optionally, you can also install nvim-telescope/telescope.nvim to use some search functionality.
+	{
+		"sourcegraph/sg.nvim",
+	},
+
 	-- For making awesome code screenshots
 	{
 		"michaelrommel/nvim-silicon",
@@ -176,10 +182,7 @@ return {
 	{ "rcarriga/nvim-dap-ui" },
 	{ "mfussenegger/nvim-dap" },
 	{ "theHamsta/nvim-dap-virtual-text" },
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		event = "VeryLazy",
-	},
+	{ "jay-babu/mason-nvim-dap.nvim" },
 
 	-- Code formatting
 	{ "stevearc/conform.nvim" },
@@ -196,7 +199,7 @@ return {
 				vim.lsp.buf.signature_help()
 			end, { silent = true, noremap = true, desc = "toggle signature" })
 
-            require("lsp_signature").setup(opts)
+			require("lsp_signature").setup(opts)
 		end,
 	},
 
@@ -230,9 +233,9 @@ return {
 			require("noice").setup({
 				lsp = {
 					signature = {
-						enabled = false
-					}
-				}
+						enabled = false,
+					},
+				},
 			})
 		end,
 		lazy = false,

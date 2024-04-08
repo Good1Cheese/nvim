@@ -1,3 +1,7 @@
+local Plugin = { "romgrk/barbar.nvim" }
+
+Plugin.event = "VeryLazy"
+
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
@@ -38,3 +42,5 @@ map("n", "<C-p>", ":BufferPick<cr>", opts)
 -- map("n", "<Space>bd", ":BufferOrderByDirectory<cr>", opts)
 -- map("n", "<Space>bl", ":BufferOrderByLanguage<cr>", opts)
 -- map("n", "<Space>bw", ":BufferOrderByWindowNumber<cr>", opts)
+
+return Plugin
