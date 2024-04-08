@@ -1,6 +1,7 @@
 local Plugin = { "folke/which-key.nvim" }
 
-Plugin.event = "VeryLazy"
+Plugin.lazy = false
+-- Plugin.event = "VeryLazy"
 
 Plugin.opts = {
 	window = {
@@ -89,8 +90,8 @@ function Plugin.config()
 
 		d = {
 			name = "Debug",
-			d = { ":lua require('dapui').toggle()<cr>", "Toggle" },
-			s = { ":lua require('dapui').open({ reset = true })<cr>", "Reset windows" },
+			d = { ":DapUIToggle", "Toggle" },
+			s = { ":DapUIReset", "Reset windows" },
 			a = { ":DapContinue<cr>", "Continue" },
 			f = { ":DapTerminate<cr>", "Terminate" },
 			h = { ":DapToggleBreakpoint<cr>", "BreakPoint" },

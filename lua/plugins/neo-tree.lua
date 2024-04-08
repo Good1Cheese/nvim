@@ -1,6 +1,6 @@
 local Plugin = { "nvim-neo-tree/neo-tree.nvim" }
 
-Plugin.lazy = false
+Plugin.cmd = "Neotree"
 
 Plugin.opts = {
 	filesystem = {

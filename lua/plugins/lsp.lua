@@ -100,13 +100,13 @@ function Plugin.config()
 						vim.fn.stdpath("config") .. "/lua",
 					},
 					checkThirdParty = false,
-					library = { "~/.local/state/Lua_Addons/garrysmode/" },
+					-- library = { "~/.local/state/Lua_Addons/garrysmode/" },
 				},
 				diagnostics = {
 					globals = { "vim" },
 				},
 				runtime = {
-					nonstandardSymbol = { "||", "&&", "!", "!=", "!!", "continue", "//", "/**/" },
+					-- nonstandardSymbol = { "||", "&&", "!", "!=", "!!", "continue", "//", "/**/" },
 				},
 			},
 		},

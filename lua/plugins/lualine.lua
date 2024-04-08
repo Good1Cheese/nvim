@@ -1,6 +1,6 @@
 local Plugin = { "nvim-lualine/lualine.nvim" }
 
-Plugin.event = "VeryLazy"
+Plugin.event = { "BufReadPre", "BufNewFile" }
 
 Plugin.opts = {
 	options = {

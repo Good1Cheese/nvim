@@ -11,9 +11,12 @@ function Plugin.config()
 	require("noice").setup({
 		lsp = {
 			signature = {
-                enabled = false
-            }
-		}
+				enabled = false,
+			},
+			hover = {
+				enabled = false,
+			},
+		},
 	})
 end
 

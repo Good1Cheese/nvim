@@ -1,7 +1,7 @@
 local Plugin = { "MeanderingProgrammer/dashboard.nvim" }
 
 Plugin.event = "VimEnter"
-Plugin.lazy = false
+Plugin.priority = 100
 
 local art = {
 	"           .'\\   /`.          ",

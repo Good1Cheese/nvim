@@ -1,6 +1,6 @@
 local Plugin = { "romgrk/barbar.nvim" }
 
-Plugin.event = "VeryLazy"
+Plugin.event = { "BufReadPre", "BufNewFile" }
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }

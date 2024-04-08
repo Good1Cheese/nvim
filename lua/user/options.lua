@@ -54,19 +54,9 @@ opt.smartcase = true  -- but make it case sensitive if an uppercase is enteredop
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
+vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
+
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
-
--- Highlight yanked text
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = "*",
-})
-
-vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
