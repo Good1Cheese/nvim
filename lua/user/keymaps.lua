@@ -1,6 +1,6 @@
 local opts = {
-    noremap = true, -- non-recursive
-    silent = true   -- do not show message
+	noremap = true, -- non-recursive
+	silent = true, -- do not show message
 }
 
 local keymap = vim.api.nvim_set_keymap
@@ -26,13 +26,8 @@ vim.g.maplocalleader = " "
 keymap("v", "p", "P", opts)
 keymap("v", "Y", "y'>p", opts)
 
--- "ayw
--- "ap
-
 -- Make duplicate without copying
 keymap("n", "<C-3>", [[ :call setreg('A', [])<cr> | "Ayy"Ap  ]], opts)
-
--- keymap("n", "<F3>", ":echomsg 'use hjkl dude'<cr>", opts)
 
 keymap("t", "<esc>", "<C-\\><C-N>", opts)
 
@@ -59,20 +54,19 @@ keymap("n", "J", "mzJ`z", opts)
 -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 
 vim.keymap.set({ "n", "v" }, "<F3>", function()
-    require("conform").format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-    })
+	require("conform").format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
 end, { desc = "Format file or range (in visual mode)" })
-
 
 -- Disable search highlight
 keymap("n", "<esc>", ":noh<cr>", opts)
 
 -- Save file/files
 keymap("n", "<C-s>", ":silent w<cr>", opts)
-keymap("n", "<C-s>", ":silent w<cr>", opts)
+keymap("n", "<C-S-s>", ":silent w<cr>", opts)
 keymap("v", "<C-s>", ":silent w<cr>", opts)
 
 keymap("i", "<C-s>", "<esc>:silent wall<cr>", opts)

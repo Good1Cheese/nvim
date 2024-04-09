@@ -1,6 +1,7 @@
 local Plugin = { "nvim-neo-tree/neo-tree.nvim" }
 
 Plugin.cmd = "Neotree"
+-- Plugin.event = "VimEnter"
 
 Plugin.opts = {
 	filesystem = {

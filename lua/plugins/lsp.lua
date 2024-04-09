@@ -10,6 +10,7 @@ Plugin.event = { "BufReadPre", "BufNewFile" }
 
 function Plugin.config()
 	local lsp = require("lsp-zero")
+	lsp.extend_lspconfig()
 	lsp.preset("recommended")
 
 	lsp.on_attach(function(client, bufnr)

@@ -1,7 +1,6 @@
 local Plugin = { "MeanderingProgrammer/dashboard.nvim" }
 
 Plugin.event = "VimEnter"
-Plugin.priority = 100
 
 local art = {
 	"           .'\\   /`.          ",
@@ -21,15 +20,17 @@ local art = {
 	"",
 }
 
-Plugin.opts = {
-	header = art,
-	directories = {
-		"~/.config/nvim",
-		"~/Projects",
-	},
-	buttons = {
-		{ "s", " " .. "Restore Session", [[:lua require("persistence").load() <cr>]] },
-	},
-}
+function Plugin.config()
+	require("dashboard").setup({
+		header = art,
+		directories = {
+			"~/.config/nvim",
+			"~/Projects",
+		},
+		buttons = {
+			{ "s", " " .. "Restore Session", [[:lua require("persistence").load() <cr>]] },
+		},
+	})
+end
 
 return Plugin

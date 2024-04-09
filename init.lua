@@ -1,7 +1,12 @@
-require("user.keymaps")
-require("user.commands")
-require("user.lazy")
-require("user.options")
+local load = function(mod)
+	package.loaded[mod] = nil
+	require(mod)
+end
 
--- vim.cmd.colorscheme("ayu")
-vim.cmd.colorscheme("onedark_dark")
+load("user.keymaps")
+load("user.options")
+load("user.commands")
+
+require("user.plugins")
+
+vim.cmd.colorscheme("ayu")
