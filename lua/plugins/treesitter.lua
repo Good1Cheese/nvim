@@ -8,7 +8,7 @@ Plugin.dependencies = {
 }
 
 Plugin.opts = {
-	ejnsure_installed = { "cpp", "python", "lua", "javascript", "norg" },
+	ejnsure_installed = { "cpp", "python", "lua", "ruby", "javascript", "norg" },
 	sync_install = false,
 	highlight = {
 		enable = true,

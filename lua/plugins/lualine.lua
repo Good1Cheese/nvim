@@ -9,7 +9,7 @@ Plugin.opts = {
 		component_separators = "|",
 		section_separators = "",
 		disabled_filetypes = {
-			statusline = { "neo-tree" },
+			statusline = { "neo-tree", "" },
 		},
 	},
 }

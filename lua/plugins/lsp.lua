@@ -4,6 +4,9 @@ Plugin.dependencies = {
 	{ "neovim/nvim-lspconfig" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "williamboman/mason.nvim" },
+
+	{ "L3MON4D3/LuaSnip" },
+	{ "hrsh7th/nvim-cmp" },
 }
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
