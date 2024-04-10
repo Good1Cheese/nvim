@@ -1,6 +1,7 @@
 local group = vim.api.nvim_create_augroup("user_cmds", { clear = true })
 
 vim.api.nvim_create_user_command("ReloadConfig", "source $MYVIMRC", {})
+vim.api.nvim_create_user_command("LoadSession", [[:lua require("persistence").load({ last = true })<cr>]], {})
 vim.api.nvim_create_user_command("DapUIToggle", ":lua require('dapui').toggle()<cr>", {})
 vim.api.nvim_create_user_command("DapUIReset", ":lua require('dapui').open({ reset = true })<cr>", {})
 

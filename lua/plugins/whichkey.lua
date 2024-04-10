@@ -53,7 +53,7 @@ function Plugin.config()
 		["q"] = { ":qall!<cr>", "Quit" },
 		["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
 		-- ["a"]  = { ":q<cr>", "Close window" },
-		["0"] = { [[<cmd>lua require("persistence").load({ last = true })<cr>]], "Load sessions" },
+		["0"] = { ":LoadSession<cr>", "Load sessions" },
 		["t"] = { ":lua toggleFish()<cr>", "Terminal" },
 		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
 		["e"] = { ":Neotree toggle right<cr>", "Explorer" },

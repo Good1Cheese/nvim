@@ -1,7 +1,6 @@
 local Plugins = {
 	{ "kyazdani42/nvim-web-devicons" },
 	{ "mbbill/undotree" },
-	{ "folke/persistence.nvim" },
 	{ "folke/neodev.nvim" },
 
 	-- Fix for Russian Layout
