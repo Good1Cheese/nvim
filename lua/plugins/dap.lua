@@ -1,10 +1,15 @@
--- { "rcarriga/nvim-dap-ui" },
--- { "theHamsta/nvim-dap-virtual-text" },
--- { "jay-babu/mason-nvim-dap.nvim" },
-
 local Plugin = { "mfussenegger/nvim-dap" }
 
-Plugin.cmd = { "DapUIToggle", "DapUIReset", "DapContinue", "DapTerminate", "DapToggleBreakpoint", "DapStepOver", "DapStepInto", "DapStepOut" }
+Plugin.cmd = {
+	"DapUIToggle",
+	"DapUIReset",
+	"DapContinue",
+	"DapTerminate",
+	"DapToggleBreakpoint",
+	"DapStepOver",
+	"DapStepInto",
+	"DapStepOut",
+}
 
 Plugin.dependencies = {
 	{ "rcarriga/nvim-dap-ui" },

@@ -10,6 +10,8 @@ Plugin.dependencies = {
 function Plugin.config()
 	local telecope = require("telescope")
 
+	require("telescope").load_extension("aerial")
+
 	telecope.setup({
 		defaults = {
 			vimgrep_arguments = {
@@ -79,6 +81,14 @@ function Plugin.config()
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 					-- the default case_mode is "smart_case"
+				},
+				aerial = {
+					-- Display symbols as <root>.<parent>.<symbol>
+					show_nesting = {
+						["_"] = false, -- This key will be the default
+						json = true, -- You can set the option for specific filetypes
+						yaml = true,
+					},
 				},
 			},
 		},

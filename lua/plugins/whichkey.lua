@@ -18,43 +18,34 @@ Plugin.opts = {
 function Plugin.config()
 	local which_key = require("which-key")
 
+	local opts = {
+		mode = "n", -- NORMAL mode
+		prefix = "<leader>",
+		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+		silent = true, -- use `silent` when creating keymaps
+		noremap = true, -- use `noremap` when creating keymaps
+		nowait = true, -- use `nowait` when creating keymaps
+	}
+
+	which_key.OPTS = opts
+
 	local Terminal = require("toggleterm.terminal").Terminal
 	local fish = Terminal:new({ cmd = "fish", hidden = true })
-	local lazygit = Terminal:new({
-		cmd = "lazygit",
-		dir = "git_dir",
-		close_on_exit = true,
+
+	local lf = Terminal:new({
+		cmd = "lf",
+		-- close_on_exit = true,
 		direction = "float",
 		float_opts = {
 			border = "double",
 		},
-		-- function to run on opening the terminal
-		on_open = function(term)
-			vim.cmd("startinsert!")
-			vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-		end,
-		-- function to run on closing the terminal
-		on_close = function(term)
-			vim.cmd("startinsert!")
-		end,
 	})
 
 	function toggleFish()
 		fish:toggle()
 	end
-	function toggleLazyGit()
-		lazygit:toggle()
-	end
-
-	local transparency = false
-
-	function toggleTransparency()
-		transparency = not transparency
-		if transparency then
-			vim.g.neovide_transparency = 1
-			return
-		end
-		vim.g.neovide_transparency = 0.9
+	function toggleLF()
+		lf:toggle()
 	end
 
 	local mappings = {
@@ -64,9 +55,9 @@ function Plugin.config()
 		-- ["a"]  = { ":q<cr>", "Close window" },
 		["0"] = { [[<cmd>lua require("persistence").load({ last = true })<cr>]], "Load sessions" },
 		["t"] = { ":lua toggleFish()<cr>", "Terminal" },
-		["l"] = { ":lua toggleLazyGit()<cr>", "Lazygit" },
+		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
 		["e"] = { ":Neotree toggle right<cr>", "Explorer" },
-		["a"] = { ":Dashboard<cr>", "Start menu" },
+		["a"] = { ":AerialToggle!<cr>", "Code outlaw" },
 		-- ["g"]  = { ":Neogit<cr>", "Open git" },
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
@@ -100,26 +91,6 @@ function Plugin.config()
 			j = { ":DapStepOut<cr>", "Step out" },
 		},
 
-		-- c = {
-		-- 	name = "Runner",
-		-- x = { ":CompilerToggleResults<cr>", "..." },
-		-- v = { ":CompilerRedo<cr>", "..." },
-		-- },
-
-		-- ["h"]  = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
-		-- ["l"]  = { ":DapStepOver<cr>", "Step over" },
-		-- ["k"]  = { ":DapStepInto<cr>", "Step into" },
-		-- ["j"]  = { ":DapStepOut<cr>", "Step out" },
-
-		-- t = {
-		--     name = "Terminal",
-		--     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" }, -- Floating Terminal
-		--
-		--     -- Play with size according to your needs.
-		--     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" }, -- Horizontal Terminal
-		--     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },     -- Vertical Terminal
-		-- },
-
 		-- LSP
 		n = {
 			name = "LSP",
@@ -150,17 +121,7 @@ function Plugin.config()
 	}
 
 	which_key.setup(setup)
-
-	local opts = {
-		mode = "n", -- NORMAL mode
-		prefix = "<leader>",
-		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-		silent = true, -- use `silent` when creating keymaps
-		noremap = true, -- use `noremap` when creating keymaps
-		nowait = true, -- use `nowait` when creating keymaps
-	}
-
-	which_key.register(mappings, opts)
+	which_key.register(mappings, which_key.OPTS)
 end
 
 return Plugin
