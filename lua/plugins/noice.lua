@@ -4,7 +4,7 @@ Plugin.event = "VeryLazy"
 
 Plugin.dependencies = {
 	{ "MunifTanjim/nui.nvim" },
-	{ "rcarriga/nvim-notify" },
+	--{ "rcarriga/nvim-notify" },
 }
 
 function Plugin.config()

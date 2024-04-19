@@ -65,12 +65,12 @@ end, { desc = "Format file or range (in visual mode)" })
 keymap("n", "<esc>", ":noh<cr>", opts)
 
 -- Save file/files
-keymap("n", "<C-s>", ":silent w<cr>", opts)
-keymap("n", "<C-S-s>", ":silent w<cr>", opts)
-keymap("v", "<C-s>", ":silent w<cr>", opts)
+keymap("n", "<C-s>", ":silent w!<cr>", opts)
+keymap("n", "<C-S-s>", ":silent w!<cr>", opts)
+keymap("v", "<C-s>", ":silent w!<cr>", opts)
 
-keymap("i", "<C-s>", "<esc>:silent wall<cr>", opts)
-keymap("i", "<C-S-s>", "<esc>:silent wall<cr>", opts)
+keymap("i", "<C-s>", "<esc>:silent wall!<cr>", opts)
+keymap("i", "<C-S-s>", "<esc>:silent wall!<cr>", opts)
 
 -- Disable arrows
 keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)

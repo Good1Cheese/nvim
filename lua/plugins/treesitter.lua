@@ -9,7 +9,8 @@ Plugin.dependencies = {
 
 Plugin.opts = {
 	ejnsure_installed = { "cpp", "python", "lua", "ruby", "javascript", "norg" },
-	sync_install = false,
+	sync_install = true,
+    auto_install = true,
 	highlight = {
 		enable = true,
 		use_languagetree = true,

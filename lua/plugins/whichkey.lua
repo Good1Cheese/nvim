@@ -62,7 +62,7 @@ function Plugin.config()
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
 		['"'] = { ":%s/'/\"/g", "Replace all quotes" },
-		["!"] = { ":w !sudo tee %<cr>", "Sudo save" },
+		["!"] = { ":SudaWrite<cr>", "Sudo save" },
 		["c"] = { ":RunFile<cr>", "RunFile" },
 
 		-- r = {

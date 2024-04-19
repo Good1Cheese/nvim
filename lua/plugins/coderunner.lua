@@ -23,6 +23,13 @@ Plugin.opts = {
 			"cd $dir &&",
 			"bash $fileName",
 		},
+		--nix = {
+        --    ":w !sudo tee %<cr>",
+        --    "sudo nixos-rebuild switch",
+
+		--	"cd $dir &&",
+		--	"bash $fileName",
+		--},
 		ruby = function()
 			local file = vim.fn.expand("%")
 			if string.find(file, "test") then

@@ -2,6 +2,7 @@
 local opt = vim.opt
 
 -- opt.guicursor = ""
+vim.cmd("au BufEnter * set noro")
 
 vim.g.loaded_netrwPlugin = 0
 

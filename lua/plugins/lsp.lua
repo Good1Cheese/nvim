@@ -62,7 +62,7 @@ function Plugin.config()
 
 	lspconfig.bashls.setup({})
 
-	lspconfig.ruby_ls.setup({})
+	lspconfig.ruby_lsp.setup({})
 	-- lspconfig.rubocop.setup({})
 
 	lspconfig.solargraph.setup({
