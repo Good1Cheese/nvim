@@ -1,5 +1,6 @@
 local Plugin = { "numToStr/Comment.nvim" }
 
+-- Plugin.lazy = false
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
 Plugin.dependencies = {
@@ -9,10 +10,10 @@ Plugin.dependencies = {
 function Plugin.config()
 	require("Comment").setup({
 		toggler = {
-			line = "<C-/>",
+			line = "<A-/>",
 		},
 		opleader = {
-			line = "<C-/>",
+			line = "<A-/>",
 		},
 		pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 	})

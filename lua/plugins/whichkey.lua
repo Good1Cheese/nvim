@@ -51,7 +51,7 @@ function Plugin.config()
 	local mappings = {
 		["p"] = { ":Lazy<cr>", "Plugin Manager" },
 		["q"] = { ":qall!<cr>", "Quit" },
-		["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
+		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
 		-- ["a"]  = { ":q<cr>", "Close window" },
 		["0"] = { ":LoadSession<cr>", "Load sessions" },
 		["t"] = { ":lua toggleFish()<cr>", "Terminal" },
@@ -62,7 +62,8 @@ function Plugin.config()
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
 		['"'] = { ":%s/'/\"/g", "Replace all quotes" },
-		["!"] = { ":SudaWrite<cr>", "Sudo save" },
+		["!"] = { ":SudaWrite<cr>:ReloadNIX<cr>", "Reload nix" },
+		["1"] = { ":SudaWrite<cr>", "Sudo save" },
 		["c"] = { ":RunFile<cr>", "RunFile" },
 
 		-- r = {

@@ -1,4 +1,4 @@
-local Plugin =  { "CRAG666/code_runner.nvim" }
+local Plugin = { "CRAG666/code_runner.nvim" }
 
 Plugin.cmd = "RunFile"
 
@@ -24,8 +24,8 @@ Plugin.opts = {
 			"bash $fileName",
 		},
 		--nix = {
-        --    ":w !sudo tee %<cr>",
-        --    "sudo nixos-rebuild switch",
+		--    ":w !sudo tee %<cr>",
+		--    "sudo nixos-rebuild switch",
 
 		--	"cd $dir &&",
 		--	"bash $fileName",
@@ -36,8 +36,8 @@ Plugin.opts = {
 				return "rspec $file"
 			end
 			return "cd $dir && ruby $fileName"
-		end
-	}
+		end,
+	},
 }
 
 return Plugin
