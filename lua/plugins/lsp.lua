@@ -110,7 +110,7 @@ function Plugin.config()
 					globals = { "vim" },
 				},
 				runtime = {
-					-- nonstandardSymbol = { "||", "&&", "!", "!=", "!!", "continue", "//", "/**/" },
+					nonstandardSymbol = { "||", "&&", "!", "!=", "!!", "continue", "//", "/**/" },
 				},
 			},
 		},
