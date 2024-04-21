@@ -3,7 +3,7 @@ local Plugin = { "williamboman/mason.nvim" }
 Plugin.cmd = "Mason"
 
 Plugin.opts = {
-	ensure_installed = { "lua_ls", "bashls", "clangd" },
+	ensure_installed = { "lua_ls", "bashls", "clangd", "shfmt", "stylua", "nil", "nixfmt", "solargraph", "ruby-lsp", "shellcheck" },
 	icons = {
 		package_pending = " ",
 		package_installed = "󰄳 ",

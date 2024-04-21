@@ -7,7 +7,7 @@ Plugin.opts = {
 		lua = { "stylua" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
-		nix = { "nixpkgs-fmt" }
+		nix = { "nixfmt" }
 	},
 	-- format_on_save = {
 	-- 	lsp_fallback = true,
