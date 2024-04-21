@@ -9,4 +9,5 @@ load("user.commands")
 
 require("user.plugins")
 
+-- vim.cmd.colorscheme("oxocarbon")
 vim.cmd.colorscheme("ayu")

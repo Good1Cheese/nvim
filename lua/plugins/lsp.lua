@@ -61,9 +61,9 @@ function Plugin.config()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	lspconfig.bashls.setup({})
-
 	lspconfig.ruby_lsp.setup({})
-	-- lspconfig.rubocop.setup({})
+    lspconfig.clangd.setup({})
+    lspconfig.nil_ls.setup({})
 
 	lspconfig.solargraph.setup({
 		-- on_attach = M.on_attach,
@@ -84,8 +84,6 @@ function Plugin.config()
 			},
 		},
 	})
-
-	lspconfig.clangd.setup({})
 
 	lspconfig.lua_ls.setup({
 		capabilities = capabilities,
