@@ -5,7 +5,7 @@ Plugin.cmd = "ReloadNIX"
 function Plugin.config()
     local Terminal = require("toggleterm.terminal").Terminal
     local nix = Terminal:new({
-        cmd = "sudo nixos-rebuild switch"
+        cmd = "sudo nixos-rebuild switch --flake ~/nixos-config/"
     })
 
     function toggleNIX()

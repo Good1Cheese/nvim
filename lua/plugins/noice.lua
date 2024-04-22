@@ -7,7 +7,16 @@ Plugin.dependencies = {
 }
 
 function Plugin.config()
-	require("noice").setup({})
+	require("noice").setup({
+		lsp = {
+			signature = {
+				enabled = false,
+			},
+			hover = {
+				enabled = false,
+			},
+		},
+	})
 end
 
 return Plugin

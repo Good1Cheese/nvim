@@ -26,6 +26,8 @@ vim.g.maplocalleader = " "
 keymap("v", "p", "P", opts)
 keymap("v", "Y", "y'>p", opts)
 
+keymap("v", "$", "$h", opts)
+
 -- Make duplicate without copying
 keymap("n", "<C-3>", [[ :call setreg('A', [])<cr> | "Ayy"Ap  ]], opts)
 
