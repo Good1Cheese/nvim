@@ -4,20 +4,10 @@ Plugin.event = "VeryLazy"
 
 Plugin.dependencies = {
 	{ "MunifTanjim/nui.nvim" },
-	--{ "rcarriga/nvim-notify" },
 }
 
 function Plugin.config()
-	require("noice").setup({
-		lsp = {
-			signature = {
-				enabled = false,
-			},
-			hover = {
-				enabled = false,
-			},
-		},
-	})
+	require("noice").setup({})
 end
 
 return Plugin

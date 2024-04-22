@@ -62,7 +62,7 @@ function Plugin.config()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	lspconfig.bashls.setup({})
-	lspconfig.ruby_lsp.setup({})
+	-- lspconfig.ruby_lsp.setup({})
 	lspconfig.clangd.setup({})
 	lspconfig.nil_ls.setup({})
 
