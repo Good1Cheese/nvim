@@ -4,6 +4,7 @@ Plugin.dependencies = {
 	{ "neovim/nvim-lspconfig" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "williamboman/mason.nvim" },
+	{ "SmiteshP/nvim-navbuddy" },
 
 	{ "L3MON4D3/LuaSnip" },
 	{ "hrsh7th/nvim-cmp" },
@@ -62,8 +63,8 @@ function Plugin.config()
 
 	lspconfig.bashls.setup({})
 	lspconfig.ruby_lsp.setup({})
-    lspconfig.clangd.setup({})
-    lspconfig.nil_ls.setup({})
+	lspconfig.clangd.setup({})
+	lspconfig.nil_ls.setup({})
 
 	lspconfig.solargraph.setup({
 		-- on_attach = M.on_attach,

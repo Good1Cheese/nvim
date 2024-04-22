@@ -53,11 +53,12 @@ function Plugin.config()
 		["q"] = { ":qall!<cr>", "Quit" },
 		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
 		-- ["a"]  = { ":q<cr>", "Close window" },
+		["k"] = { [[:lua require("barbecue.ui").navigate(-2)<cr>]], "Go up" },
 		["0"] = { ":LoadSession<cr>", "Load sessions" },
 		["t"] = { ":lua toggleFish()<cr>", "Terminal" },
 		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
 		["e"] = { ":Neotree toggle right<cr>", "Explorer" },
-		["a"] = { ":AerialToggle!<cr>", "Code outlaw" },
+		["a"] = { ":Navbuddy<cr>", "Code outlaw" },
 		-- ["g"]  = { ":Neogit<cr>", "Open git" },
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
@@ -70,15 +71,13 @@ function Plugin.config()
 		--     name = "Refactoring",
 		--     e = { ":Refactor extract_block" }
 		-- },
-		s = {
-			name = "Telescope",
-			d = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
-			a = { ":Telescope oldfiles<cr>", "Open Recent File" },
-			s = { ":Telescope live_grep <cr>", "Find Text" },
-			-- v = { ":Telescope diagnostics<cr>", "Diagnostics" },
-			-- k = { ":Telescope keymaps<cr>", "Keymaps" },
-			c = { ":Telescope colorscheme<cr>", "Colorschemes" },
-		},
+		-- s = {
+		-- 	name = "Telescope",
+		-- 	c = { ":Telescope colorscheme<cr>", "Colorschemes" },
+		-- },
+
+		["s"] = { ":Telescope live_grep <cr>", "Find Text" },
+		["S"] = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
 
 		d = {
 			name = "Debug",
