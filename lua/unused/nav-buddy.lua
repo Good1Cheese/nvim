@@ -1,5 +1,9 @@
 local Plugin = { "SmiteshP/nvim-navbuddy" }
 
+Plugin.dependencies = {
+	{ "SmiteshP/nvim-navic" },
+}
+
 Plugin.cmd = "Navbuddy"
 
 function Plugin.config()

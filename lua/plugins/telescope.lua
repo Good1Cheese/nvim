@@ -10,8 +10,6 @@ Plugin.dependencies = {
 function Plugin.config()
 	local telecope = require("telescope")
 
-	require("telescope").load_extension("aerial")
-
 	telecope.setup({
 		defaults = {
 			vimgrep_arguments = {
