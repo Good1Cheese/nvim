@@ -60,6 +60,7 @@ function Plugin.config()
 		["e"] = { ":Neotree toggle right<cr>", "Explorer" },
 		["a"] = { ":Outline<cr>", "Code outlaw" },
 		["l"] = { [[:lua require("actions-preview").code_actions()<cr>]], "Code actions" },
+		["L"] = { [[:LazyGit<cr>]], "Lazy Git" },
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
 		['"'] = { ":%s/'/\"/g", "Replace all quotes" },

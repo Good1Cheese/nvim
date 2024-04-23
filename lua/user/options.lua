@@ -2,6 +2,7 @@
 local opt = vim.opt
 
 -- opt.guicursor = ""
+vim.cmd("set eventignore=BufWritePost")
 vim.cmd("au BufEnter * set noro")
 
 vim.g.loaded_netrwPlugin = 0
@@ -55,7 +56,6 @@ opt.smartcase = true -- but make it case sensitive if an uppercase is enteredopt
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
-
 vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
 
 -- disable some default providers
