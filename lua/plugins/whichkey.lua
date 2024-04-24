@@ -49,6 +49,7 @@ function Plugin.config()
 	end
 
 	local mappings = {
+		["<cr>"] = { ":.!bash<cr>", "Execute in bash" },
 		["p"] = { ":Lazy<cr>", "Plugin Manager" },
 		["q"] = { ":qall!<cr>", "Quit" },
 		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
