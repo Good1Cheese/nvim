@@ -31,10 +31,10 @@ Plugin.opts = {
 		--	"bash $fileName",
 		--},
 		ruby = function()
-			local file = vim.fn.expand("%")
-			if string.find(file, "test") then
-				return "rspec $file"
-			end
+			-- local file = vim.fn.expand("%")
+			-- if string.find(file, "test") then
+			-- 	return "rspec $file"
+			-- end
 			return "cd $dir && ruby $fileName"
 		end,
 	},
