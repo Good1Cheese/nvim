@@ -43,7 +43,7 @@ keymap("t", "<esc>", "<C-\\><C-N>", opts)
 keymap("i", "<C-v>", "<C-r>+<esc>", opts)
 
 -- Copy all
-keymap("n", "<C-a>", "ggVG", opts)
+keymap("n", "<C-S-a>", "ggVG", opts)
 
 -- New line
 keymap("n", "<C-`>", "kA<cr><esc>j", opts)

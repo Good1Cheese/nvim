@@ -9,8 +9,8 @@ local opts = { noremap = true, silent = true }
 map("n", "<Tab>", ":BufferNext<cr>", opts)
 map("n", "<S-Tab>", ":BufferPrevious<cr>", opts)
 -- Re-order to previous/next
--- map("n", "<A-,>", ":BufferMovePrevious<cr>", opts)
--- map("n", "<A-.>", ":BufferMoveNext<cr>", opts)
+map("n", "<A-,>", ":BufferMovePrevious<cr>", opts)
+map("n", "<A-.>", ":BufferMoveNext<cr>", opts)
 -- Goto buffer in position...
 map("n", "<A-1>", ":BufferGoto 1<cr>", opts)
 map("n", "<A-2>", ":BufferGoto 2<cr>", opts)
@@ -26,7 +26,7 @@ map("n", "<A-0>", ":BufferLast<cr>", opts)
 map("n", "<A-p>", ":BufferPin<cr>", opts)
 -- Close buffer
 map("n", "<C-c>", ":BufferClose!<cr>", opts)
-map("n", "<C-x>", ":BufferCloseAllButCurrentOrPinned<cr>", opts)
+map("n", "<C-S-x>", ":BufferCloseAllButCurrentOrPinned<cr>", opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
