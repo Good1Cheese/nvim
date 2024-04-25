@@ -13,6 +13,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+-- vim.api.nvim_create_autocmd("FocusGained", {
+-- 	pattern = "*",
+-- 	group = group,
+-- 	command = ":!setxkbmap -layout us && setxkbmap -layout us,ru",
+-- })
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "help", "man" },
 	group = group,

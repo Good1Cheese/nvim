@@ -24,6 +24,10 @@ function Plugin.config()
 	lsp.set_server_config({
 		on_init = function(client)
 			client.server_capabilities.semanticTokensProvider = nil
+			client.server_capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
 		end,
 	})
 
@@ -60,6 +64,11 @@ function Plugin.config()
 
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+	capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
 
 	lspconfig.bashls.setup({})
 	-- lspconfig.ruby_lsp.setup({})

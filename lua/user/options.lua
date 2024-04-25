@@ -4,6 +4,7 @@ local opt = vim.opt
 -- opt.guicursor = ""
 vim.cmd("set eventignore=BufWritePost")
 vim.cmd("au BufEnter * set noro")
+-- vim.cmd("let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'")
 
 vim.g.loaded_netrwPlugin = 0
 
@@ -19,6 +20,12 @@ opt.undofile = true
 opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
 
 opt.spelllang = { "en" }
+
+-- Folds
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
 -- decrease delays
 opt.updatetime = 50

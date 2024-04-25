@@ -1,9 +1,9 @@
 local Plugin = { "ayu-theme/ayu-vim" }
 
 Plugin.dependencies = {
-	{ "olimorris/onedarkpro.nvim" },
-	{ "nyoom-engineering/oxocarbon.nvim" },
-	{ "samharju/synthweave.nvim" },
+	-- { "olimorris/onedarkpro.nvim" },
+	-- { "nyoom-engineering/oxocarbon.nvim" },
+	-- { "samharju/synthweave.nvim" },
 	{ "scottmckendry/cyberdream.nvim" },
 }
 
