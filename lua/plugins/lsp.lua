@@ -106,19 +106,21 @@ function Plugin.config()
 					enable = false,
 				},
 				workspace = {
+					checkThirdParty = false,
 					library = {
 						-- Make the server aware of Neovim runtime files
 						vim.fn.expand("$VIMRUNTIME/lua"),
 						vim.fn.stdpath("config") .. "/lua",
+						"/home/cheese/dotfiles/.local/state/Lua_Addonds/garrysmode",
 					},
-					checkThirdParty = false,
-					-- library = { "~/.local/state/Lua_Addons/garrysmode/" },
+				},
+				runtime = {
+					version = "Lua 5.1",
+					nonstandardSymbol = { "!", "!=", "&&", "||", "//", "/**/", "continue" },
 				},
 				diagnostics = {
 					globals = { "vim" },
-				},
-				runtime = {
-					nonstandardSymbol = { "||", "&&", "!", "!=", "!!", "continue", "//", "/**/" },
+					disable = { "duplicate-set-field" },
 				},
 			},
 		},
