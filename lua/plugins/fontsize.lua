@@ -3,7 +3,6 @@ local Plugin = { "Sup3Legacy/fontsize.nvim" }
 function Plugin.config()
 	require("fontsize").init({
 		font = "JetBrainsMono Nerd Font",
-
 		min = 6,
 		default = 12,
 		max = 24,
@@ -16,9 +15,9 @@ local opts = {
 	silent = true, -- do not show message
 }
 
-vim.api.nvim_set_keymap("n", "<C-->", ":FontDecrease<cr>", opts)
-vim.api.nvim_set_keymap("n", "<C-=>", ":FontIncrease<cr>", opts)
-vim.api.nvim_set_keymap("n", "<C-+>", ":FontIncrease<cr>", opts)
-vim.api.nvim_set_keymap("n", "<C-0>", ":FontReset<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<C-->", ":FontDecrease<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<C-=>", ":FontIncrease<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<C-+>", ":FontIncrease<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<C-0>", ":FontReset<cr>", opts)
 
 return Plugin

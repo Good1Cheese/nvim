@@ -79,7 +79,7 @@ function Plugin.config()
 		-- },
 
 		["s"] = { ":Telescope live_grep <cr>", "Find Text" },
-		["S"] = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
+		["f"] = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
 
 		d = {
 			name = "Debug",
@@ -91,6 +91,11 @@ function Plugin.config()
 			l = { ":DapStepOver<cr>", "Step over" },
 			k = { ":DapStepInto<cr>", "Step into" },
 			j = { ":DapStepOut<cr>", "Step out" },
+		},
+
+		h = {
+			name = "GitSigns",
+			s = { ":DapUIToggle", "Toggle" },
 		},
 
 		-- LSP
