@@ -111,7 +111,7 @@ function Plugin.config()
 						-- Make the server aware of Neovim runtime files
 						vim.fn.expand("$VIMRUNTIME/lua"),
 						vim.fn.stdpath("config") .. "/lua",
-						"/home/cheese/dotfiles/.local/state/Lua_Addonds/garrysmode",
+						"~/.local/state/Lua_Addonds/garrysmode",
 					},
 				},
 				runtime = {
