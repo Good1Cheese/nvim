@@ -2,7 +2,7 @@ local Plugin = { "kevinhwang91/nvim-ufo" }
 
 Plugin.dependencies = "kevinhwang91/promise-async"
 
-Plugin.event = "VeryLazy"
+-- Plugin.event = "VeryLazy"
 
 function Plugin.config()
 	require("ufo").setup({

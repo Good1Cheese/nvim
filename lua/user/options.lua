@@ -2,14 +2,16 @@
 local opt = vim.opt
 
 -- opt.guicursor = ""
-vim.cmd("set eventignore=BufWritePost")
+vim.cmd("set eventignore=BufWritePost,VimResized")
 vim.cmd("au BufEnter * set noro")
 -- vim.cmd("let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'")
 
 vim.g.loaded_netrwPlugin = 0
 
 opt.sidescrolloff = 8 -- Columns of context
-opt.scrolloff = 4 -- Lines of context
+opt.scrolloff = 8 -- Lines of context
+
+opt.wrap = false
 
 opt.clipboard = "unnamedplus" -- use system clipboard
 opt.mouse = "a" -- allow the mouse to be used in Nvim
@@ -36,9 +38,11 @@ opt.timeoutlen = 100
 opt.tabstop = 4 -- number of visual spaces per TAB
 opt.softtabstop = 4 -- number of spacesin tab when editing
 opt.shiftwidth = 4 -- insert 4 spaces on a tab
-opt.expandtab = true -- tabs are spaces, mainly because of python
+opt.expandtab = false -- tabs are spaces, mainly because of python
 opt.breakindent = true
 opt.smartindent = true
+
+-- opt.pumheigth = 10
 
 -- UI config
 opt.number = true -- show absolute number
