@@ -54,11 +54,11 @@ function Plugin.config()
 		["q"] = { ":qall!<cr>", "Quit" },
 		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
 		-- ["a"]  = { ":q<cr>", "Close window" },
-		["k"] = { [[:lua require("barbecue.ui").navigate(-2)<cr>]], "Go up" },
 		["0"] = { ":LoadSession<cr>", "Load sessions" },
 		["t"] = { ":lua toggleFish()<cr>", "Terminal" },
 		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
 		["e"] = { ":Neotree toggle right<cr>", "Explorer" },
+		-- ["e"] = { ":Lf<cr>", "Explorer" },
 		["a"] = { ":Outline<cr>", "Code outlaw" },
 		["l"] = { [[:lua require("actions-preview").code_actions()<cr>]], "Code actions" },
 		["L"] = { [[:LazyGit<cr>]], "Lazy Git" },
@@ -69,6 +69,7 @@ function Plugin.config()
 		["!"] = { ":w<cr>:ReloadNIX<cr>", "Reload nix" },
 		["1"] = { ":SudaWrite<cr>", "Sudo save" },
 		["c"] = { ":RunFile<cr>", "RunFile" },
+		["<Tab>"] = { ":HarpoonList<cr>", "Harpoon" },
 
 		-- r = {
 		--     name = "Refactoring",

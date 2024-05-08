@@ -5,6 +5,7 @@ vim.api.nvim_create_user_command("LoadSession", [[:lua require("persistence").lo
 vim.api.nvim_create_user_command("DapUIToggle", ":lua require('dapui').toggle()<cr>", {})
 vim.api.nvim_create_user_command("DapUIReset", ":lua require('dapui').open({ reset = true })<cr>", {})
 vim.api.nvim_create_user_command("RORCommands", ":lua require('ror.commands').list_commands()<cr>", {})
+vim.api.nvim_create_user_command("HarpoonList", ":lua require('harpoon'):list():add()<cr>", {})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
