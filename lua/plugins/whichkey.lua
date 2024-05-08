@@ -62,6 +62,7 @@ function Plugin.config()
 		["a"] = { ":Outline<cr>", "Code outlaw" },
 		["l"] = { [[:lua require("actions-preview").code_actions()<cr>]], "Code actions" },
 		["L"] = { [[:LazyGit<cr>]], "Lazy Git" },
+		["r"] = { ":RORCommands<cr>", "Ruby on RAILS" },
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
 		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
 		['"'] = { ":%s/'/\"/g", "Replace all quotes" },
@@ -80,6 +81,7 @@ function Plugin.config()
 
 		["s"] = { ":Telescope live_grep <cr>", "Find Text" },
 		["f"] = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
+		-- ["S"] = { ":lua require('telescope.builtin').resume()<cr>", "Find prev" },
 
 		d = {
 			name = "Debug",

@@ -3,6 +3,7 @@ local Plugin = { "nvim-telescope/telescope.nvim" }
 Plugin.cmd = { "Telescope" }
 
 Plugin.dependencies = {
+	{ "nvim-treesitter/nvim-treesitter" },
 	{ "nvim-lua/plenary.nvim" },
 	--{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 }
