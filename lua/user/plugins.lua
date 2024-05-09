@@ -40,6 +40,10 @@ lazy.opts = {
 			not_loaded = "",
 		},
 	},
+	dev = {
+		path = "~/Projects",
+		fallback = false,
+	},
 }
 
 lazy.setup({ { import = "plugins" } })

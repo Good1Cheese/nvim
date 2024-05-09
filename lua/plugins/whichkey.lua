@@ -69,7 +69,7 @@ function Plugin.config()
 		["!"] = { ":w<cr>:ReloadNIX<cr>", "Reload nix" },
 		["1"] = { ":SudaWrite<cr>", "Sudo save" },
 		["c"] = { ":RunFile<cr>", "RunFile" },
-		["<Tab>"] = { ":HarpoonList<cr>", "Harpoon" },
+		-- ["<Tab>"] = { ":HarpoonList<cr>", "Harpoon" },
 
 		-- r = {
 		--     name = "Refactoring",
