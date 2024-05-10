@@ -1,6 +1,6 @@
 return {
 	"Wansmer/treesj",
-	event = { "BufReadPost", "BufNewFile" },
+	-- event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		require("treesj").setup({})
 
