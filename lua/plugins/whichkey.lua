@@ -32,20 +32,13 @@ function Plugin.config()
 	local Terminal = require("toggleterm.terminal").Terminal
 	local fish = Terminal:new({ cmd = "fish", hidden = true })
 
-	local lf = Terminal:new({
-		cmd = "lf",
-		-- close_on_exit = true,
-		direction = "float",
-		float_opts = {
-			border = "double",
-		},
-	})
-
-	function toggleFish()
+	local function toggleFish()
 		fish:toggle()
 	end
-	function toggleLF()
-		lf:toggle()
+
+	local mini = require("mini.files")
+	local function minifilesToggle()
+		if not mini.close() then mini.open() end
 	end
 
 	local mappings = {
@@ -55,9 +48,8 @@ function Plugin.config()
 		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
 		-- ["a"]  = { ":q<cr>", "Close window" },
 		["0"] = { ":LoadSession<cr>", "Load sessions" },
-		["t"] = { ":lua toggleFish()<cr>", "Terminal" },
+		["t"] = { toggleFish, "Terminal" },
 		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
-		["e"] = { ":Neotree toggle right<cr>", "Explorer" },
 		-- ["e"] = { ":Lf<cr>", "Explorer" },
 		["a"] = { ":Outline<cr>", "Code outlaw" },
 		["l"] = { [[:lua require("actions-preview").code_actions()<cr>]], "Code actions" },
@@ -70,6 +62,13 @@ function Plugin.config()
 		["1"] = { ":SudaWrite<cr>", "Sudo save" },
 		["c"] = { ":RunFile<cr>", "RunFile" },
 		-- ["<Tab>"] = { ":HarpoonList<cr>", "Harpoon" },
+
+		-- e = {
+		-- 	name = "browsers",
+		--	["e"] = { ":Neotree toggle right<cr>", "Explorer" },
+		-- },
+		["E"] = { ":lua require('oil').open()<cr>", "Explorer" },
+		["e"] = { minifilesToggle, "Explorer" },
 
 		-- r = {
 		--     name = "Refactoring",
