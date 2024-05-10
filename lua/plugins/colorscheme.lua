@@ -5,6 +5,7 @@ Plugin.dependencies = {
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	-- { "samharju/synthweave.nvim" },
 	{ "scottmckendry/cyberdream.nvim" },
+	{ "rose-pine/neovim", name = "rose-pine" },
 }
 
 Plugin.priority = 1000
@@ -16,19 +17,9 @@ function Plugin.config()
 
 	-- vim.cmd.colorscheme("oxocarbon")
 	vim.cmd.colorscheme("ayu")
+	-- vim.cmd.colorscheme("rose-pine")
 	-- vim.cmd.colorscheme("synthweave")
 	-- vim.cmd.colorscheme("synthweave-transparent")
-
-	-- require("cyberdream").setup({
-	-- 	-- Recommended - see "Configuring" below for more config options
-	-- 	transparent = true,
-	-- 	italic_comments = true,
-	-- 	hide_fillchars = true,
-	-- 	borderless_telescope = false,
-	-- 	terminal_colors = false,
-	-- })
-	--
-	-- vim.cmd("colorscheme cyberdream") -- set the colorscheme
 end
 
 return Plugin
