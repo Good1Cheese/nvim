@@ -5,6 +5,7 @@ Plugin.event = { "BufReadPre", "BufNewFile" }
 function Plugin.config()
 	-- local rec = require("recorder")
 
+	require("cyberdream").setup()
 	require("lualine").setup({
 		options = {
 			theme = "cyberdream",
