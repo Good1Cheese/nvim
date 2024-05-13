@@ -6,6 +6,7 @@ Plugin.dependencies = {
 	{ "williamboman/mason.nvim" },
 	{ "SmiteshP/nvim-navbuddy" },
 
+	{ "aznhe21/actions-preview.nvim" },
 	{ "L3MON4D3/LuaSnip" },
 	{ "hrsh7th/nvim-cmp" },
 }
@@ -13,6 +14,9 @@ Plugin.dependencies = {
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
 function Plugin.config()
+	-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+	-- require("neodev").setup({})
+
 	local lsp = require("lsp-zero")
 	lsp.extend_lspconfig()
 	lsp.preset("recommended")

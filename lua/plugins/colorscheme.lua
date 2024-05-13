@@ -4,8 +4,8 @@ Plugin.dependencies = {
 	-- { "olimorris/onedarkpro.nvim" },
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	-- { "samharju/synthweave.nvim" },
-	{ "scottmckendry/cyberdream.nvim" },
-	{ "rose-pine/neovim", name = "rose-pine" },
+	-- { "scottmckendry/cyberdream.nvim" },
+	-- { "rose-pine/neovim", name = "rose-pine" },
 }
 
 Plugin.priority = 1000

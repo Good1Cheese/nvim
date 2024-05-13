@@ -1,11 +1,11 @@
 local Plugins = {
 	{ "kyazdani42/nvim-web-devicons" },
-	{ "mbbill/undotree" },
 	{ "folke/neodev.nvim" },
 
-	-- Tool for async Lua
+	{ "scottmckendry/cyberdream.nvim", event = "VeryLazy" },
+	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "nvim-lua/plenary.nvim" },
-	{ "nvim-neotest/nvim-nio" },
+	-- { "nvim-neotest/nvim-nio" },
 }
 
 return Plugins

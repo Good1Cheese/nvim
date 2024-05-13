@@ -29,17 +29,9 @@ function Plugin.config()
 
 	which_key.OPTS = opts
 
-	local Terminal = require("toggleterm.terminal").Terminal
-	local fish = Terminal:new({ cmd = "fish", hidden = true })
-
-	local function toggleFish()
-		fish:toggle()
-	end
-
-	local mini = require("mini.files")
-	local function minifilesToggle()
-		if not mini.close() then mini.open() end
-	end
+	local t = require("toggleterm.terminal").Terminal
+	local fish = t:new({ cmd = "fish", hidden = true })
+	local oil = require("oil")
 
 	local mappings = {
 		["<cr>"] = { ":.!bash<cr>", "Execute in bash" },
@@ -48,7 +40,12 @@ function Plugin.config()
 		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
 		-- ["a"]  = { ":q<cr>", "Close window" },
 		["0"] = { ":LoadSession<cr>", "Load sessions" },
-		["t"] = { toggleFish, "Terminal" },
+		["t"] = {
+			function()
+				fish:toggle()
+			end,
+			"Terminal",
+		},
 		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
 		-- ["e"] = { ":Lf<cr>", "Explorer" },
 		["a"] = { ":Outline<cr>", "Code outlaw" },
@@ -56,28 +53,29 @@ function Plugin.config()
 		["L"] = { [[:LazyGit<cr>]], "Lazy Git" },
 		["r"] = { ":RORCommands<cr>", "Ruby on RAILS" },
 		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
-		["u"] = { ":UndotreeToggle<cr>", "Undotree" },
+		["u"] = { ":Telescope undo<cr>", "Undotree" },
 		['"'] = { ":%s/'/\"/g", "Replace all quotes" },
 		["!"] = { ":w<cr>:ReloadNIX<cr>", "Reload nix" },
 		["1"] = { ":SudaWrite<cr>", "Sudo save" },
 		["c"] = { ":RunFile<cr>", "RunFile" },
+		["C"] = { ":RunClose<cr>", "Close tests" },
 		-- ["<Tab>"] = { ":HarpoonList<cr>", "Harpoon" },
 
 		-- e = {
 		-- 	name = "browsers",
 		--	["e"] = { ":Neotree toggle right<cr>", "Explorer" },
 		-- },
-		["E"] = { ":lua require('oil').open()<cr>", "Explorer" },
-		["e"] = { minifilesToggle, "Explorer" },
+		["e"] = { oil.open, "Explorer" },
 
 		-- r = {
 		--     name = "Refactoring",
 		--     e = { ":Refactor extract_block" }
 		-- },
-		-- s = {
-		-- 	name = "Telescope",
-		-- 	c = { ":Telescope colorscheme<cr>", "Colorschemes" },
-		-- },
+
+		["9"] = {
+			name = "Stuff",
+			c = { ":Telescope colorscheme<cr>", "Colorschemes" },
+		},
 
 		["s"] = { ":Telescope live_grep <cr>", "Find Text" },
 		["f"] = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
@@ -131,6 +129,10 @@ function Plugin.config()
 
 	which_key.setup(setup)
 	which_key.register(mappings, which_key.OPTS)
+
+	which_key.register({
+		["s"] = { ":Silicon<cr>", "Make screenshot" },
+	}, { mode = "v" })
 end
 
 return Plugin

@@ -1,12 +1,11 @@
 return {
 	"weizheheng/ror.nvim",
-	event = "VeryLazy",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "stevearc/dressing.nvim" },
 		{ "MunifTanjim/nui.nvim" },
 	},
 	config = function()
-		-- The default settings
 		require("ror").setup({
 			test = {
 				message = {

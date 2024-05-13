@@ -5,11 +5,13 @@ Plugin.cmd = { "Telescope" }
 Plugin.dependencies = {
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ "nvim-lua/plenary.nvim" },
+	{ "debugloop/telescope-undo.nvim" },
 	--{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 }
 
 function Plugin.config()
 	local telecope = require("telescope")
+	local tsu = require("telescope-undo.actions")
 
 	telecope.setup({
 		defaults = {
@@ -81,6 +83,28 @@ function Plugin.config()
 				--	case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 				--	-- the default case_mode is "smart_case"
 				--},
+				undo = {
+					side_by_side = true,
+					layout_strategy = "vertical",
+					layout_config = {
+						preview_height = 0.8,
+					},
+					mappings = {
+						i = {
+							["<cr>"] = tsu.yank_additions,
+							["<S-cr>"] = tsu.yank_deletions,
+							["<C-cr>"] = tsu.restore,
+							-- alternative defaults, for users whose terminals do questionable things with modified <cr>
+							["<C-y>"] = tsu.yank_deletions,
+							["<C-r>"] = tsu.restore,
+						},
+						n = {
+							["y"] = tsu.yank_additions,
+							["Y"] = tsu.yank_deletions,
+							["u"] = tsu.restore,
+						},
+					},
+				},
 				aerial = {
 					-- Display symbols as <root>.<parent>.<symbol>
 					show_nesting = {
@@ -94,6 +118,7 @@ function Plugin.config()
 	})
 
 	--telecope.load_extension("fzf")
+	require("telescope").load_extension("undo")
 end
 
 return Plugin

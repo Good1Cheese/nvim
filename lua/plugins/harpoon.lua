@@ -1,7 +1,7 @@
 return {
 	"Good1Cheese/harpoon",
 	branch = "harpoon2",
-	event = "VeryLazy",
+	lazy = false,
 	config = function()
 		local harpoon = require("harpoon")
 

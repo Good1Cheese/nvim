@@ -1,7 +1,7 @@
 local Plugin = { "hinell/duplicate.nvim" }
 
 -- Plugin.cmd = { "VisualDuplicate", "LineDuplicate" }
-Plugin.event = "VeryLazy"
+Plugin.event = { "BufReadPre", "BufNewFile" }
 
 function Plugin.config()
 	vim.keymap.set({ "v" }, "<C-S-j>", ":VisualDuplicate +2<cr>")

@@ -1,13 +1,9 @@
 local Plugin = { "michaelrommel/nvim-silicon" }
 
-Plugin.lazy = false
+Plugin.cmd = "Silicon"
+-- Plugin.lazy = false
 
 function Plugin.config()
-	local wk = require("which-key")
-	wk.register({
-		["s"] = { ":Silicon<cr>", "Make screenshot" },
-	}, { mode = "v" })
-
 	require("silicon").setup({
 		font = "JetBrainsMono Nerd Font=35;Noto Color Emoji=34",
 		theme = "Coldark-Dark",
