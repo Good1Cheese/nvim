@@ -74,6 +74,9 @@ function Plugin.config()
 		lineFoldingOnly = true,
 	}
 
+	lspconfig.ruff.setup({})
+	lspconfig.pylsp.setup({})
+
 	lspconfig.bashls.setup({})
 	-- lspconfig.ruby_lsp.setup({})
 	lspconfig.clangd.setup({})
