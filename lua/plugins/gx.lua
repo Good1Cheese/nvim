@@ -6,7 +6,7 @@ return {
 	-- you can specify also another config if you want
 	config = function()
 		require("gx").setup({
-			open_browser_app = "firefox", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
+			open_browser_app = "librewolf", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
 			-- open_browser_args = { "--background" }, -- specify any arguments, such as --background for macOS' "open".
 			handlers = {
 				plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
