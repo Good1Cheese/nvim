@@ -28,10 +28,10 @@ function Plugin.config()
 	lsp.set_server_config({
 		on_init = function(client)
 			client.server_capabilities.semanticTokensProvider = nil
-			client.server_capabilities.textDocument.foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			}
+			-- client.server_capabilities.textDocument.foldingRange = {
+			-- 	dynamicRegistration = false,
+			-- 	lineFoldingOnly = true,
+			-- }
 		end,
 	})
 
@@ -79,7 +79,7 @@ function Plugin.config()
 
 	lspconfig.bashls.setup({})
 	-- lspconfig.ruby_lsp.setup({})
-	lspconfig.clangd.setup({})
+	-- lspconfig.clangd.setup({})
 	lspconfig.nil_ls.setup({})
 
 	lspconfig.solargraph.setup({
