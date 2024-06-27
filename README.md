@@ -7,6 +7,7 @@ JetBrainsNerd Font, Noto Color Emoji
 - ***ripgrep*** for telescope give_grep **(optional)**
 - ***fd*** for neotree fuzzy finder
 - ***silicon*** for awesome screenshots
+- ***xkbswitch*** for stuff
 
 ### BASH LSP:<br>
 ```
