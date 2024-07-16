@@ -7,6 +7,7 @@ Plugin.opts = {
 		lua = { "stylua" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
+		rb = { "solargraph" },
 		nix = { "nixfmt" }
 	},
 	-- format_on_save = {

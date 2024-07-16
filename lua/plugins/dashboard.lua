@@ -1,6 +1,6 @@
 local Plugin = { "MeanderingProgrammer/dashboard.nvim" }
 
-Plugin.event = "VimEnter"
+-- Plugin.event = "VimEnter"
 
 local art = {
 	"           .'\\   /`.          ",

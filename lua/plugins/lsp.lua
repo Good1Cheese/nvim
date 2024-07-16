@@ -74,12 +74,12 @@ function Plugin.config()
 		lineFoldingOnly = true,
 	}
 
-	lspconfig.ruff.setup({})
-	lspconfig.pylsp.setup({})
+	-- lspconfig.ruff.setup({})
+	-- lspconfig.pylsp.setup({})
 
 	lspconfig.bashls.setup({})
 	-- lspconfig.ruby_lsp.setup({})
-	-- lspconfig.clangd.setup({})
+	lspconfig.clangd.setup({})
 	lspconfig.nil_ls.setup({})
 
 	lspconfig.solargraph.setup({

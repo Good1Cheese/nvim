@@ -33,83 +33,69 @@ function Plugin.config()
 	local fish = t:new({ cmd = "fish", hidden = true })
 	local oil = require("oil")
 
-	local mappings = {
-		["<cr>"] = { ":.!bash<cr>", "Execute in bash" },
-		["p"] = { ":Lazy<cr>", "Plugin Manager" },
-		["q"] = { ":qall!<cr>", "Quit" },
-		-- ["1"] = { ":lua toggleTransparency()<cr>", "Toggle transparency" },
-		-- ["a"]  = { ":q<cr>", "Close window" },
-		["0"] = { ":LoadSession<cr>", "Load sessions" },
-		["t"] = {
-			function()
-				fish:toggle()
-			end,
-			"Terminal",
-		},
-		-- ["l"] = { ":lua toggleLF()<cr>", "LF" },
-		-- ["e"] = { ":Lf<cr>", "Explorer" },
-		["a"] = { ":Outline<cr>", "Code outlaw" },
-		["l"] = { [[:lua require("actions-preview").code_actions()<cr>]], "Code actions" },
-		["L"] = { [[:LazyGit<cr>]], "Lazy Git" },
-		["r"] = { ":RORCommands<cr>", "Ruby on RAILS" },
-		["m"] = { ":Mason<cr>", "Mason UI for Lsp" },
-		["u"] = { ":Telescope undo<cr>", "Undotree" },
-		['"'] = { ":%s/'/\"/g", "Replace all quotes" },
-		["!"] = { ":w<cr>:ReloadNIX<cr>", "Reload nix" },
-		["1"] = { ":SudaWrite<cr>", "Sudo save" },
-		["c"] = { ":RunFile<cr>", "RunFile" },
-		["C"] = { ":RunClose<cr>", "Close tests" },
-		-- ["<Tab>"] = { ":HarpoonList<cr>", "Harpoon" },
+	which_key.add({
+		{ "<leader>s", ":Silicon<cr>", desc = "Make screenshot", mode = "v" },
 
-		-- e = {
-		-- 	name = "browsers",
-		--	["e"] = { ":Neotree toggle right<cr>", "Explorer" },
+		{ "<leader>m", ":Mason<cr>", desc = "Mason", hidden = true},
+		{ "<leader>p", ":Lazy<cr>", desc = "Lazy", hidden = true },
+		{ "<leader>C", ":RunClose<cr>", desc = "Close tests", hidden = true },
+		{ "<leader>e", oil.open, desc = "Explorer", hidden = true },
+		{ "<leader>u", ":lua require('undotree').toggle()<cr>", desc = "Undotree", hidden = true },
+
+		{ "<leader>q", ":qall!<cr>", desc = "Quit" },
+		{ "<leader>0", ":LoadSession<cr>", desc = "Session" },
+		{ "<leader>t", function() fish:toggle() end, desc = "Terminal", },
+
+		{ "<leader>a", ":Outline<cr>", desc = "Code outlaw" },
+		{ "<leader>l", [[:lua require("actions-preview").code_actions()<cr>]], desc = "Code actions" },
+		{ "<leader>L", ":LazyGit<cr>", desc = "Lazy Git" },
+		{ "<leader>c", ":RunFile<cr>", desc = "RunFile" },
+
+		{ "<leader>s", ":Telescope live_grep<cr>", desc = "FindT" },
+		{ "<leader>f", ":Telescope find_files<cr>", desc = "FindF" },
+		{ "<leader>S", ":Telescope resume<cr>", desc = "Find prev" },
+
+		{ "<leader>r", group = "Refactoring" },
+		{ "<leader>re", ":Refactor extract_block" },
+
+		{ "<leader>9", group = "Stuff" },
+		{ '<leader>9"', ":%s/'/\"/g", desc = "Replace all quotes" },
+		{ "<leader>9!", ":w<cr>:ReloadNIX<cr>", desc = "Reload nix" },
+		{ "<leader>9c", ":Telescope colorscheme<cr>", desc = "Colorschemes" },
+		{ "<leader>9s", ":SudaWrite<cr>", desc = "Sudo save" },
+		{ "<leader>9<cr>", ":.!bash<cr>", desc = "Execute in bash" },
+		{ "<leader>9t", ":lua toggleTransparency()<cr>", desc = "Toggle transparency" },
+		{ "<leader>9r", ":RORCommands<cr>", desc = "Ruby on RAILS" },
+
+		-- d = {
+		-- 	name = "Debug",
+		-- 	{ "d", ":DapUIToggle", desc = "Toggle" },
+		-- 	{ "s", ":DapUIReset", "Reset windows" },
+		-- 	{ "a", ":DapContinue<cr>", "Continue" },
+		-- 	{ "f", ":DapTerminate<cr>", "Terminate" },
+		-- 	{ "h", ":DapToggleBreakpoint<cr>", "BreakPoint" },
+		-- 	{ "l", ":DapStepOver<cr>", "Step over" },
+		-- 	{ "k", ":DapStepInto<cr>", "Step into" },
+		-- 	{ "j", ":DapStepOut<cr>", "Step out" },
 		-- },
-		["e"] = { oil.open, "Explorer" },
-
-		-- r = {
-		--     name = "Refactoring",
-		--     e = { ":Refactor extract_block" }
+		--
+		-- h = {
+		-- 	name = "GitSigns",
+		-- 	s = { ":DapUIToggle", "Toggle" },
 		-- },
 
-		["9"] = {
-			name = "Stuff",
-			c = { ":Telescope colorscheme<cr>", "Colorschemes" },
-		},
-
-		["s"] = { ":Telescope live_grep <cr>", "Find Text" },
-		["f"] = { ":lua require('telescope.builtin').find_files()<cr>", "Find files" },
-		-- ["S"] = { ":lua require('telescope.builtin').resume()<cr>", "Find prev" },
-
-		d = {
-			name = "Debug",
-			d = { ":DapUIToggle", "Toggle" },
-			s = { ":DapUIReset", "Reset windows" },
-			a = { ":DapContinue<cr>", "Continue" },
-			f = { ":DapTerminate<cr>", "Terminate" },
-			h = { ":DapToggleBreakpoint<cr>", "BreakPoint" },
-			l = { ":DapStepOver<cr>", "Step over" },
-			k = { ":DapStepInto<cr>", "Step into" },
-			j = { ":DapStepOut<cr>", "Step out" },
-		},
-
-		h = {
-			name = "GitSigns",
-			s = { ":DapUIToggle", "Toggle" },
-		},
-
-		-- LSP
-		n = {
-			name = "LSP",
-			a = { ":lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-			i = { ":LspInfo<cr>", "Info" },
-			l = { ":lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-			s = { ":Telescope lsp_document_symbols<cr>", "Document Symbols" },
-			S = {
-				":Telescope lsp_dynamic_workspace_symbols<cr>",
-				"Workspace Symbols",
-			},
-		},
+		-- -- LSP
+		-- n = {
+		-- 	name = "LSP",
+		-- 	a = { ":lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		-- 	i = { ":LspInfo<cr>", "Info" },
+		-- 	l = { ":lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+		-- 	s = { ":Telescope lsp_document_symbols<cr>", "Document Symbols" },
+		-- 	S = {
+		-- 		":Telescope lsp_dynamic_workspace_symbols<cr>",
+		-- 		"Workspace Symbols",
+		-- 	},
+		-- },
 		-- lsp.on_attach(function(client, bufnr)
 		--     local opts = { buffer = bufnr, remap = false }
 		--
@@ -125,14 +111,7 @@ function Plugin.config()
 		--     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 		-- end)
 		--
-	}
-
-	which_key.setup(setup)
-	which_key.register(mappings, which_key.OPTS)
-
-	which_key.register({
-		["s"] = { ":Silicon<cr>", "Make screenshot" },
-	}, { mode = "v" })
+	})
 end
 
 return Plugin

@@ -1,12 +1,12 @@
 local Plugin = { "Shatur/neovim-ayu" }
 
 Plugin.dependencies = {
-	{ "olimorris/onedarkpro.nvim" },
-	{ "arturgoms/moonbow.nvim" },
-	{ "nyoom-engineering/oxocarbon.nvim" },
-	{ "samharju/synthweave.nvim" },
+	-- { "olimorris/onedarkpro.nvim" },
+	-- { "arturgoms/moonbow.nvim" },
+	-- { "nyoom-engineering/oxocarbon.nvim" },
+	-- { "samharju/synthweave.nvim" },
 	{ "scottmckendry/cyberdream.nvim" },
-	{ "rose-pine/neovim", name = "rose-pine" },
+	-- { "rose-pine/neovim", name = "rose-pine" },
 }
 
 Plugin.priority = 1000

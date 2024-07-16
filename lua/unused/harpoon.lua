@@ -32,25 +32,6 @@ function Plugin.config()
 			})
 			:find()
 	end
-
-	local wk = require("which-key")
-	wk.register({
-		f = {
-			name = "Harpoon",
-			f = {
-				function()
-					toggle_telescope(harpoon:list())
-				end,
-				"List",
-			},
-			a = {
-				function()
-					harpoon:list():add()
-				end,
-				"Add",
-			},
-		},
-	}, wk.OPTS)
 end
 
 -- vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)

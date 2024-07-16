@@ -15,11 +15,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = { "*.erb", "*.eruby" },
-	command = "set syntax=html",
-})
-
 -- vim.api.nvim_create_autocmd("FocusGained", {
 -- 	pattern = "*",
 -- 	group = group,

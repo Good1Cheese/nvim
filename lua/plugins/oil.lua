@@ -1,6 +1,7 @@
 return {
 	"stevearc/oil.nvim",
-	lazy = false,
+	-- lazy = false,
+	event = "VimEnter",
 	config = function()
 		require("oil").setup({
 			columns = {
@@ -9,7 +10,7 @@ return {
 				-- "size",
 				-- "mtime",
 			},
-			default_file_explorer = false,
+			default_file_explorer = true,
 			delete_to_trash = false,
 			-- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
 			skip_confirm_for_simple_edits = true,
@@ -35,6 +36,7 @@ return {
 				["<C-v>"] = "actions.select_split",
 				["<C-t>"] = "actions.select_tab",
 				["<C-p>"] = "actions.preview",
+				["<C-s>"] = "none",
 				["q"] = "actions.close",
 				["<S-r>"] = "actions.refresh",
 				["h"] = "actions.parent",
