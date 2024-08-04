@@ -8,5 +8,3 @@ load("user.options")
 load("user.commands")
 
 require("user.plugins")
-
--- vim.cmd("Oil")

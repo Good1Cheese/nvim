@@ -1,9 +1,10 @@
 local Plugin = { "nvim-lualine/lualine.nvim" }
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
+Plugin.dependencies = { "ecthelionvi/NeoComposer.nvim" }
 
 function Plugin.config()
-	-- local rec = require("recorder")
+	local rec = require("NeoComposer.ui")
 
 	require("cyberdream").setup()
 	require("lualine").setup({
@@ -19,7 +20,7 @@ function Plugin.config()
 		sections = {
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff", "diagnostics" },
-			lualine_c = { "filename", --[[rec.displaySlots, rec.recordingStatus]] },
+			lualine_c = { "filename", rec.status_recording },
 			lualine_x = { "encoding", "fileformat", "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
