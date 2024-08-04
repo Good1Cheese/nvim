@@ -58,6 +58,12 @@ function Plugin.config()
 		{ "<leader>r", group = "Refactoring" },
 		{ "<leader>re", ":Refactor extract_block" },
 
+		{ "<leader>I", ":UITest<cr>" },
+		{ "<leader>i", group = "Plugin" },
+		{ "<leader>ie", ":UpdateRemotePlugins<cr>" },
+		{ "<leader>ir", ":messages<cr>" },
+		{ "<leader>ig", ":FetchKata<cr>" },
+
 		{ "<leader>9", group = "Stuff" },
 		{ '<leader>9"', ":%s/'/\"/g", desc = "Replace all quotes" },
 		{ "<leader>9!", ":w<cr>:ReloadNIX<cr>", desc = "Reload nix" },

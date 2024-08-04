@@ -9,4 +9,4 @@ load("user.commands")
 
 require("user.plugins")
 
-vim.cmd("Oil")
+-- vim.cmd("Oil")

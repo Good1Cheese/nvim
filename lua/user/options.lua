@@ -70,6 +70,6 @@ opt.whichwrap:append("<>[]hl")
 vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
 
 -- disable some default providers
-for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
+for _, provider in ipairs({ "node", "perl", "python3", --[[ "ruby" ]] }) do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
