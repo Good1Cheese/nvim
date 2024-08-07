@@ -1,90 +1,22 @@
-local Plugin = { "VonHeikemen/lsp-zero.nvim" }
+local Plugin = { "neovim/nvim-lspconfig" }
 
-Plugin.dependencies = {
-	{ "neovim/nvim-lspconfig" },
-	{ "williamboman/mason-lspconfig.nvim" },
-	{ "williamboman/mason.nvim" },
-	{ "SmiteshP/nvim-navbuddy" },
-
-	{ "aznhe21/actions-preview.nvim" },
-	{ "L3MON4D3/LuaSnip" },
-	{ "hrsh7th/nvim-cmp" },
-}
-
-Plugin.event = { "BufReadPre", "BufNewFile" }
-
-function Plugin.config()
-	-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-	-- require("neodev").setup({})
-
-	local lsp = require("lsp-zero")
-	lsp.extend_lspconfig()
-	lsp.preset("recommended")
-
-	lsp.on_attach(function(client, bufnr)
-		lsp.default_keymaps({ buffer = bufnr })
-	end)
-
-	lsp.set_server_config({
-		on_init = function(client)
-			client.server_capabilities.semanticTokensProvider = nil
-			-- client.server_capabilities.textDocument.foldingRange = {
-			-- 	dynamicRegistration = false,
-			-- 	lineFoldingOnly = true,
-			-- }
-		end,
-	})
-
-	lsp.setup()
-
-	local function lspSymbol(name, icon)
-		local hl = "DiagnosticSign" .. name
-		vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-	end
-
-	lspSymbol("Error", "󰅙")
-	lspSymbol("Info", "󰋼")
-	lspSymbol("Hint", "󰌵")
-	lspSymbol("Warn", "")
-
-	vim.diagnostic.config({
-		virtual_text = {
-			prefix = "",
-		},
-		signs = true,
-		underline = true,
-		update_in_insert = false,
-	})
-
-	--  LspInfo window borders
-	local win = require("lspconfig.ui.windows")
-	local _default_opts = win.default_opts
-
-	win.default_opts = function(options)
-		local opts = _default_opts(options)
-		opts.border = "single"
-		return opts
-	end
-
-	local lspconfig = require("lspconfig")
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
-
+function Plugin:lsps()
 	-- lspconfig.ruff.setup({})
 	-- lspconfig.pylsp.setup({})
-
-	lspconfig.bashls.setup({})
 	-- lspconfig.ruby_lsp.setup({})
-	lspconfig.clangd.setup({})
-	lspconfig.nil_ls.setup({})
 
-	lspconfig.solargraph.setup({
+	self.lspcfg.bashls.setup({})
+	self.lspcfg.clangd.setup({})
+	self.lspcfg.nil_ls.setup({})
+
+	self:luals()
+	self:solargraph()
+end
+
+function Plugin:solargraph()
+	self.lspcfg.solargraph.setup({
 		-- on_attach = M.on_attach,
-		capabilities,
+		self.cap,
 		filetypes = { "ruby", "eruby" },
 		settings = {
 			solargraph = {
@@ -101,9 +33,11 @@ function Plugin.config()
 			},
 		},
 	})
+end
 
-	lspconfig.lua_ls.setup({
-		capabilities = capabilities,
+function Plugin:luals()
+	self.lspcfg.lua_ls.setup({
+		capabilities = self.cap,
 		completion = {
 			callSnippet = "Replace",
 		},
@@ -132,6 +66,41 @@ function Plugin.config()
 			},
 		},
 	})
+end
+
+Plugin.dependencies = {
+	{ "VonHeikemen/lsp-zero.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
+	{ "williamboman/mason.nvim" },
+	{ "SmiteshP/nvim-navbuddy" },
+
+	{ "aznhe21/actions-preview.nvim" },
+	{ "L3MON4D3/LuaSnip" },
+	{ "hrsh7th/nvim-cmp" },
+}
+
+Plugin.event = { "BufReadPre", "BufNewFile" }
+
+function Plugin.config()
+	--  LspInfo window borders
+	local win = require("lspconfig.ui.windows")
+	local _default_opts = win.default_opts
+
+	win.default_opts = function(options)
+		local opts = _default_opts(options)
+		opts.border = "single"
+		return opts
+	end
+
+	Plugin.lspcfg = require("lspconfig")
+	Plugin.cap = require("cmp_nvim_lsp").default_capabilities()
+
+	Plugin.cap.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
+
+	Plugin:lsps()
 end
 
 return Plugin
