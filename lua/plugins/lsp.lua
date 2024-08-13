@@ -6,6 +6,7 @@ function Plugin:lsps()
 	-- lspconfig.ruby_lsp.setup({})
 
 	self.lspcfg.bashls.setup({})
+	self.lspcfg.asm_lsp.setup({})
 	self.lspcfg.clangd.setup({})
 	self.lspcfg.nil_ls.setup({})
 
