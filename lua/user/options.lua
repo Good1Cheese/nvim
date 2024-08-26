@@ -35,12 +35,12 @@ opt.timeout = true
 opt.timeoutlen = 100
 
 -- Tab
-opt.tabstop = 4 -- number of visual spaces per TAB
-opt.softtabstop = 4 -- number of spacesin tab when editing
-opt.shiftwidth = 4 -- insert 4 spaces on a tab
 opt.expandtab = false -- tabs are spaces, mainly because of python
+opt.shiftwidth = 4 -- insert 4 spaces on a tab
+opt.tabstop = 4 -- number of visual spaces per TAB
 opt.breakindent = true
 opt.smartindent = true
+opt.smarttab = true
 
 -- opt.pumheigth = 10
 
