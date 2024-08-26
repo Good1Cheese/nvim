@@ -1,7 +1,7 @@
 local Plugin = { "CRAG666/code_runner.nvim" }
 
 Plugin.filetypes = {
-	nix = "nix-instantiate --eval $fileName",
+	nix = "nix-instantiate --eval --strict $fileName",
 	lua = "cd $dir && lua $fileName",
 	rb = "cd $dir && ruby $fileName",
 	cpp = {
