@@ -1,10 +1,6 @@
 local Plugin = { "neovim/nvim-lspconfig" }
 
 function Plugin:lsps()
-	-- lspconfig.ruff.setup({})
-	-- lspconfig.pylsp.setup({})
-	-- lspconfig.ruby_lsp.setup({})
-
 	self.lspcfg.bashls.setup({})
 	self.lspcfg.asm_lsp.setup({})
 	self.lspcfg.clangd.setup({})

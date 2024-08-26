@@ -1,5 +1,50 @@
 local Plugin = { "CRAG666/code_runner.nvim" }
 
+Plugin.filetypes = {
+	nix = "nix-instantiate --eval $fileName",
+	lua = "cd $dir && lua $fileName",
+	rb = "cd $dir && ruby $fileName",
+	cpp = {
+		"cd $dir &&",
+		"g++ $fileName",
+		"-o /tmp/$fileNameWithoutExt &&",
+		"/tmp/$fileNameWithoutExt",
+	},
+	c = function()
+		local file = vim.fn.expand("%")
+		if string.find(file, "*disas") then
+			return {
+				"cd $dir &&",
+				"gcc $fileName",
+				"-o $fileNameWithoutExt",
+			}
+		end
+
+		if string.find(file, "solution") then
+			return {
+				"cd $dir &&",
+				"gcc -std=c18 -lcriterion",
+				"tests.c solution.c",
+				"-o /tmp/tests &&",
+				"/tmp/tests",
+			}
+		end
+
+		return {
+			"cd $dir &&",
+			"gcc $fileName",
+			"-o /tmp/$fileNameWithoutExt &&",
+			"/tmp/$fileNameWithoutExt",
+		}
+	end,
+	asm = {
+		"cd $dir &&",
+		"nasm -f elf64 $fileName -o /tmp/$fileNameWithoutExt.o &&",
+		"ld -s -o /tmp/$fileNameWithoutExt /tmp/$fileNameWithoutExt.o &&",
+		"/tmp/$fileNameWithoutExt",
+	},
+}
+
 Plugin.cmd = "RunFile"
 
 Plugin.opts = {
@@ -23,49 +68,7 @@ Plugin.opts = {
 		-- Transparency (see ':h winblend')
 		blend = 0,
 	},
-	filetype = {
-		cpp = {
-			"cd $dir &&",
-			"g++ $fileName",
-			"-o /tmp/$fileNameWithoutExt &&",
-			"/tmp/$fileNameWithoutExt",
-		},
-		c = function()
-			local file = vim.fn.expand("%")
-			if string.find(file, "*dism") then
-				return {
-					"cd $dir &&",
-					"gcc $fileName",
-					"-o $fileNameWithoutExt",
-				}
-			end
-
-			if string.find(file, "tests") then
-				return {
-					"cd $dir &&",
-					"gcc -std=c18 -Wall -Wextra -lcriterion",
-					"$fileName solution.c",
-					"-o /tmp/$fileNameWithoutExt &&",
-					"/tmp/$fileNameWithoutExt",
-				}
-			end
-
-			return {
-				"cd $dir &&",
-				"gcc $fileName",
-				"-o /tmp/$fileNameWithoutExt &&",
-				"/tmp/$fileNameWithoutExt",
-			}
-		end,
-		asm = {
-			"cd $dir &&",
-			"nasm -f elf64 $fileName -o /tmp/$fileNameWithoutExt.o &&",
-			"ld -s -o /tmp/$fileNameWithoutExt /tmp/$fileNameWithoutExt.o &&",
-			"/tmp/$fileNameWithoutExt",
-		},
-		lua = "cd $dir && lua $fileName",
-		rb = "cd $dir && ruby $fileName",
-	},
+	filetype = Plugin.filetypes,
 }
 
 return Plugin
