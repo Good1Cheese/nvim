@@ -1,44 +1,23 @@
 local Plugin = { "VonHeikemen/lsp-zero.nvim" }
 
 function Plugin.config()
-	local lsp = require("lsp-zero")
-	lsp.extend_lspconfig()
-	lsp.preset("recommended")
+	local lsp_zero = require("lsp-zero")
+	lsp_zero.extend_lspconfig()
 
-	lsp.on_attach(function(client, bufnr)
-		lsp.default_keymaps({ buffer = bufnr })
-	end)
-
-	lsp.set_server_config({
-		on_init = function(client)
-			client.server_capabilities.semanticTokensProvider = nil
-			-- client.server_capabilities.textDocument.foldingRange = {
-			-- 	dynamicRegistration = false,
-			-- 	lineFoldingOnly = true,
-			-- }
-		end,
-	})
-
-	lsp.setup()
-
-	local function lspSymbol(name, icon)
-		local hl = "DiagnosticSign" .. name
-		vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+	local lsp_attach = function(client, bufnr)
+		-- see :help lsp-zero-keybindings
+		-- to learn the available actions
+		lsp_zero.default_keymaps({ buffer = bufnr })
 	end
 
-	lspSymbol("Error", "󰅙")
-	lspSymbol("Info", "󰋼")
-	lspSymbol("Hint", "󰌵")
-	lspSymbol("Warn", "")
-
-	vim.diagnostic.config({
-		virtual_text = {
-			prefix = "",
-		},
-		signs = true,
-		underline = true,
-		update_in_insert = false,
+	lsp_zero.extend_lspconfig({
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		lsp_attach = lsp_attach,
+		float_border = "rounded",
+		sign_text = true,
 	})
+
+	lsp_zero.setup()
 end
 
 return Plugin

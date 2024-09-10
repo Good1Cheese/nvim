@@ -31,6 +31,9 @@ function Plugin.config()
 	end
 
 	cmp.setup({
+		sources = {
+			{ name = "nvim_lsp" },
+		},
 		window = {
 			completion = {
 				-- border = border("CmpDocBorder"),
@@ -58,6 +61,7 @@ function Plugin.config()
 			keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
 			keyword_length = 1,
 		},
+		-- mapping = cmp.mapping.preset.insert({}),
 		mapping = {
 			["<C-p>"] = cmp.mapping.select_prev_item(),
 			["<C-n>"] = cmp.mapping.select_next_item(),

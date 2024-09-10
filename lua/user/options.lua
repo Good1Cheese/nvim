@@ -24,7 +24,7 @@ opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
 opt.spelllang = { "en" }
 
 -- Folds
-vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
@@ -70,6 +70,29 @@ opt.whichwrap:append("<>[]hl")
 vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
 
 -- disable some default providers
-for _, provider in ipairs({ "node", "perl", "python3", --[[ "ruby" ]] }) do
+for _, provider in ipairs({
+	"node",
+	"perl",
+	"python3", --[[ "ruby" ]]
+}) do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
+
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "",
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+})
+
+local function lspSymbol(name, icon)
+	local hl = "DiagnosticSign" .. name
+	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+end
+
+lspSymbol("Error", "󰅙")
+lspSymbol("Info", "󰋼")
+lspSymbol("Hint", "󰌵")
+lspSymbol("Warn", "")
