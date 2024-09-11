@@ -5,6 +5,8 @@ function Plugin:lsps()
 	self.lspcfg.asm_lsp.setup({})
 	self.lspcfg.clangd.setup({})
 	self.lspcfg.nil_ls.setup({})
+	self.lspcfg.gdscript.setup({})
+	self.lspcfg.pylsp.setup({})
 
 	self:luals()
 	self:solargraph()
@@ -40,9 +42,7 @@ function Plugin:luals()
 		},
 		settings = {
 			Lua = {
-				telemetry = {
-					enable = false,
-				},
+				telemetry = { enable = false },
 				workspace = {
 					checkThirdParty = false,
 					library = {

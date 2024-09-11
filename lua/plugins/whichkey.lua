@@ -31,10 +31,12 @@ function Plugin.config()
 
 	local t = require("toggleterm.terminal").Terminal
 	local fish = t:new({ cmd = "fish", hidden = true })
+	local upt = t:new({ cmd = "fish -c 'nflake'", hidden = false })
 	local oil = require("oil")
 
 	which_key.add({
 		{ "<leader>s", ":Silicon<cr>", desc = "Make screenshot", mode = "v" },
+		{ "<leader>!", function() upt:toggle() end, desc = "Update", },
 
 		{ "<leader>m", ":Mason<cr>", desc = "Mason", hidden = true},
 		{ "<leader>p", ":Lazy<cr>", desc = "Lazy", hidden = true },

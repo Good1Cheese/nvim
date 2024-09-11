@@ -13,6 +13,7 @@ Plugin.event = "InsertEnter"
 
 function Plugin.config()
 	local cmp = require("cmp")
+	local luasnip = require("luasnip")
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -33,6 +34,7 @@ function Plugin.config()
 	cmp.setup({
 		sources = {
 			{ name = "nvim_lsp" },
+			{ name = "luasnip" },
 		},
 		window = {
 			completion = {
@@ -50,7 +52,7 @@ function Plugin.config()
 		},
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+				luasnip.lsp_expand(args.body)
 			end,
 		},
 		completion = {
@@ -77,11 +79,8 @@ function Plugin.config()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
-				elseif require("luasnip").expand_or_jumpable() then
-					vim.fn.feedkeys(
-						vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-						""
-					)
+				elseif luasnip.expand_or_jumpable() then
+					luasnip.expand_or_jump()
 				else
 					fallback()
 				end
@@ -89,8 +88,8 @@ function Plugin.config()
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
-				elseif require("luasnip").jumpable(-1) then
-					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+				elseif luasnip.jumpable(-1) then
+					luasnip.jump(-1)
 				else
 					fallback()
 				end
