@@ -1,70 +1,5 @@
 local Plugin = { "neovim/nvim-lspconfig" }
 
-function Plugin:lsps()
-	self.lspcfg.bashls.setup({})
-	self.lspcfg.asm_lsp.setup({})
-	self.lspcfg.clangd.setup({})
-	self.lspcfg.nil_ls.setup({})
-	self.lspcfg.gdscript.setup({})
-	self.lspcfg.pylsp.setup({})
-
-	self:luals()
-	self:solargraph()
-end
-
-function Plugin:solargraph()
-	self.lspcfg.solargraph.setup({
-		-- on_attach = M.on_attach,
-		self.cap,
-		filetypes = { "ruby", "eruby" },
-		settings = {
-			solargraph = {
-				useBundler = true,
-				diagnostic = true,
-				completion = true,
-				hover = true,
-				formatting = true,
-				symbols = true,
-				definitions = true,
-				rename = true,
-				references = true,
-				folding = true,
-			},
-		},
-	})
-end
-
-function Plugin:luals()
-	self.lspcfg.lua_ls.setup({
-		capabilities = self.cap,
-		completion = {
-			callSnippet = "Replace",
-		},
-		settings = {
-			Lua = {
-				telemetry = { enable = false },
-				workspace = {
-					checkThirdParty = false,
-					library = {
-						-- Make the server aware of Neovim runtime files
-						vim.fn.expand("$VIMRUNTIME/lua"),
-						vim.fn.stdpath("config") .. "/lua",
-						"~/.local/state/Lua_Addonds/garrysmode",
-					},
-				},
-				runtime = {
-					version = "Lua 5.1",
-					nonstandardSymbol = { "!", "!=", "&&", "||", "//", "/**/", "continue" },
-				},
-				diagnostics = {
-					globals = { "vim" },
-					disable = { "duplicate-set-field" },
-				},
-			},
-		},
-	})
-end
-
 Plugin.dependencies = {
 	{ "VonHeikemen/lsp-zero.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
@@ -89,15 +24,52 @@ function Plugin.config()
 		return opts
 	end
 
-	Plugin.lspcfg = require("lspconfig")
-	Plugin.cap = require("cmp_nvim_lsp").default_capabilities()
+	Plugin.refactor()
+end
 
-	Plugin.cap.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
+function Plugin.refactor()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+	local servers = {
+		bashls = {},
+		asm_lsp = {},
+		clangd = {},
+		nil_ls = {},
+		gdscript = {},
+		pylsp = {},
+		solargraph = {},
+
+		lua_ls = {
+			completion = {
+				callSnippet = "Replace",
+			},
+			settings = {
+				Lua = {
+					telemetry = { enable = false },
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							-- Make the server aware of Neovim runtime files
+							vim.fn.expand("$VIMRUNTIME/lua"),
+							vim.fn.stdpath("config") .. "/lua",
+						},
+					},
+					diagnostics = {
+						globals = { "vim" },
+						disable = { "duplicate-set-field" },
+					},
+				},
+			},
+		},
 	}
 
-	Plugin:lsps()
+	for server, opts in pairs(servers) do
+		require("lspconfig")[server].setup({
+			capabilities = capabilities,
+			settings = opts,
+		})
+	end
 end
 
 return Plugin
