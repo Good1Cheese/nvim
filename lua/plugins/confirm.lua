@@ -8,18 +8,20 @@ Plugin.opts = {
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
 		rb = { "solargraph" },
-		nix = { "nixfmt" }
+		nix = { "nixfmt" },
+		gdscript = { "gdformat" },
 	},
-	-- format_on_save = {
-	-- 	lsp_fallback = true,
-	-- 	async = false,
-	-- 	timeout_ms = 1000,
-	-- },
 }
 
 Plugin.formatters = {
-	command = "clang-format",
-	args = { "--style=file:/home/cheese/.clang-format" },
+	["clang-format"] = {
+		command = "clang-format",
+		args = { "--style=file:/home/cheese/.clang-format" },
+	},
+	gdformat = {
+		cmd = "gdformat",
+		args = "--fast",
+	},
 }
 
 return Plugin
