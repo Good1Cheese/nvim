@@ -40,6 +40,9 @@ function Plugin.refactor()
 		pylsp = {},
 		solargraph = {},
 
+		-- VS https://github.com/mfussenegger/nvim-jdtls
+		jdtls = {},
+
 		lua_ls = {
 			completion = {
 				callSnippet = "Replace",
