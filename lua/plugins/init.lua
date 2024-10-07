@@ -5,7 +5,7 @@ local Plugins = {
 	{ "scottmckendry/cyberdream.nvim" },
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{ "nvim-lua/plenary.nvim" },
-	-- { "nvim-neotest/nvim-nio" },
+	{ "nvim-neotest/nvim-nio" },
 }
 
 return Plugins

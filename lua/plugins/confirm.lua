@@ -4,6 +4,7 @@ Plugin.event = { "BufReadPre", "BufNewFile" }
 
 Plugin.opts = {
 	formatters_by_ft = {
+		python = { "ruff_format" },
 		lua = { "stylua" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
@@ -21,6 +22,10 @@ Plugin.formatters = {
 	gdformat = {
 		cmd = "gdformat",
 		args = "--fast",
+	},
+	["ruff-format"] = {
+		command = "ruff",
+		args = { "format", "$FILENAME" },
 	},
 }
 

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+set -o xtrace
+
+exec 10> /home/cheese/.config/nvim/nvim-godot/test.txt
+export BASH_XTRACEFD=10
+
 # CHANGE IF NEEDED: 
 # - replace with your Terminal Emulator executable
 term_exec="foot"
