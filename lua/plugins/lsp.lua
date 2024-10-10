@@ -39,6 +39,17 @@ function Plugin.refactor()
 		gdscript = {},
 		pylsp = {},
 		solargraph = {},
+		dockerls = {
+			settings = {
+				docker = {
+					languageserver = {
+						formatter = {
+							ignoreMultilineInstructions = true,
+						},
+					},
+				},
+			},
+		},
 
 		-- -- VS https://github.com/mfussenegger/nvim-jdtls
 		jdtls = {},
