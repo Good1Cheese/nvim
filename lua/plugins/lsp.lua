@@ -52,44 +52,40 @@ function Plugin.refactor()
 			},
 		},
 
-		-- -- VS https://github.com/mfussenegger/nvim-jdtls
+		-- VS https://github.com/mfussenegger/nvim-jdtls
 		jdtls = {},
-
-		lua_ls = {
-			completion = {
-				callSnippet = "Replace",
-			},
-			settings = {
-				Lua = {
-					telemetry = { enable = false },
-					workspace = {
-						checkThirdParty = false,
-						library = {
-							-- Make the server aware of Neovim runtime files
-							vim.fn.expand("$VIMRUNTIME/lua"),
-							vim.fn.stdpath("config") .. "/lua",
-							vim.fn.expand("$HOME/.local/state/Lua_Addonds/garrysmode"),
-						},
-					},
-					diagnostics = {
-						globals = { "vim" },
-						disable = { "duplicate-set-field" },
-					},
-					runtime = {
-						version = "Lua 5.1",
-						nonstandardSymbol = { "!", "!=", "&&", "||", "//", "/**/", "continue" },
-					},
-				},
-			},
-		},
 	}
 
+	local lspconfig = require("lspconfig")
+
 	for server, opts in pairs(servers) do
-		require("lspconfig")[server].setup({
+		lspconfig[server].setup({
 			capabilities = capabilities,
 			settings = opts,
 		})
 	end
+
+	lspconfig.lua_ls.setup({
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+					disable = { "duplicate-set-field" },
+				},
+				runtime = {
+					version = "Lua 5.1",
+					nonstandardSymbol = { "!", "!=", "&&", "||", "//", "/**/", "continue" },
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+						vim.fn.expand("$HOME/.local/state/LLS-Addons/addons/garrysmod/module/library"),
+					},
+				},
+			},
+		},
+	})
 end
 
 return Plugin
