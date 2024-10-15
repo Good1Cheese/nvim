@@ -4,6 +4,7 @@ Plugin.filetypes = {
 	nix = "nix-instantiate --eval --strict $fileName",
 	lua = "cd $dir && lua $fileName",
 	rb = "cd $dir && ruby $fileName",
+	cs = "dotnet run --project $dir",
 	cpp = {
 		"cd $dir &&",
 		"g++ $fileName",

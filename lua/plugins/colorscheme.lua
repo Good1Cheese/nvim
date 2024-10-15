@@ -15,8 +15,8 @@ Plugin.lazy = false
 
 function Plugin.config()
 	-- vim.opt.background = "dark"
-	-- vim.cmd.colorscheme("ayu")
-	vim.cmd.colorscheme("tenebra")
+	vim.cmd.colorscheme("ayu")
+	-- vim.cmd.colorscheme("tenebra")
 
 	-- vim.cmd.colorscheme("oxocarbon")
 	-- vim.cmd.colorscheme("rose-pine")

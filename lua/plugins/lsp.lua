@@ -37,6 +37,7 @@ function Plugin.refactor()
 		clangd = {},
 		nil_ls = {},
 		gdscript = {},
+		omnisharp = {},
 		pylsp = {},
 		solargraph = {},
 		dockerls = {
@@ -67,11 +68,16 @@ function Plugin.refactor()
 							-- Make the server aware of Neovim runtime files
 							vim.fn.expand("$VIMRUNTIME/lua"),
 							vim.fn.stdpath("config") .. "/lua",
+							vim.fn.expand("$HOME/.local/state/Lua_Addonds/garrysmode"),
 						},
 					},
 					diagnostics = {
 						globals = { "vim" },
 						disable = { "duplicate-set-field" },
+					},
+					runtime = {
+						version = "Lua 5.1",
+						nonstandardSymbol = { "!", "!=", "&&", "||", "//", "/**/", "continue" },
 					},
 				},
 			},
