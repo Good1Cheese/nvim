@@ -18,17 +18,8 @@ function Plugin.refactor()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
     local servers = {
-        bashls = {},
-        asm_lsp = {},
-        clangd = {},
-        nil_ls = {},
-        gdscript = {},
-        omnisharp = {},
-        pylsp = {},
-        -- VS https://github.com/mfussenegger/nvim-jdtls
-        -- jdtls = {},
-        solargraph = {},
         dockerls = {
+            capabilities = capabilities,
             settings = {
                 docker = {
                     languageserver = {
@@ -37,46 +28,51 @@ function Plugin.refactor()
                 }
             }
         },
-
-    }
-
-    local lspconfig = require("lspconfig")
-
-    for server, opts in pairs(servers) do
-        lspconfig[server]
-            .setup({ capabilities = capabilities, settings = opts })
-    end
-
-    lspconfig.lua_ls.setup({
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { "vim" },
-                    disable = { "duplicate-set-field" }
-                },
-                runtime = {
-                    version = "Lua 5.1",
-                    nonstandardSymbol = {
-                        "!",
-                        "!=",
-                        "&&",
-                        "||",
-                        "//",
-                        "/**/",
-                        "continue"
-                    }
-                },
-                workspace = {
-                    checkThirdParty = false,
-                    library = {
-                        vim.env.VIMRUNTIME,
-                        vim.fn.expand(
-                            "$HOME/.local/state/LLS-Addons/addons/garrysmod/module/library")
+        bashls = {},
+        asm_lsp = {},
+        clangd = {},
+        nil_ls = {},
+        gdscript = {},
+        pylsp = {},
+        jdtls = {},
+        solargraph = {},
+        omnisharp = { capabilities = capabilities, cmd = { "OmniSharp" } },
+        lua_ls = {
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" },
+                        disable = { "duplicate-set-field" }
+                    },
+                    runtime = {
+                        version = "Lua 5.1",
+                        nonstandardSymbol = {
+                            "!",
+                            "!=",
+                            "&&",
+                            "||",
+                            "//",
+                            "/**/",
+                            "continue"
+                        }
+                    },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            vim.fn.expand(
+                              "$HOME/.local/state/LLS-Addons/addons/garrysmod/module/library")
+                        }
                     }
                 }
             }
         }
-    })
+    }
+
+    local lspconfig = require("lspconfig")
+
+    for server, opts in pairs(servers) do lspconfig[server].setup(opts) end
 end
 
 function Plugin.config()
