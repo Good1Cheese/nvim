@@ -1,1 +1,1 @@
-+ nvr --servername /home/cheese/.cache/nvim/godot-server.pipe --remote-send '<C-\><C-N>:n /home/cheese/Projects/ultrakill-parem/scripts/fpc.gd<CR>'
++ nvr --servername /home/cheese/.cache/nvim/godot-server.pipe --remote-send '<C-\><C-N>:n /home/cheese/Projects/Java/godot-kotlin-project-template/src/main/java/godot/PrintTextJava.java<CR>'

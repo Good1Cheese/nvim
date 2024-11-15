@@ -11,7 +11,8 @@ vim.g.loaded_netrwPlugin = 0
 opt.sidescrolloff = 8 -- Columns of context
 opt.scrolloff = 8 -- Lines of context
 
-opt.wrap = false
+vim.o.wrap = true
+vim.o.linebreak = true -- breaks by word rather than character
 
 opt.clipboard = "unnamedplus" -- use system clipboard
 opt.mouse = "a" -- allow the mouse to be used in Nvim
@@ -70,26 +71,20 @@ opt.whichwrap:append("<>[]hl")
 vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
 
 -- disable some default providers
-for _, provider in ipairs({
-	"node",
-	"perl",
-	"python3", --[[ "ruby" ]]
-}) do
-	vim.g["loaded_" .. provider .. "_provider"] = 0
+for _, provider in ipairs({ "node", "perl", "python3" --[[ "ruby" ]]  }) do
+    vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
 vim.diagnostic.config({
-	virtual_text = {
-		prefix = "",
-	},
-	signs = true,
-	underline = true,
-	update_in_insert = false,
+    virtual_text = { prefix = "" },
+    signs = true,
+    underline = true,
+    update_in_insert = false
 })
 
-local function lspSymbol(name, icon)
-	local hl = "DiagnosticSign" .. name
-	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+local function lspSymbol( name, icon )
+    local hl = "DiagnosticSign" .. name
+    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 lspSymbol("Error", "󰅙")

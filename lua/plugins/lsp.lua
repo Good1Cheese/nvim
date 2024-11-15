@@ -13,20 +13,6 @@ Plugin.dependencies = {
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
-function Plugin.config()
-    --  LspInfo window borders
-    local win = require("lspconfig.ui.windows")
-    local _default_opts = win.default_opts
-
-    win.default_opts = function( options )
-        local opts = _default_opts(options)
-        opts.border = "single"
-        return opts
-    end
-
-    Plugin.refactor()
-end
-
 function Plugin.refactor()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -39,6 +25,8 @@ function Plugin.refactor()
         gdscript = {},
         omnisharp = {},
         pylsp = {},
+        -- VS https://github.com/mfussenegger/nvim-jdtls
+        -- jdtls = {},
         solargraph = {},
         dockerls = {
             settings = {
@@ -50,8 +38,6 @@ function Plugin.refactor()
             }
         },
 
-        -- VS https://github.com/mfussenegger/nvim-jdtls
-        jdtls = {}
     }
 
     local lspconfig = require("lspconfig")
@@ -91,6 +77,20 @@ function Plugin.refactor()
             }
         }
     })
+end
+
+function Plugin.config()
+    --  LspInfo window borders
+    local win = require("lspconfig.ui.windows")
+    local _default_opts = win.default_opts
+
+    win.default_opts = function( options )
+        local opts = _default_opts(options)
+        opts.border = "single"
+        return opts
+    end
+
+    Plugin.refactor()
 end
 
 return Plugin
