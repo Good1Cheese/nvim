@@ -5,6 +5,7 @@ Plugin.filetypes = {
 	lua = "cd $dir && lua $fileName",
 	rb = "cd $dir && ruby $fileName",
 	cs = "dotnet run --project $dir",
+	python = "steam-run ./.venv/bin/python3 $fileName",
 	cpp = {
 		"cd $dir &&",
 		"g++ $fileName",
