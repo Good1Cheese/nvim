@@ -48,6 +48,8 @@ function Plugin.config()
 		{ "<leader>0", ":LoadSession<cr>", desc = "Session" },
 		{ "<leader>t", function() fish:toggle() end, desc = "Terminal", },
 
+		{ "<leader>n", ":CdProject<cr>", desc = "Cd Project" },
+
 		{ "<leader>a", ":Outline<cr>", desc = "Code outlaw" },
 		{ "<leader>l", [[:lua require("actions-preview").code_actions()<cr>]], desc = "Code actions" },
 		{ "<leader>L", ":LazyGit<cr>", desc = "Lazy Git" },
