@@ -8,9 +8,9 @@ Plugin.opts = {
 		lua = { "lua-format" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
-		rb = { "solargraph" },
-		nix = { "nixfmt" },
-		gdscript = { "gdformat" },
+		-- rb = { "solargraph" },
+		-- nix = { "nixfmt" },
+		-- gdscript = { "gdformat" },
 	},
 }
 

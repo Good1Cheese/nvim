@@ -35,7 +35,7 @@ function Plugin.refactor()
         gdscript = {},
         pylsp = {},
         jdtls = {},
-        solargraph = {},
+        -- solargraph = {},
         omnisharp = { capabilities = capabilities, cmd = { "OmniSharp" } },
         lua_ls = {
             capabilities = capabilities,
@@ -76,6 +76,10 @@ function Plugin.refactor()
 end
 
 function Plugin.config()
+    require("mason-lspconfig").setup {
+        ensure_installed = { "lua_ls", "bashls", "clangd" },
+    }
+
     --  LspInfo window borders
     local win = require("lspconfig.ui.windows")
     local _default_opts = win.default_opts
