@@ -62,7 +62,7 @@ function Plugin.refactor()
                         library = {
                             vim.env.VIMRUNTIME,
                             vim.fn.expand(
-                              "$HOME/.local/state/LLS-Addons/addons/garrysmod/module/library")
+                              "$HOME/.local/state/LLS-Addons/glua-api-snippets")
                         }
                     }
                 }
@@ -77,7 +77,7 @@ end
 
 function Plugin.config()
     require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "bashls", "clangd" },
+        ensure_installed = { "lua_ls", "bashls", "clangd", "jdtls" },
     }
 
     --  LspInfo window borders
