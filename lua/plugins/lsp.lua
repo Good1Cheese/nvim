@@ -41,6 +41,19 @@ function Plugin.refactor()
             capabilities = capabilities,
             settings = {
                 Lua = {
+                    format = {
+                        enable = true,
+                        -- Put format options here
+                        -- NOTE: the value should be STRING!!
+                        -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
+                        defaultConfig = {
+                            indent_style = "space",
+                            indent_size = "4",
+                            align_call_args = "true",
+                            max_line_length = "120",
+                            align_continuous_assign_statement = "true"
+                        }
+                    },
                     diagnostics = {
                         globals = { "vim" },
                         disable = { "duplicate-set-field" }
@@ -62,7 +75,7 @@ function Plugin.refactor()
                         library = {
                             vim.env.VIMRUNTIME,
                             vim.fn.expand(
-                              "$HOME/.local/state/LLS-Addons/glua-api-snippets")
+                                "$HOME/.local/state/LLS-Addons/glua-api-snippets")
                         }
                     }
                 }
@@ -84,7 +97,7 @@ function Plugin.config()
     local win = require("lspconfig.ui.windows")
     local _default_opts = win.default_opts
 
-    win.default_opts = function( options )
+    win.default_opts = function(options)
         local opts = _default_opts(options)
         opts.border = "single"
         return opts
