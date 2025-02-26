@@ -34,6 +34,7 @@ function Plugin.refactor()
         nil_ls = {},
         gdscript = {},
         pylsp = {},
+        gopls = {},
         jdtls = {},
         -- solargraph = {},
         omnisharp = { capabilities = capabilities, cmd = { "OmniSharp" } },
@@ -45,9 +46,10 @@ function Plugin.refactor()
                         enable = true,
                         -- Put format options here
                         -- NOTE: the value should be STRING!!
-                        -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
+                        -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config_EN.md
                         defaultConfig = {
                             indent_style = "space",
+                            quote_style = "double",
                             indent_size = "4",
                             align_call_args = "true",
                             max_line_length = "120",
@@ -90,7 +92,7 @@ end
 
 function Plugin.config()
     require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "bashls", "clangd", "jdtls" },
+        ensure_installed = { "lua_ls", "gopls", "bashls", "clangd", "jdtls" },
     }
 
     --  LspInfo window borders
