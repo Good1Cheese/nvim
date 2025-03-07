@@ -19,15 +19,17 @@ function Plugin.refactor()
 
     local servers = {
         dockerls = {
-            capabilities = capabilities,
             settings = {
                 docker = {
                     languageserver = {
-                        formatter = { ignoreMultilineInstructions = true }
-                    }
+                        formatter = {
+                            ignoreMultilineInstructions = true,
+                        },
+                    },
                 }
             }
         },
+        docker_compose_language_service = {},
         bashls = {},
         asm_lsp = {},
         clangd = {},
@@ -37,9 +39,9 @@ function Plugin.refactor()
         gopls = {},
         jdtls = {},
         -- solargraph = {},
-        omnisharp = { capabilities = capabilities, cmd = { "OmniSharp" } },
+        omnisharp = { cmd = { "OmniSharp" } },
+
         lua_ls = {
-            capabilities = capabilities,
             settings = {
                 Lua = {
                     format = {
@@ -87,12 +89,17 @@ function Plugin.refactor()
 
     local lspconfig = require("lspconfig")
 
-    for server, opts in pairs(servers) do lspconfig[server].setup(opts) end
+    for server, opts in pairs(servers) do
+        opts.capabilities = capabilities
+        lspconfig[server].setup(opts)
+    end
 end
 
 function Plugin.config()
     require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "gopls", "bashls", "clangd", "jdtls" },
+        ensure_installed = { "lua_ls", --[[ "omnisharp" ]] "dockerls",
+            "docker_compose_language_service", "gopls", "bashls",
+            "clangd", "jdtls" },
     }
 
     --  LspInfo window borders

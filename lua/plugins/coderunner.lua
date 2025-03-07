@@ -13,12 +13,21 @@ Plugin.filetypes = {
 		"-o /tmp/$fileNameWithoutExt &&",
 		"/tmp/$fileNameWithoutExt",
 	},
+	java = {
+		"cd $dir &&",
+		"javac $fileName -d out/ &&",
+		"java -classpath out/ $fileName",
+	},
 	go = function()
 		local file = vim.fn.expand("%")
 		if string.find(file, "_test") then
 			return "ginkgo ."
 		else
-			return "go run $fileName"
+			return {
+				"cd $dir &&",
+				"go build -o /tmp/$fileNameWithoutExt &&",
+				"/tmp/$fileNameWithoutExt",
+			}
 		end
 	end,
 	c = function()
