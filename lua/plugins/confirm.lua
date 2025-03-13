@@ -10,6 +10,7 @@ Plugin.opts = {
 		-- rb = { "solargraph" },
 		-- nix = { "nixfmt" },
 		-- gdscript = { "gdformat" },
+		["_"] = { "trim_whitespace" },
 	},
 }
 
