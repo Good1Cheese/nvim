@@ -8,13 +8,15 @@ Plugin.dependencies = {
 }
 
 Plugin.opts = {
-	ejnsure_installed = { "cpp", "python", "lua", "ruby", "javascript", "norg" },
+	ejnsure_installed = { "lua" },
 	sync_install = true,
 	auto_install = true,
 	highlight = {
 		enable = true,
 		use_languagetree = true,
-		indent = { enable = true },
+		indent = {
+			enable = true
+		},
 		additional_vim_regex_highlighting = true,
 	},
 	textobjects = {

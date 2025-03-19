@@ -1,3 +1,4 @@
+-- https://github.com/wurli/split.nvim
 return {
 	"Wansmer/treesj",
 	-- event = { "BufReadPost", "BufNewFile" },
