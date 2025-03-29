@@ -71,7 +71,7 @@ function Plugin.config()
 		{ "<leader>9", group = "Stuff" },
 		{ '<leader>9"', ":%s/'/\"/g", desc = "Replace all quotes" },
 		{ "<leader>9!", ":w<cr>:ReloadNIX<cr>", desc = "Reload nix" },
-		{ "<leader>9c", ":Telescope colorscheme<cr>", desc = "Colorschemes" },
+		{ "<leader>9c", ":Telescope colorscheme(enable_preview=true)<cr>", desc = "Colorschemes" },
 		{ "<leader>9s", ":SudaWrite<cr>", desc = "Sudo save" },
 		{ "<leader>9<cr>", ":.!bash<cr>", desc = "Execute in bash" },
 		{ "<leader>9t", ":lua toggleTransparency()<cr>", desc = "Toggle transparency" },

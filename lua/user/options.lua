@@ -6,6 +6,19 @@ vim.cmd("set eventignore=BufWritePost,VimResized")
 vim.cmd("au BufEnter * set noro")
 -- vim.cmd("let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'")
 
+
+vim.diagnostic.config({
+  -- Use the default configuration
+  -- virtual_lines = true
+
+  -- Alternatively, customize specific options
+
+  virtual_lines = {
+   -- Only show virtual line diagnostics for the current cursor line
+   current_line = true,
+  },
+})
+
 vim.g.loaded_netrwPlugin = 0
 
 opt.sidescrolloff = 8 -- Columns of context

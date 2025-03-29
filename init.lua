@@ -3,8 +3,12 @@ local load = function(mod)
 	require(mod)
 end
 
+print("dada")
 load("user.keymaps")
 load("user.options")
 load("user.commands")
 
 require("user.plugins")
+
+-- load("user.lsp-servers")
+-- load("user.lsp-opts")
