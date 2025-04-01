@@ -18,7 +18,7 @@ Plugin.opts = {
 Plugin.formatters = {
 	["clang-format"] = {
 		command = "clang-format",
-		args = { "--style=file:/home/cheese/.clang-format" },
+		args = { "--style=file:$HOME/.clang-format" },
 	},
 	gdformat = {
 		cmd = "gdformat",
