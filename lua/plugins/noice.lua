@@ -2,6 +2,10 @@ local Plugin = { "folke/noice.nvim" }
 
 Plugin.event = "VeryLazy"
 
+Plugin.cond = vim.g.vscode
+
+Plugin.enabled = false
+
 Plugin.dependencies = {
     { "MunifTanjim/nui.nvim" }
 }

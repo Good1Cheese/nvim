@@ -58,6 +58,7 @@ function Plugin.refactor()
             }
         },
         docker_compose_language_service = {},
+        erlangls = {},
         bashls = {},
         asm_lsp = {},
         clangd = {},

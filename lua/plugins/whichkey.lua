@@ -55,6 +55,8 @@ function Plugin.config()
 		{ "<leader>L", ":LazyGit<cr>", desc = "Lazy Git" },
 		{ "<leader>c", ":RunFile<cr>", desc = "RunFile" },
 
+		{ "<leader>E", ":lua MiniFiles.open()<cr>", desc = "Open miniFiles" },
+
 		{ "<leader>s", ":Telescope live_grep<cr>", desc = "FindT" },
 		{ "<leader>f", ":Telescope find_files<cr>", desc = "FindF" },
 		{ "<leader>S", ":Telescope resume<cr>", desc = "Find prev" },

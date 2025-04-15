@@ -1,5 +1,5 @@
 return {
-	"Good1Cheese/harpoon",
+	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	lazy = false,
 	config = function()
@@ -24,5 +24,26 @@ return {
 		-- Toggle previous & next buffers stored within Harpoon list
 		vim.keymap.set("n", "<Tab>", function() harpoon:list():prev() end)
 		vim.keymap.set("n", "<S-Tab>", function() harpoon:list():next() end)
+
+		harpoon:extend({
+			UI_CREATE = function(cx)
+				-- l is better then <CR>
+				vim.keymap.set("n", "l", function()
+								   harpoon.ui:select_menu_item()
+							   end, { buffer = cx.bufnr })
+
+				vim.keymap.set("n", "<C-v>", function()
+								   harpoon.ui:select_menu_item({ vsplit = true })
+							   end, { buffer = cx.bufnr })
+
+				vim.keymap.set("n", "<C-x>", function()
+								   harpoon.ui:select_menu_item({ split = true })
+							   end, { buffer = cx.bufnr })
+
+				vim.keymap.set("n", "<C-t>", function()
+								   harpoon.ui:select_menu_item({ tabedit = true })
+							   end, { buffer = cx.bufnr })
+			end,
+		})
 	end,
 }
