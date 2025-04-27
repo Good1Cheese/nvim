@@ -1,6 +1,6 @@
 local opts = {
     noremap = true, -- non-recursive
-    silent = true -- do not show message
+    silent = true   -- do not show message
 }
 
 local keymap = vim.api.nvim_set_keymap
@@ -31,6 +31,9 @@ keymap("v", "$", "$h", opts)
 -- Make duplicate without copying
 keymap("n", "<C-3>", [[ :call setreg('A', [])<cr> | "Ayy"Ap  ]], opts)
 
+keymap("n", "<C-S-j>", "<Cmd>copy.<Cr>", opts)
+keymap("v", "<C-S-j>", ":copy.-1<Cr>gv", opts)  -- no use <Cmd> in visual
+
 keymap("t", "<esc>", "<C-\\><C-N>", opts)
 
 -- Search selected text
@@ -56,12 +59,12 @@ keymap("n", "J", "mzJ`z", opts)
 -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 
 vim.keymap.set({ "n", "v" }, "<F3>", function()
-    require("conform").format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000
-    })
-end, { desc = "Format file or range (in visual mode)" })
+                   require("conform").format({
+                       lsp_fallback = true,
+                       async = false,
+                       timeout_ms = 1000
+                   })
+               end, { desc = "Format file or range (in visual mode)" })
 
 -- vim.keymap.set("", "<leader>f", function()
 --     require("conform").format({ async = true }, function( err )

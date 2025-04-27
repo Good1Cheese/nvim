@@ -7,7 +7,8 @@ Plugin.dependencies = {
 
     { "aznhe21/actions-preview.nvim" },
     { "L3MON4D3/LuaSnip" },
-    { "hrsh7th/nvim-cmp" }
+    { "hrsh7th/nvim-cmp" },
+    { 'saghen/blink.cmp' },
 }
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
@@ -15,15 +16,6 @@ Plugin.event = { "BufReadPre", "BufNewFile" }
 function Plugin.refactor()
     -- Reserve a space in the gutter
     vim.opt.signcolumn = "yes"
-
-    -- Add cmp_nvim_lsp capabilities settings to lspconfig
-    -- This should be executed before you configure any language server
-    local lspconfig_defaults = require("lspconfig").util.default_config
-    lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-        "force",
-        lspconfig_defaults.capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
-    )
 
     -- This is where you enable features that only work
     -- if there is a language server active in the file
@@ -118,8 +110,9 @@ function Plugin.refactor()
 
     local lspconfig = require("lspconfig")
 
-    for server, opts in pairs(servers) do
-        lspconfig[server].setup(opts)
+    for server, config in pairs(servers) do
+      config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+      lspconfig[server].setup(config)
     end
 end
 

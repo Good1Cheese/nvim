@@ -7,6 +7,8 @@ load("user.keymaps")
 load("user.options")
 load("user.commands")
 
+
+print("dadad")
 require("user.plugins")
 
 -- load("user.lsp-servers")

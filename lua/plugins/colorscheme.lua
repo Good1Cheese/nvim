@@ -6,7 +6,8 @@ Plugin.dependencies = {
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	-- { "samharju/synthweave.nvim" },
 	{ "scottmckendry/cyberdream.nvim" },
-	{ "javiorfo/nvim-nyctophilia" },
+	-- { "javiorfo/nvim-nyctophilia" },
+	-- { "rebelot/kanagawa.nvim" },
 	-- { "rose-pine/neovim", name = "rose-pine" },
 }
 
@@ -16,6 +17,7 @@ Plugin.lazy = false
 function Plugin.config()
 	-- vim.opt.background = "dark"
 	vim.cmd.colorscheme("ayu")
+	-- require("kanagawa").load("dragon")
 	-- vim.cmd.colorscheme("tenebra")
 
 	-- vim.cmd.colorscheme("oxocarbon")

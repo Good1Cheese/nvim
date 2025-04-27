@@ -4,8 +4,8 @@ local opt = vim.opt
 -- opt.guicursor = ""
 vim.cmd("set eventignore=BufWritePost,VimResized")
 vim.cmd("au BufEnter * set noro")
+vim.cmd("set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz")
 -- vim.cmd("let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'")
-
 
 vim.diagnostic.config({
   -- Use the default configuration
@@ -18,6 +18,7 @@ vim.diagnostic.config({
   --  current_line = true,
   -- },
 })
+
 
 vim.g.loaded_netrwPlugin = 0
 
