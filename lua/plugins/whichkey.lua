@@ -27,32 +27,33 @@ function Plugin.config()
 		nowait = true, -- use `nowait` when creating keymaps
 	}
 
-	which_key.OPTS = opts
+	which_key.setup(opts)
+	-- which_key.OPTS = opts
 
 	local t = require("toggleterm.terminal").Terminal
 	local fish = t:new({ cmd = "fish", hidden = true })
-	local upt = t:new({ cmd = "fish -c 'nflake'", hidden = false })
+	-- local upt = t:new({ cmd = "fish -c 'nflake'", hidden = false })
 	local oil = require("oil")
 
 	which_key.add({
 		{ "<leader>s", ":Silicon<cr>", desc = "Make screenshot", mode = "v" },
-		{ "<leader>!", function() upt:toggle() end, desc = "Update", },
+		-- { "<leader>!", function() upt:toggle() end, desc = "Update", },
 
 		{ "<leader>m", ":Mason<cr>", desc = "Mason", hidden = true},
 		{ "<leader>p", ":Lazy<cr>", desc = "Lazy", hidden = true },
 		{ "<leader>C", ":RunClose<cr>", desc = "Close tests", hidden = true },
 		{ "<leader>e", oil.open, desc = "Explorer", hidden = true },
-		{ "<leader>u", ":lua require('undotree').toggle()<cr>", desc = "Undotree", hidden = true },
+		-- { "<leader>u", ":lua require('undotree').toggle()<cr>", desc = "Undotree", hidden = true },
 
 		{ "<leader>q", ":qall!<cr>", desc = "Quit" },
 		{ "<leader>0", ":LoadSession<cr>", desc = "Session" },
 		{ "<leader>t", function() fish:toggle() end, desc = "Terminal", },
 
-		{ "<leader>n", ":CdProject<cr>", desc = "Cd Project" },
+		-- { "<leader>n", ":CdProject<cr>", desc = "Cd Project" },
+		-- { "<leader>L", ":LazyGit<cr>", desc = "Lazy Git" },
 
 		{ "<leader>a", ":Outline<cr>", desc = "Code outlaw" },
 		{ "<leader>l", [[:lua require("actions-preview").code_actions()<cr>]], desc = "Code actions" },
-		{ "<leader>L", ":LazyGit<cr>", desc = "Lazy Git" },
 		{ "<leader>c", ":RunFile<cr>", desc = "RunFile" },
 
 		{ "<leader>E", ":lua MiniFiles.open()<cr>", desc = "Open miniFiles" },
@@ -61,23 +62,25 @@ function Plugin.config()
 		{ "<leader>f", ":Telescope find_files<cr>", desc = "FindF" },
 		{ "<leader>S", ":Telescope resume<cr>", desc = "Find prev" },
 
-		{ "<leader>r", group = "Refactoring" },
-		{ "<leader>re", ":Refactor extract_block" },
+		-- { "<leader>r", group = "Refactoring" },
+		-- { "<leader>re", ":Refactor extract_block" },
 
-		{ "<leader>I", ":UITest<cr>" },
-		{ "<leader>i", group = "Plugin" },
-		{ "<leader>ie", ":UpdateRemotePlugins<cr>" },
-		{ "<leader>ir", ":messages<cr>" },
-		{ "<leader>ig", ":FetchKata<cr>" },
+		-- { "<leader>I", ":UITest<cr>" },
+		-- { "<leader>i", group = "Plugin" },
+		-- { "<leader>ie", ":UpdateRemotePlugins<cr>" },
+		-- { "<leader>ir", ":messages<cr>" },
+		-- { "<leader>ig", ":FetchKata<cr>" },
 
 		{ "<leader>9", group = "Stuff" },
 		{ '<leader>9"', ":%s/'/\"/g", desc = "Replace all quotes" },
-		{ "<leader>9!", ":w<cr>:ReloadNIX<cr>", desc = "Reload nix" },
-		{ "<leader>9c", ":Telescope colorscheme(enable_preview=true)<cr>", desc = "Colorschemes" },
+
+		-- { "<leader>9!", ":w<cr>:ReloadNIX<cr>", desc = "Reload nix" },
+		-- { "<leader>9c", ":Telescope colorscheme(enable_preview=true)<cr>", desc = "Colorschemes" },
+		-- { "<leader>9t", ":lua toggleTransparency()<cr>", desc = "Toggle transparency" },
+		-- { "<leader>9r", ":RORCommands<cr>", desc = "Ruby on RAILS" },
+
 		{ "<leader>9s", ":SudaWrite<cr>", desc = "Sudo save" },
 		{ "<leader>9<cr>", ":.!bash<cr>", desc = "Execute in bash" },
-		{ "<leader>9t", ":lua toggleTransparency()<cr>", desc = "Toggle transparency" },
-		{ "<leader>9r", ":RORCommands<cr>", desc = "Ruby on RAILS" },
 
 		-- d = {
 		-- 	name = "Debug",

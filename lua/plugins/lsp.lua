@@ -3,12 +3,9 @@ local Plugin = { "neovim/nvim-lspconfig" }
 Plugin.dependencies = {
     { "williamboman/mason-lspconfig.nvim" },
     { "williamboman/mason.nvim" },
-    { "SmiteshP/nvim-navbuddy" },
-
     { "aznhe21/actions-preview.nvim" },
     { "L3MON4D3/LuaSnip" },
-    { "hrsh7th/nvim-cmp" },
-    { 'saghen/blink.cmp' },
+    { "saghen/blink.cmp" },
 }
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
@@ -111,8 +108,8 @@ function Plugin.refactor()
     local lspconfig = require("lspconfig")
 
     for server, config in pairs(servers) do
-      config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-      lspconfig[server].setup(config)
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
     end
 end
 
