@@ -1,8 +1,6 @@
 local Plugin = { "neovim/nvim-lspconfig" }
 
 Plugin.dependencies = {
-    { "williamboman/mason-lspconfig.nvim" },
-    { "williamboman/mason.nvim" },
     { "aznhe21/actions-preview.nvim" },
     { "L3MON4D3/LuaSnip" },
     { "saghen/blink.cmp" },
@@ -114,12 +112,6 @@ function Plugin.refactor()
 end
 
 function Plugin.config()
-    require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", --[[ "omnisharp" ]] "dockerls",
-            "docker_compose_language_service", "gopls", "bashls",
-            "clangd", "jdtls" },
-    }
-
     --  LspInfo window borders
     local win = require("lspconfig.ui.windows")
     local _default_opts = win.default_opts

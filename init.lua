@@ -3,6 +3,8 @@ local load = function(mod)
 	require(mod)
 end
 
+vim.deprecate = function() end
+
 load("user.keymaps")
 load("user.options")
 load("user.commands")
