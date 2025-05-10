@@ -13,6 +13,11 @@ Plugin.filetypes = {
 		"-o /tmp/$fileNameWithoutExt &&",
 		"/tmp/$fileNameWithoutExt",
 	},
+	erlang = {
+		"cd $dir &&",
+		"erlc $fileName &&",
+		"erl -noshell -s $fileNameWithoutExt start -s init stop",
+	},
 	java = {
 		"cd $dir &&",
 		"javac $fileName -d out/ &&",

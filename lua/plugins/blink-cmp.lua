@@ -51,6 +51,10 @@ return {
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 0,
+				treesitter_highlighting = true,
+				window = {
+					border = "single"
+				},
 			},
 
 			list = {
@@ -109,7 +113,12 @@ return {
 			},
 		},
 
-		signature = { enabled = true },
+		signature = {
+			enabled = true,
+			window = {
+				border = "single",
+			},
+		},
 		sources = {
 			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 			providers = {

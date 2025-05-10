@@ -19,6 +19,7 @@ return {
 				--[[ "omnisharp" ]]
 				-- golang
 				"gopls",
+				"gofumpt",
 
 				-- c++
 				"clangd",

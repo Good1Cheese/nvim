@@ -7,6 +7,7 @@ Plugin.opts = {
 		python = { "ruff_format" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
+		go = { "gofumpt", "gofmt" },
 		-- rb = { "solargraph" },
 		-- nix = { "nixfmt" },
 		-- gdscript = { "gdformat" },
