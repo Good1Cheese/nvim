@@ -1,6 +1,5 @@
 local Plugin = { "sindrets/diffview.nvim" }
 
-
 Plugin.cmd = "DiffviewOpen"
 
 function Plugin.config()

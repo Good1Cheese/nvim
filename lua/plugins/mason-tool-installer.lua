@@ -1,5 +1,6 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	cmd = { "MasonToolsInstall", "MasonToolsUpdate" },
 	config = function()
 		require("mason-tool-installer").setup {
 			ensure_installed = {

@@ -2,7 +2,6 @@ local Plugin = { "williamboman/mason.nvim" }
 
 Plugin.dependencies = {
 	{ "williamboman/mason-lspconfig.nvim" },
-	{ "WhoIsSethDaniel/mason-tool-installer.nvim" }
 }
 
 Plugin.cmd = "Mason"
