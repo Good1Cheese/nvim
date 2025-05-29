@@ -4,7 +4,6 @@ Plugin.event = { "BufReadPre", "BufNewFile" }
 Plugin.dependencies = { "ecthelionvi/NeoComposer.nvim" }
 
 function Plugin.config()
-	require("cyberdream").setup()
 	require("lualine").setup({
 		options = {
 			theme = "cyberdream",

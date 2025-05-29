@@ -12,6 +12,7 @@ Plugin.opts = {
 		-- nix = { "nixfmt" },
 		-- gdscript = { "gdformat" },
 		["_"] = { "trim_whitespace" },
+		["*"] = { "trim_whitespace" },
 	},
 }
 

@@ -47,6 +47,11 @@ function Plugin.refactor()
 		},
 		docker_compose_language_service = {},
 		erlangls = {},
+		graphql = {
+			-- absolute path to compiled cli
+			-- cmd = { "~/.config/nvim/graphiql/packages/graphql-language-service-cli/bin/graphql.js", "server", "-m", "stream" },
+			filetypes = { "graphql", "graphqls" },
+		},
 		bashls = {},
 		asm_lsp = {},
 		clangd = {},
@@ -106,6 +111,8 @@ function Plugin.refactor()
 			}
 		}
 	}
+
+	vim.lsp.enable("graphql")
 
 	local lspconfig = require("lspconfig")
 
