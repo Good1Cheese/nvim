@@ -13,26 +13,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup {
-	require "plugins.autocompletion",
-	require "plugins.blankline",
-	require "plugins.comment",
-	require "plugins.gitsigns",
-	require "plugins.bg",
-	require "plugins.lsp",
-	require "plugins.misc",
-	require "plugins.sessionmanager",
-	require "plugins.toggleterm",
-	require "plugins.whichkey",
-	require "plugins.autoformatting",
-	require "plugins.colorscheme",
-	require "plugins.debug",
-	require "plugins.harpoon",
-	require "plugins.lualine",
-	require "plugins.oil",
-	require "plugins.telescope",
-	require "plugins.move",
-	require "plugins.silicon",
-	require "plugins.suda",
-	require "plugins.treesitter",
-}
+require("lazy").setup({ { import = "plugins" } })
