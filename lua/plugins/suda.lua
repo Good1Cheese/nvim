@@ -1,5 +1,4 @@
-local Plugin = { "lambdalisue/suda.vim" }
-
-Plugin.cmd = { "SudaRead", "SudaWrite" }
-
-return Plugin
+return {
+	"lambdalisue/suda.vim",
+	cmd = { "SudaRead", "SudaWrite" },
+}

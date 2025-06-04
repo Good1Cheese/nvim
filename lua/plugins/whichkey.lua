@@ -1,9 +1,7 @@
-local Plugin = { "folke/which-key.nvim" }
-
-Plugin.lazy = false
--- Plugin.event = "VeryLazy"
-
-Plugin.opts = {
+return { 
+	"folke/which-key.nvim",
+lazy = false,
+opts = {
 	window = {
 		border = "rounded", -- none, single, double, shadow
 		position = "bottom", -- bottom, top
@@ -13,9 +11,9 @@ Plugin.opts = {
 	},
 
 	ignore_missing = true,
-}
+},
 
-function Plugin.config()
+config = function()
 	local which_key = require("which-key")
 
 	local opts = {
@@ -128,5 +126,4 @@ function Plugin.config()
 		--
 	})
 end
-
-return Plugin
+}
