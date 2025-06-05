@@ -17,10 +17,10 @@ return {
       },
       opts = {},
     },
+    { "echasnovski/mini.icons", opts = {} },
     "folke/lazydev.nvim",
     "mikavilpas/blink-ripgrep.nvim",
     "folke/snacks.nvim",
-    { "echasnovski/mini.icons", opts = {} },
   },
   opts = {
     -- "default" (recommended) for mappings similar to built-in completions (C-y to accept)
@@ -60,7 +60,7 @@ return {
     completion = {
       -- By default, you may press `<c-space>` to show the documentation.
       -- Optionally, set `auto_show = true` to show the documentation after a delay.
-      documentation = { auto_show = true, auto_show_delay_ms = 500 },
+      documentation = { auto_show = true, auto_show_delay_ms = 0 },
       trigger = {
         show_on_keyword = true,
         show_on_trigger_character = true,
@@ -91,7 +91,7 @@ return {
             enabled = true,
             blocked_filetypes = { 'java' },
             -- How long to wait for semantic tokens to return before assuming no brackets should be added
-            timeout_ms = 400,
+            timeout_ms = 200,
           },
         },
       },
@@ -118,133 +118,134 @@ return {
                 return hl
               end,
             },
-            -- label_description = {
-            --   text = function(ctx)
-            --     -- Возьмем данные из `detail` или другого поля completion_item
-            --     return ctx.label_detail
-            --   end,
-            --   highlight = 'Comment', -- Опционально: задайте подсветку
-            -- },
           },
         },
       },
+
+      ghost_text = {
+        enabled = true,
+        -- show_with_menu = false,
+      },
     },
-  },
 
-  sources = {
-    default = { "lsp", "path", "snippets", "lazydev", "ripgrep", "buffer" },
-    providers = {
-      lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
-      ripgrep = {
-        module = "blink-ripgrep",
-        name = "Ripgrep",
-        opts = {
-          prefix_min_len = 3,
-          context_size = 5,
-          project_root_marker = ".git",
+    signature = {
+      enabled = true,
+      window = {
+        border = "single",
+      },
+    },
 
-          -- Enable fallback to neovim cwd if project_root_marker is not
-          -- found. Default: `true`, which means to use the cwd.
-          project_root_fallback = true,
-          search_casing = "--ignore-case",
-          additional_rg_options = {},
-          fallback_to_regex_highlighting = true,
-          ignore_paths = {},
-          additional_paths = {},
+    snippets = { preset = "luasnip" },
 
-          -- Keymaps to toggle features on/off. This can be used to alter
-          -- the behavior of the plugin without restarting Neovim. Nothing
-          -- is enabled by default. Requires folke/snacks.nvim.
-          toggles = {
-            -- The keymap to toggle the plugin on and off from blink
-            -- completion results. Example: "<leader>tg"
-            on_off = nil,
+    -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
+    -- which automatically downloads a prebuilt binary when enabled.
+    --
+    -- By default, we use the Lua implementation instead, but you may enable
+    -- the rust implementation via `"prefer_rust_with_warning"`
+    --
+    -- See :h blink-cmp-config-fuzzy for more information
+    fuzzy = {
+      implementation = "prefer_rust_with_warning",
+      sorts = {
+        "exact",
+        "score",
+        "sort_text",
+      },
+    },
+
+    cmdline = {
+      enabled = true,
+      keymap = { preset = "default" },
+      completion = {
+        trigger = {
+          show_on_blocked_trigger_characters = {},
+          show_on_x_blocked_trigger_characters = {},
+        },
+        list = {
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = true,
+            -- When `true`, inserts the completion item automatically when selecting it
+            auto_insert = true,
           },
+        },
+        -- Whether to automatically show the window when new completion items are available
+        menu = { auto_show = false },
+        -- Displays a preview of the selected item on the current line
+        ghost_text = { enabled = true },
+      },
+    },
 
-          -- Features that are not yet stable and might change in the future.
-          -- You can enable these to try them out beforehand, but be aware
-          -- that they might change. Nothing is enabled by default.
-          future_features = {
-            backend = {
-              -- The backend to use for searching. Defaults to "ripgrep".
-              -- Available options:
-              -- - "ripgrep", always use ripgrep
-              -- - "gitgrep", always use git grep
-              -- - "gitgrep-or-ripgrep", use git grep if possible, otherwise
-              --   ripgrep
-              use = "ripgrep",
+    sources = {
+      default = { "lsp", "path", "snippets", "lazydev", "ripgrep", "buffer" },
+      providers = {
+        lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+        ripgrep = {
+          module = "blink-ripgrep",
+          name = "Ripgrep",
+          opts = {
+            prefix_min_len = 3,
+            context_size = 5,
+            project_root_marker = ".git",
+
+            -- Enable fallback to neovim cwd if project_root_marker is not
+            -- found. Default: `true`, which means to use the cwd.
+            project_root_fallback = true,
+            search_casing = "--ignore-case",
+            additional_rg_options = {},
+            fallback_to_regex_highlighting = true,
+            ignore_paths = {},
+            additional_paths = {},
+
+            -- Keymaps to toggle features on/off. This can be used to alter
+            -- the behavior of the plugin without restarting Neovim. Nothing
+            -- is enabled by default. Requires folke/snacks.nvim.
+            toggles = {
+              -- The keymap to toggle the plugin on and off from blink
+              -- completion results. Example: "<leader>tg"
+              on_off = nil,
             },
+
+            -- Features that are not yet stable and might change in the future.
+            -- You can enable these to try them out beforehand, but be aware
+            -- that they might change. Nothing is enabled by default.
+            future_features = {
+              backend = {
+                -- The backend to use for searching. Defaults to "ripgrep".
+                -- Available options:
+                -- - "ripgrep", always use ripgrep
+                -- - "gitgrep", always use git grep
+                -- - "gitgrep-or-ripgrep", use git grep if possible, otherwise
+                --   ripgrep
+                use = "ripgrep",
+              },
+            },
+
+            -- Show debug information in `:messages` that can help in
+            -- diagnosing issues with the plugin.
+            debug = false,
           },
 
-          -- Show debug information in `:messages` that can help in
-          -- diagnosing issues with the plugin.
-          debug = false,
+          -- (optional) customize how the results are displayed. Many options
+          -- are available - make sure your lua LSP is set up so you get
+          -- autocompletion help
+          -- transform_items = function(_, items)
+          --   for _, item in ipairs(items) do
+          --     -- example: append a description to easily distinguish rg results
+          --     item.labelDetails = {
+          --       description = "(rg)",
+          --     }
+          --   end
+          --   return items
+          -- end,
         },
-
-        -- (optional) customize how the results are displayed. Many options
-        -- are available - make sure your lua LSP is set up so you get
-        -- autocompletion help
-        -- transform_items = function(_, items)
-        --   for _, item in ipairs(items) do
-        --     -- example: append a description to easily distinguish rg results
-        --     item.labelDetails = {
-        --       description = "(rg)",
-        --     }
-        --   end
-        --   return items
-        -- end,
-      },
-      lsp = {
-        score_offset = 200, -- Максимальный приоритет для LSP
-      },
-      buffer = {
-        score_offset = -50, -- Понижаем вес buffer
-      },
-    },
-  },
-
-  snippets = { preset = "luasnip" },
-
-  -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-  -- which automatically downloads a prebuilt binary when enabled.
-  --
-  -- By default, we use the Lua implementation instead, but you may enable
-  -- the rust implementation via `"prefer_rust_with_warning"`
-  --
-  -- See :h blink-cmp-config-fuzzy for more information
-  fuzzy = {
-    implementation = "prefer_rust_with_warning",
-    sorts = {
-      "exact",
-      "score",
-      "sort_text",
-    },
-  },
-
-  cmdline = {
-    enabled = true,
-    keymap = { preset = "default" },
-    completion = {
-      trigger = {
-        show_on_blocked_trigger_characters = {},
-        show_on_x_blocked_trigger_characters = {},
-      },
-      list = {
-        selection = {
-          -- When `true`, will automatically select the first item in the completion list
-          preselect = true,
-          -- When `true`, inserts the completion item automatically when selecting it
-          auto_insert = true,
+        lsp = {
+          score_offset = 200, -- Максимальный приоритет для LSP
+        },
+        buffer = {
+          score_offset = -50, -- Понижаем вес buffer
         },
       },
-      -- Whether to automatically show the window when new completion items are available
-      menu = { auto_show = false },
-      -- Displays a preview of the selected item on the current line
-      ghost_text = { enabled = true },
     },
   },
-
-  -- Shows a signature help window while you type arguments for a function
-  signature = { enabled = true },
-  -- ghost_text = { enabled = true },
 }
