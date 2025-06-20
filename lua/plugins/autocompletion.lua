@@ -31,6 +31,7 @@ return {
     -- All presets have the following mappings:
     -- C-space: Open menu or open docs if already open
     -- C-n/C-p or Up/Down: Select next/previous item
+    -- C-b/C-f: Scroll docs up/down
     -- C-e: Hide menu
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
@@ -38,17 +39,10 @@ return {
     keymap = {
       preset = "enter",
 
-      ["<C-f>"] = { function(cmp) cmp.scroll_documentation_up(4) end },
-      ["<C-d>"] = { function(cmp) cmp.scroll_documentation_down(4) end },
-
-      ["<Tab>"] = {
-        function(cmp)
-          if cmp.is_ghost_text_visible() and not cmp.is_menu_visible() then return cmp.accept() end
-        end,
-        "show_and_insert",
-        "select_next",
-      },
-      ["<S-Tab>"] = { "show_and_insert", "select_prev" },
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
     },
 
     appearance = {
@@ -78,18 +72,18 @@ return {
           -- Whether to auto-insert brackets for functions
           enabled = true,
           -- Default brackets to use for unknown languages
-          default_brackets = { '(', ')' },
+          default_brackets = { "(", ")" },
           -- Overrides the default blocked filetypes
           override_brackets_for_filetypes = {},
           -- Synchronously use the kind of the item to determine if brackets should be added
           kind_resolution = {
             enabled = true,
-            blocked_filetypes = { 'typescriptreact', 'javascriptreact', 'vue' },
+            blocked_filetypes = { "typescriptreact", "javascriptreact", "vue" },
           },
           -- Asynchronously use semantic token to determine if brackets should be added
           semantic_token_resolution = {
             enabled = true,
-            blocked_filetypes = { 'java' },
+            blocked_filetypes = { "java" },
             -- How long to wait for semantic tokens to return before assuming no brackets should be added
             timeout_ms = 200,
           },
@@ -97,24 +91,24 @@ return {
       },
       menu = {
         draw = {
-          treesitter = { 'lsp' },
-          columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'source_name' } },
+          treesitter = { "lsp" },
+          columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "source_name" } },
           components = {
             kind_icon = {
               text = function(ctx)
-                local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+                local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
                 return kind_icon
               end,
               -- (optional) use highlights from mini.icons
               highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
                 return hl
               end,
             },
             kind = {
               -- (optional) use highlights from mini.icons
               highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
                 return hl
               end,
             },

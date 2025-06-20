@@ -2,7 +2,11 @@ local Plugin = { "fedepujol/move.nvim" }
 
 Plugin.config = true
 Plugin.cmd = { "MoveLine", "MoveHChar", "MoveBlock", "MoveHBlock" }
-Plugin.event = { "BufReadPre", "BufNewFile" }
+Plugin.opts = {
+	char = {
+		enable = true
+	}
+}
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap

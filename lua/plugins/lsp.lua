@@ -92,6 +92,7 @@ return {
 			},
 			docker_compose_language_service = {},
 			erlangls = {},
+			tinymist = {},
 			bashls = {},
 			asm_lsp = {},
 			clangd = {},
@@ -199,6 +200,7 @@ return {
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
 			"gofumpt",
+			"typstyle",
 			"golines",
 		})
 		require("mason-tool-installer").setup { ensure_installed = ensure_installed }
