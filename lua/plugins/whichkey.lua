@@ -34,32 +34,32 @@ return {
 		local oil = require("oil")
 
 		which_key.add({
-			{ "<leader>s",     ":Silicon<cr>",                                         desc = "Make screenshot",   mode = "v" },
+			{ "<leader>s",     ":Silicon<cr>",               desc = "Make screenshot",   mode = "v" },
 
-			{ "<leader>m",     ":Mason<cr>",                                           desc = "Mason",             hidden = true },
-			{ "<leader>p",     ":Lazy<cr>",                                            desc = "Lazy",              hidden = true },
-			{ "<leader>C",     ":RunClose<cr>",                                        desc = "Close tests",       hidden = true },
-			{ "<leader>e",     oil.open,                                               desc = "Explorer",          hidden = true },
+			{ "<leader>m",     ":Mason<cr>",                 desc = "Mason",             hidden = true },
+			{ "<leader>p",     ":Lazy<cr>",                  desc = "Lazy",              hidden = true },
+			{ "<leader>C",     ":RunClose<cr>",              desc = "Close tests",       hidden = true },
+			{ "<leader>e",     oil.open,                     desc = "Explorer",          hidden = true },
 
-			{ "<leader>q",     ":qall!<cr>",                                           desc = "Quit" },
-			{ "<leader>0",     ":LoadSession<cr>",                                     desc = "Session" },
-			{ "<leader>t",     function() fish:toggle() end,                           desc = "Terminal", },
+			{ "<leader>q",     ":qall!<cr>",                 desc = "Quit" },
+			{ "<leader>0",     ":LoadSession<cr>",           desc = "Session" },
+			{ "<leader>t",     function() fish:toggle() end, desc = "Terminal", },
 
-			{ "<leader>a",     ":Outline<cr>",                                         desc = "Code outlaw" },
-			{ "<leader>l",     [[:lua require("actions-preview").code_actions()<cr>]], desc = "Code actions" },
-			{ "<leader>c",     ":w<cr>:RunFile<cr>",                                   desc = "RunFile" },
+			{ "<leader>a",     ":Outline<cr>",               desc = "Code outlaw" },
+			{ "<leader>l",     ":ActionPreview<cr>",         desc = "Code actions" },
+			{ "<leader>c",     ":w<cr>:RunFile<cr>",         desc = "RunFile" },
 
-			{ "<leader>E",     ":lua MiniFiles.open()<cr>",                            desc = "Open miniFiles" },
+			{ "<leader>E",     ":Neotree<cr>",               desc = "Open miniFiles" },
 
-			{ "<leader>s",     ":Telescope live_grep<cr>",                             desc = "FindT" },
-			{ "<leader>f",     ":Telescope find_files<cr>",                            desc = "FindF" },
-			{ "<leader>S",     ":Telescope resume<cr>",                                desc = "Find prev" },
+			{ "<leader>s",     ":Telescope live_grep<cr>",   desc = "FindT" },
+			{ "<leader>f",     ":Telescope find_files<cr>",  desc = "FindF" },
+			{ "<leader>S",     ":Telescope resume<cr>",      desc = "Find prev" },
 
 			{ "<leader>9",     group = "Stuff" },
-			{ '<leader>9"',    ":%s/'/\"/g",                                           desc = "Replace all quotes" },
+			{ '<leader>9"',    ":%s/'/\"/g",                 desc = "Replace all quotes" },
 
-			{ "<leader>9s",    ":SudaWrite<cr>",                                       desc = "Sudo save" },
-			{ "<leader>9<cr>", ":.!bash<cr>",                                          desc = "Execute in bash" },
+			{ "<leader>9s",    ":SudaWrite<cr>",             desc = "Sudo save" },
+			{ "<leader>9<cr>", ":.!bash<cr>",                desc = "Execute in bash" },
 		})
 	end
 }

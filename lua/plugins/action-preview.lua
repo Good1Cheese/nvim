@@ -1,6 +1,6 @@
 local Plugin = { "aznhe21/actions-preview.nvim" }
 
--- Plugin.event = "VeryLazy"
+Plugin.event = "VeryLazy"
 
 function Plugin.config()
 	require("actions-preview").setup({

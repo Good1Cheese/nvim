@@ -7,6 +7,7 @@ vim.api.nvim_create_user_command("DapUIReset", ":lua require('dapui').open({ res
 vim.api.nvim_create_user_command("RORCommands", ":lua require('ror.commands').list_commands()<cr>", {})
 vim.api.nvim_create_user_command("HarpoonList", ":lua require('harpoon'):list():add()<cr>", {})
 vim.api.nvim_create_user_command("TypstPreview", ":lua require('typst-preview').preview()<cr>", {})
+vim.api.nvim_create_user_command("ActionPreview", ":lua require('actions-preview').code_actions()<cr>", {})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
