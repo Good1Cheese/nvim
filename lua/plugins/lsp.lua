@@ -116,6 +116,8 @@ function Plugin.refactor()
 
 	local lspconfig = require("lspconfig")
 
+	require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
 	for server, config in pairs(servers) do
 		config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 		lspconfig[server].setup(config)

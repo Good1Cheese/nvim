@@ -1,5 +1,6 @@
 return {
 	"chrishrb/gx.nvim",
+	submodules = false,
 	keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 	cmd = { "Browse" },
 
