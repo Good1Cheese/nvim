@@ -15,6 +15,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+
+vim.api.nvim_create_autocmd("BufRead", {
+	desc = "set filetype xml for extension .axaml",
+	pattern = "*.axaml",
+	callback = function()
+		vim.bo.filetype = "xml"
+	end,
+})
+
 -- vim.api.nvim_create_autocmd("FocusGained", {
 -- 	pattern = "*",
 -- 	group = group,
