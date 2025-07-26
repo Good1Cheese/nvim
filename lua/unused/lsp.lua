@@ -4,21 +4,34 @@ Plugin.dependencies = {
 	{ "williamboman/mason.nvim" },
 	{ "aznhe21/actions-preview.nvim" },
 	{ "L3MON4D3/LuaSnip" },
-	{ "saghen/blink.cmp" },
+	{ "WhoIsSethDaniel/mason-tool-installer.nvim", },
 }
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
-function Plugin.refactor()
-	-- Reserve a space in the gutter
-	vim.opt.signcolumn = "yes"
+function Plugin.config()
+	--  LspInfo window borders
+
+
+
+	local win = require("lspconfig.ui.windows")
+	local _default_opts = win.default_opts
+
+	win.default_opts = function(options)
+		local opts = _default_opts(options)
+
+		opts.border = "single"
+		return opts
+	end
 
 	-- This is where you enable features that only work
 	-- if there is a language server active in the file
+
 	vim.api.nvim_create_autocmd("LspAttach", {
 		desc = "LSP actions",
 		callback = function(event)
 			local opts = { buffer = event.buf }
+
 
 			vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 			vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
@@ -34,34 +47,51 @@ function Plugin.refactor()
 	})
 
 	local servers = {
-		dockerls = {
-			settings = {
-				docker = {
-					languageserver = {
-						formatter = {
-							ignoreMultilineInstructions = true,
-						},
-					},
-				}
-			}
-		},
-		docker_compose_language_service = {},
-		erlangls = {},
-		graphql = {
-			-- absolute path to compiled cli
-			-- cmd = { "~/.config/nvim/graphiql/packages/graphql-language-service-cli/bin/graphql.js", "server", "-m", "stream" },
-			filetypes = { "graphql", "graphqls" },
-		},
-		bashls = {},
-		asm_lsp = {},
-		clangd = {},
-		nil_ls = {},
-		gdscript = {},
-		pylsp = {},
-		gopls = {},
-		jdtls = {},
+		-- erlangls = {},
+		-- asm_lsp = {},
+		-- clangd = {},
+		-- nil_ls = {},
+		-- gdscript = {},
 		-- solargraph = {},
-		omnisharp = { cmd = { "OmniSharp" } },
+
+		dockerls = {},
+		docker_compose_language_service = {},
+		bashls = {},
+		pylsp = {},
+		gopls = {
+			staticcheck = true,
+			gofumpt = false,
+			completeUnimported = true,
+			codelenses = {
+				gc_details = false,
+				generate = true,
+				regenerate_cgo = true,
+				run_govulncheck = true,
+				test = true,
+				tidy = true,
+				upgrade_dependency = true,
+				vendor = true,
+			},
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+			analyses = {
+				fieldalignment = true,
+				nilness = true,
+				unusedparams = true,
+				unusedwrite = true,
+				useany = true,
+			},
+			usePlaceholders = true,
+		},
+		jdtls = {},
+		omnisharp = {},
 
 		lua_ls = {
 			settings = {
@@ -112,30 +142,21 @@ function Plugin.refactor()
 		}
 	}
 
-	vim.lsp.enable("graphql")
+	-- local ensure_installed = vim.tbl_keys(servers or {})
+	-- vim.list_extend(ensure_installed, {
+	-- 	"shfmt",
+	-- 	"shellcheck",
+	-- 	"hadolint",
+	-- 	"gofumpt",
+	-- 	"ruff"
+	-- })
+	-- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 	local lspconfig = require("lspconfig")
-
-	require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
 	for server, config in pairs(servers) do
 		config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 		lspconfig[server].setup(config)
 	end
-end
-
-function Plugin.config()
-	--  LspInfo window borders
-	local win = require("lspconfig.ui.windows")
-	local _default_opts = win.default_opts
-
-	win.default_opts = function(options)
-		local opts = _default_opts(options)
-		opts.border = "single"
-		return opts
-	end
-
-	Plugin.refactor()
 end
 
 return Plugin

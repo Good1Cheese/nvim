@@ -1,16 +1,37 @@
-vim.lsp.enable({ "luals", "dockerls", "omnisharp", "docker_compose_language_service", "asm_lsp", "clangd", "nil_ls",
-	"gdscript", "pylsp", "gopls", "jdtls" })
+vim.lsp.config["gopls"] = {
+	staticcheck = true,
+	gofumpt = false,
+	completeUnimported = true,
+	codelenses = {
+		gc_details = false,
+		generate = true,
+		regenerate_cgo = true,
+		run_govulncheck = true,
+		test = true,
+		tidy = true,
+		upgrade_dependency = true,
+		vendor = true,
+	},
+	hints = {
+		assignVariableTypes = true,
+		compositeLiteralFields = true,
+		compositeLiteralTypes = true,
+		constantValues = true,
+		functionTypeParameters = true,
+		parameterNames = true,
+		rangeVariableTypes = true,
+	},
+	analyses = {
+		fieldalignment = true,
+		nilness = true,
+		unusedparams = true,
+		unusedwrite = true,
+		useany = true,
+	},
+	usePlaceholders = true,
+}
 
 vim.lsp.config["luals"] = {
-	-- Command and arguments to start the server.
-	cmd = { "lua-language-server" },
-	-- Filetypes to automatically attach to.
-	filetypes = { "lua" },
-	-- Sets the "root directory" to the parent directory of the file in the
-	-- current buffer that contains either a ".luarc.json" or a
-	-- ".luarc.jsonc" file. Files that share a root directory will reuse
-	-- the connection to the same LSP server.
-	root_markers = { ".luarc.json", ".luarc.jsonc" },
 	-- Specific settings to send to the server. The schema for this is
 	-- defined by the server. For example the schema for lua-language-server
 	-- can be found here https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
@@ -57,27 +78,3 @@ vim.lsp.config["luals"] = {
 		}
 	}
 }
-
-vim.lsp.config["dockerls"] = {
-	settings = {
-		docker = {
-			languageserver = {
-				formatter = {
-					ignoreMultilineInstructions = true,
-				},
-			},
-		}
-	}
-}
-
-vim.lsp.config["omnisharp"] = { cmd = { "OmniSharp" } }
-
-vim.lsp.config["docker_compose_language_service"] = {}
-vim.lsp.config["asm_lsp"] = {}
-vim.lsp.config["clangd"] = {}
-vim.lsp.config["nil_ls"] = {}
-vim.lsp.config["gdscript"] = {}
-vim.lsp.config["pylsp"] = {}
-vim.lsp.config["gopls"] = {}
-vim.lsp.config["jdtls"] = {}
--- vim.lsp.config["solargraph"] = {}

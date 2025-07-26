@@ -46,4 +46,5 @@ lazy.opts = {
 	},
 }
 
+-- imports all plugins
 lazy.setup({ { import = "plugins" } })
