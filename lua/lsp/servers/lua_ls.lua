@@ -1,37 +1,16 @@
-vim.lsp.config["gopls"] = {
-	staticcheck = true,
-	gofumpt = false,
-	completeUnimported = true,
-	codelenses = {
-		gc_details = false,
-		generate = true,
-		regenerate_cgo = true,
-		run_govulncheck = true,
-		test = true,
-		tidy = true,
-		upgrade_dependency = true,
-		vendor = true,
+return {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	root_markers = {
+		".luarc.json",
+		".luarc.jsonc",
+		".luacheckrc",
+		".stylua.toml",
+		"stylua.toml",
+		"selene.toml",
+		"selene.yml",
+		".git",
 	},
-	hints = {
-		assignVariableTypes = true,
-		compositeLiteralFields = true,
-		compositeLiteralTypes = true,
-		constantValues = true,
-		functionTypeParameters = true,
-		parameterNames = true,
-		rangeVariableTypes = true,
-	},
-	analyses = {
-		fieldalignment = true,
-		nilness = true,
-		unusedparams = true,
-		unusedwrite = true,
-		useany = true,
-	},
-	usePlaceholders = true,
-}
-
-vim.lsp.config["luals"] = {
 	-- Specific settings to send to the server. The schema for this is
 	-- defined by the server. For example the schema for lua-language-server
 	-- can be found here https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json

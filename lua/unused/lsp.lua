@@ -12,8 +12,6 @@ Plugin.event = { "BufReadPre", "BufNewFile" }
 function Plugin.config()
 	--  LspInfo window borders
 
-
-
 	local win = require("lspconfig.ui.windows")
 	local _default_opts = win.default_opts
 

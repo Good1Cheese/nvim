@@ -1,8 +1,7 @@
-local Plugin = { "mason-org/mason-lspconfig.nvim" }
+local Plugin = { "mason-org/mason.nvim" }
 
 Plugin.dependencies = {
-	{ "mason-org/mason.nvim" },
-	{ "neovim/nvim-lspconfig" },
+	-- { "neovim/nvim-lspconfig" },
 	{ "aznhe21/actions-preview.nvim" },
 	{ "L3MON4D3/LuaSnip" },
 }
@@ -29,41 +28,6 @@ function Plugin.config()
 				cancel_installation = "<C-c>",
 			},
 		}
-	})
-
-	require("mason-lspconfig").setup({
-		ensure_installed = {
-			-- "nil_ls",
-			-- "asm_lsp",
-			-- "clangd",
-			-- "gdscript",
-
-			-- lua
-			"lua_ls",
-
-			-- bash
-			"bashls",
-			-- "shfmt",
-			-- "shellcheck",
-
-			-- go
-			"gopls",
-			-- "gofumpt",
-
-			-- python
-			"pylsp",
-			-- "ruff",
-
-			-- docker
-			"docker_compose_language_service",
-			"dockerls",
-			-- "hadolint",
-
-			"omnisharp",
-			"jdtls"
-		},
-
-		automatic_enable = true
 	})
 end
 

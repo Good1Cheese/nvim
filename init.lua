@@ -8,6 +8,5 @@ load("user.options")
 load("user.commands")
 require("user.plugins")
 
-require("lsp.servers")
-require("lsp.opts")
+require("lsp").setup()
 -- require("avalonia")
