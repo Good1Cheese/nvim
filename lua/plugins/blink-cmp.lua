@@ -18,20 +18,18 @@ return {
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 
+
 		keymap = {
 			preset = "enter",
 
-			["<C-f>"] = { function(cmp) cmp.scroll_documentation_up(4) end },
-			["<C-d>"] = { function(cmp) cmp.scroll_documentation_down(4) end },
-
-			["<Tab>"] = {
-				function(cmp)
-					if cmp.is_ghost_text_visible() and not cmp.is_menu_visible() then return cmp.accept() end
-				end,
-				"show_and_insert",
-				"select_next",
-			},
-			["<S-Tab>"] = { "show_and_insert", "select_prev" },
+			-- ["<Tab>"] = {
+			-- 	function(cmp)
+			-- 		if cmp.is_ghost_text_visible() and not cmp.is_menu_visible() then return cmp.accept() end
+			-- 	end,
+			-- 	"show_and_insert",
+			-- 	"select_next",
+			-- },
+			-- ["<S-Tab>"] = { "show_and_insert", "select_prev" },
 		},
 
 		appearance = {
@@ -59,7 +57,7 @@ return {
 
 			list = {
 				selection = {
-					preselect = false,
+					preselect = true,
 					auto_insert = false
 				}
 			},

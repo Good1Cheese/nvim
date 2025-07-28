@@ -16,11 +16,14 @@ M.servers = {
 M.setup = function()
 	require("lsp.opts").setup()
 
+	vim.lsp.config("*", {
+		capabilities = require("blink.cmp").get_lsp_capabilities(),
+		root_markers = { ".git" },
+	})
+
 	for _, server in ipairs(M.servers) do
-		local ok, config = pcall(require, "lsp.servers." .. server)
-		if ok then
-			vim.lsp.config(server, config)
-		end
+		-- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+		vim.lsp.config(server, require("lsp.servers." .. server))
 		vim.lsp.enable(server)
 	end
 end

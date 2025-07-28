@@ -1,7 +1,7 @@
 local Plugin = { "nvim-lualine/lualine.nvim" }
 
 Plugin.event = { "BufReadPre", "BufNewFile" }
-Plugin.dependencies = { "ecthelionvi/NeoComposer.nvim" }
+-- Plugin.dependencies = { "ecthelionvi/NeoComposer.nvim" }
 
 function Plugin.config()
 	require("lualine").setup({

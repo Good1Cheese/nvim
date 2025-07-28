@@ -4,6 +4,8 @@ local Plugin = { "aznhe21/actions-preview.nvim" }
 
 function Plugin.config()
 	require("actions-preview").setup({
+		backend = { "telescope", "minipick", "snacks", "nui" },
+
 		telescope = {
 			sorting_strategy = "ascending",
 			layout_strategy = "vertical",

@@ -35,7 +35,7 @@ return {
 				disable = { "duplicate-set-field" }
 			},
 			runtime = {
-				version = "Lua 5.1",
+				version = "LuaJIT",
 				nonstandardSymbol = {
 					"!",
 					"!=",

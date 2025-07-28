@@ -1,18 +1,17 @@
 -- Config for bashls (Bash LSP)
 return {
 	cmd = { "bash-language-server", "start" },
-	filetypes = { "sh", "zsh" },
-	root_dir = require("lsp.utils").root_pattern(".bashrc", ".zshrc", ".git"),
+	filetypes = { "bash", "sh" },
 	settings = {
 		bashIde = {
-			-- Add bash-specific settings here
-			shellcheck = {
-				enable = true,
-				severity = "warning"
-			},
-			diagnostics = {
-				enable = true
-			}
-		}
+			-- Glob pattern for finding and parsing shell script files in the workspace.
+			-- Used by the background analysis features across files.
+
+			-- Prevent recursive scanning which will cause issues when opening a file
+			-- directly in the home directory (e.g. ~/foo.sh).
+			--
+			-- Default upstream pattern is "**/*@(.sh|.inc|.bash|.command)".
+			globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
+		},
 	}
 }
