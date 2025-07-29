@@ -9,7 +9,6 @@ return {
 		"stylua.toml",
 		"selene.toml",
 		"selene.yml",
-		".git",
 	},
 	-- Specific settings to send to the server. The schema for this is
 	-- defined by the server. For example the schema for lua-language-server
@@ -35,7 +34,7 @@ return {
 				disable = { "duplicate-set-field" }
 			},
 			runtime = {
-				version = "LuaJIT",
+				version = "Lua 5.1",
 				nonstandardSymbol = {
 					"!",
 					"!=",
@@ -51,7 +50,7 @@ return {
 				library = {
 					vim.env.VIMRUNTIME,
 					vim.fn.expand(
-						"$HOME/.local/state/LLS-Addons/glua-api-snippets")
+						"$HOME/.local/state/LLS-Addons/glua-api-snippets"),
 				}
 			}
 		}

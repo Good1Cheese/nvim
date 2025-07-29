@@ -5,19 +5,19 @@ local opt = vim.opt
 vim.cmd("set eventignore=BufWritePost,VimResized")
 vim.cmd("au BufEnter * set noro")
 vim.cmd(
-"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz")
+    "set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz")
 -- vim.cmd("let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'")
 
 vim.diagnostic.config({
-	-- Use the default configuration
-	virtual_lines = false
+    -- Use the default configuration
+    virtual_lines = false
 
-	-- Alternatively, customize specific options
+    -- Alternatively, customize specific options
 
-	-- virtual_lines = {
-	--  -- Only show virtual line diagnostics for the current cursor line
-	--  current_line = true,
-	-- },
+    -- virtual_lines = {
+    --  -- Only show virtual line diagnostics for the current cursor line
+    --  current_line = true,
+    -- },
 })
 
 
@@ -89,19 +89,19 @@ vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o") -- don't auto-comment new lines
 
 -- disable some default providers
 for _, provider in ipairs({ "node", "perl", "python3" --[[ "ruby" ]] }) do
-	vim.g["loaded_" .. provider .. "_provider"] = 0
+    vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
 vim.diagnostic.config({
-	virtual_text = { prefix = "" },
-	signs = true,
-	underline = true,
-	update_in_insert = false
+    virtual_text = { prefix = "" },
+    signs = true,
+    underline = true,
+    update_in_insert = false
 })
 
 local function lspSymbol(name, icon)
-	local hl = "DiagnosticSign" .. name
-	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+    local hl = "DiagnosticSign" .. name
+    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 lspSymbol("Error", "󰅙")
