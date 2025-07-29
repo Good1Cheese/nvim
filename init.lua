@@ -6,7 +6,7 @@ end
 load("user.keymaps")
 load("user.options")
 load("user.commands")
-require("user.plugins")
+require("user.lazy")
 
-require("lsp").setup()
+require("lsp.init").setup()
 -- require("avalonia")
