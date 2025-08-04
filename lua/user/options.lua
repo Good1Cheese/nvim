@@ -21,6 +21,8 @@ vim.diagnostic.config({
 })
 
 
+vim.opt.laststatus = 3
+
 vim.opt.signcolumn = "yes"
 
 vim.g.loaded_netrwPlugin = 0

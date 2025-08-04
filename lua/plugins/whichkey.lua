@@ -79,7 +79,7 @@ function Plugin.config()
 		-- { "<leader>9t", ":lua toggleTransparency()<cr>", desc = "Toggle transparency" },
 		-- { "<leader>9r", ":RORCommands<cr>", desc = "Ruby on RAILS" },
 
-		{ "<leader>9s", ":SudaWrite<cr>", desc = "Sudo save" },
+		{ "<leader>9s", ":w !doas tee % >/dev/null<cr>", desc = "Sudo save" },
 		{ "<leader>9<cr>", ":.!bash<cr>", desc = "Execute in bash" },
 
 		-- d = {

@@ -5,6 +5,7 @@ end
 
 load("user.keymaps")
 load("user.options")
+load("user.registers")
 load("user.commands")
 require("user.lazy")
 

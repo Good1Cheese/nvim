@@ -1,7 +1,12 @@
 return {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
-    dependencies = { "rafamadriz/friendly-snippets", "onsails/lspkind.nvim" },
+    dependencies =
+    {
+        "rafamadriz/friendly-snippets",
+        "onsails/lspkind.nvim",
+        -- "Kaiser-Yang/blink-cmp-avante",
+    },
     version = "1.*",
     lazy = false,
     opts = {
@@ -121,14 +126,15 @@ return {
             },
         },
         sources = {
-            default = { --[[ "lazydev", ]] "lsp", "path", "snippets", "buffer" },
+            default = { --[[ "avante", ]] "lsp", "path", "snippets", "buffer" },
             providers = {
-                -- lazydev = {
-                --     name = "LazyDev",
-                --     module = "lazydev.integrations.blink",
-                --     -- make lazydev completions top priority (see `:h blink.cmp`)
-                --     score_offset = 100,
-                -- },
+                -- avante = {
+                --     module = "blink-cmp-avante",
+                --     name = "Avante",
+                --     opts = {
+                --         -- options for blink-cmp-avante
+                --     }
+                -- }
             },
         },
         snippets = { preset = "luasnip" },
