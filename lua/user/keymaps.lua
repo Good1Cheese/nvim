@@ -1,114 +1,112 @@
-local opts = {
-    noremap = true, -- non-recursive
-    silent = true   -- do not show message
-}
+-- Keymap configuration
+local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
 
-local keymap = vim.api.nvim_set_keymap
-
--- Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+-- ============================================================================
+-- LEADER SETUP
+-- ============================================================================
+map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Avoid yanking test when pasting
-keymap("v", "p", "P", opts)
-keymap("v", "Y", "y'>p", opts)
+-- ============================================================================
+-- GENERAL EDITING
+-- ============================================================================
+-- Better paste in visual mode (don't yank replaced text)
+map("v", "p", "P", opts)
+map("v", "Y", "y'>p", opts)
 
-keymap("v", "$", "$h", opts)
+-- Visual mode: $ goes to end but not past line
+map("v", "$", "$h", opts)
 
--- Make duplicate without copying
-keymap("n", "<C-3>", [[ :call setreg('A', [])<cr> | "Ayy"Ap  ]], opts)
-
-keymap("n", "<C-S-j>", "<Cmd>copy.<Cr>", opts)
-keymap("v", "<C-S-j>", ":copy.-1<Cr>gv", opts) -- no use <Cmd> in visual
-
-keymap("t", "<esc>", "<C-\\><C-N>", opts)
-
--- Search selected text
--- keymap("v", "<C-s>", "y:lua require('telescope.builtin').grep_string()<cr><C-r>+", opts)
-
--- Replace selected text
--- keymap("n", "<C-c>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
-
--- Paste in insert mode
-keymap("i", "<C-v>", "<C-r>+<esc>", opts)
-
--- Copy all
-keymap("n", "<C-S-a>", "ggVG", opts)
-
--- New line
-keymap("n", "<C-`>", "kA<cr><esc>j", opts)
-keymap("n", "<C-1>", "A<cr><esc>k", opts)
-keymap("n", "<C-2>", "i<cr><esc>k", opts)
-
--- Leave pos alone
-keymap("n", "J", "mzJ`z", opts)
-
--- vim.keymap.set({ "n", "v" }, "<F3>", function()
---     require("conform").format({
---         lsp_fallback = true,
---         async = false,
---         timeout_ms = 1000
---     })
--- end, { desc = "Format file or range (in visual mode)" })
+-- Keep cursor position when joining lines
+map("n", "J", "mzJ`z", opts)
 
 -- Disable search highlight
-keymap("n", "<esc>", ":noh<cr>", opts)
+map("n", "<Esc>", ":nohlsearch<CR>", opts)
 
--- Save file/files
-keymap("n", "<C-s>", ":silent w!<cr>", opts)
-keymap("n", "<C-S-s>", ":silent w!<cr>", opts)
-keymap("v", "<C-s>", ":silent w!<cr>", opts)
+-- ============================================================================
+-- LINE/BLOCK MANIPULATION
+-- ============================================================================
+-- Duplicate line/selection
+map("n", "<C-S-j>", ":copy.<CR>", opts)
+map("v", "<C-S-j>", ":copy'<-1<CR>gv", opts)
 
-keymap("i", "<C-s>", "<esc>:silent wall!<cr>", opts)
-keymap("i", "<C-S-s>", "<esc>:silent wall!<cr>", opts)
+-- Move lines/blocks up/down
+map("n", "<A-j>", ":move .+1<CR>==", opts)
+map("n", "<A-k>", ":move .-2<CR>==", opts)
+map("v", "<A-j>", ":move '>+1<CR>gv=gv", opts)
+map("v", "<A-k>", ":move '<-2<CR>gv=gv", opts)
 
--- Disable arrows
-keymap("n", "<up>", ":echomsg 'use hjkl dude'<cr>", opts)
-keymap("n", "<down>", ":echomsg 'use hjkl dude'<cr>", opts)
-keymap("n", "<left>", ":echomsg 'use hjkl dude'<cr>", opts)
-keymap("n", "<right>", ":echomsg 'use hjkl dude'<cr>", opts)
+-- Move characters left/right
+map("n", "<A-h>", "xhP", opts)
+map("n", "<A-l>", "xp", opts)
 
--- Better page navigation
--- keymap("n", "<C-d>", "<C-d>zz", opts)
--- keymap("n", "<C-b>", "<C-b>zz", opts)
+-- Indent/outdent and maintain selection
+map("v", "<", "<gv", opts)
+map("v", ">", ">gv", opts)
+map("v", "<A-h>", "<gv", opts)
+map("v", "<A-l>", ">gv", opts)
 
--- Better search navigation
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
+-- ============================================================================
+-- NEW LINE CREATION
+-- ============================================================================
 
--- Navigation
-keymap("n", "<C-h>", "<C-w>h", opts) -- Left window
-keymap("n", "<C-k>", "<C-w>k", opts) -- Up window
-keymap("n", "<C-j>", "<C-w>j", opts) -- Down window
-keymap("n", "<C-l>", "<C-w>l", opts) -- Right window
+map("n", "<C-`>", "kA<CR><Esc>j", { desc = "New line above current" })
+map("n", "<C-1>", "A<CR><Esc>k", { desc = "New line below, stay current" })
+map("n", "<C-2>", "i<CR><Esc>k", { desc = "Break line at cursor" })
 
--- Resize with arrows
--- delta: 2 lines
-keymap("n", "<C-Up>", ":resize -2<cr>", opts)
-keymap("n", "<C-Down>", ":resize +2<cr>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
+-- ============================================================================
+-- SAVE OPERATIONS
+-- ============================================================================
+-- Save current file
+map({ "n", "v" }, "<C-s>", "<Cmd>silent! write<CR>", opts)
+map({ "n", "v" }, "<C-S-s>", "<Cmd>silent! write<CR>", opts)
 
--- Hint: start visual mode with the same area as the previous area and the same mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+-- Save all files from insert mode
+map("i", "<C-s>", "<Esc><Cmd>silent! wall<CR>", opts)
+map("i", "<C-S-s>", "<Esc><Cmd>silent! wall<CR>", opts)
 
+-- ============================================================================
+-- CLIPBOARD OPERATIONS
+-- ============================================================================
+-- Paste in insert mode
+map("i", "<C-v>", "<C-r>+", opts)
 
--- Simpler pure Neovim movement (replaces move.nvim)
+-- Select all
+map("n", "<C-S-a>", "ggVG", opts)
 
--- Move lines up/down in normal mode
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
+-- ============================================================================
+-- NAVIGATION
+-- ============================================================================
+-- Better search navigation (center and unfold)
+map("n", "n", "nzzzv", opts)
+map("n", "N", "Nzzzv", opts)
 
--- Move characters left/right (simplified - just moves cursor)
-vim.keymap.set("n", "<A-h>", "xhP", opts) -- Cut char and paste before previous
-vim.keymap.set("n", "<A-l>", "xp", opts)  -- Cut char and paste after next
+-- Window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
--- Move visual blocks up/down
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+-- ============================================================================
+-- WINDOW RESIZING
+-- ============================================================================
+map("n", "<C-Up>", "<Cmd>resize -2<CR>", opts)
+map("n", "<C-Down>", "<Cmd>resize +2<CR>", opts)
+map("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", opts)
+map("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", opts)
 
--- Move visual blocks left/right (indent/unindent)
-vim.keymap.set("v", "<A-h>", "<gv", opts)
-vim.keymap.set("v", "<A-l>", ">gv", opts)
+-- ============================================================================
+-- TERMINAL MODE
+-- ============================================================================
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- ============================================================================
+-- LEARNING AIDS
+-- ============================================================================
+-- Disable arrow keys to encourage hjkl usage
+local arrow_keys = { "<Up>", "<Down>", "<Left>", "<Right>" }
+for _, key in ipairs(arrow_keys) do
+    map("n", key, "<Cmd>echomsg 'Use hjkl instead!'<CR>", opts)
+end

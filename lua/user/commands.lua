@@ -1,60 +1,108 @@
-local group = vim.api.nvim_create_augroup("user_cmds", { clear = true })
+-- ============================================================================
+-- AUTOCOMMAND GROUP
+-- ============================================================================
+local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
-vim.api.nvim_create_user_command("ReloadConfig", "source $MYVIMRC", {})
-vim.api.nvim_create_user_command("HarpoonList", ":lua require('harpoon'):list():add()<cr>", {})
+-- ============================================================================
+-- AUTOCMDS
+-- ============================================================================
 
+-- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
+    group = augroup,
+    desc = "Highlight yanked text",
     callback = function()
-        vim.highlight.on_yank()
+        vim.highlight.on_yank({ timeout = 200 })
     end,
-    group = group,
-    pattern = "*",
 })
 
-
+-- Set XML filetype for .axaml files
 vim.api.nvim_create_autocmd("BufRead", {
-    desc = "set filetype xml for extension .axaml",
+    group = augroup,
+    desc = "Set XML filetype for .axaml files",
     pattern = "*.axaml",
     callback = function()
         vim.bo.filetype = "xml"
     end,
 })
 
+-- Quick quit for help and man pages
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "man" },
-    group = group,
-    command = "nnoremap <buffer> q <cmd>quit<cr>",
+    group = augroup,
+    desc = "Quick quit for help and man pages",
+    pattern = { "help", "man", "qf", "lspinfo" },
+    callback = function(event)
+        vim.keymap.set("n", "q", "<Cmd>quit<CR>", {
+            buffer = event.buf,
+            silent = true,
+            desc = "Quick quit"
+        })
+    end,
 })
 
-function CopyErrorUnderCursor()
+-- ============================================================================
+-- UTILITY FUNCTIONS
+-- ============================================================================
+
+-- Copy diagnostic message under cursor
+local function copy_diagnostic_under_cursor()
     local bufnr = vim.api.nvim_get_current_buf()
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
-    local lnum = cursor_pos[1] - 1 -- Текущая строка (0-based)
-    local col = cursor_pos[2]      -- Текущая колонка (0-based)
+    local lnum = cursor_pos[1] - 1 -- Current line (0-based)
+    local col = cursor_pos[2]    -- Current column (0-based)
 
-    -- Получаем все диагностики на текущей строке
+    -- Get all diagnostics on current line
     local diagnostics = vim.diagnostic.get(bufnr, { lnum = lnum })
     if #diagnostics == 0 then
+        vim.notify("No diagnostics found on current line", vim.log.levels.WARN)
         return
     end
 
-    -- Фильтруем диагностики, попадающие под курсор
+    -- Filter diagnostics under cursor
     local relevant_diags = {}
     for _, diag in ipairs(diagnostics) do
-        local end_col = diag.end_col or diag.col
-        if diag.col <= col and col <= end_col then
+        local start_col = diag.col or 0
+        local end_col = diag.end_col or start_col
+        if start_col <= col and col <= end_col then
             table.insert(relevant_diags, diag)
         end
     end
+
     if #relevant_diags == 0 then
+        -- If no diagnostic exactly under cursor, use the first one on the line
+        relevant_diags = { diagnostics[1] }
+    end
+
+    -- Copy message to system clipboard
+    local message = relevant_diags[1].message
+    vim.fn.setreg("+", message)
+    vim.notify("Copied: " .. message:gsub("\n", " "), vim.log.levels.INFO)
+end
+
+-- ============================================================================
+-- KEYMAPS FOR UTILITY FUNCTIONS
+-- ============================================================================
+vim.keymap.set("n", "<leader>b", copy_diagnostic_under_cursor, {
+    desc = "Copy diagnostic under cursor"
+})
+
+-- Alternative: Copy all diagnostics on current line
+vim.keymap.set("n", "<leader>B", function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+    local diagnostics = vim.diagnostic.get(bufnr, { lnum = lnum })
+
+    if #diagnostics == 0 then
+        vim.notify("No diagnostics on current line", vim.log.levels.WARN)
         return
     end
 
-    -- Копируем сообщение первой найденной диагностики
-    local message = relevant_diags[1].message
-    vim.fn.setreg("+", message) -- Копируем в системный буфер
-    vim.notify("Скопировано: " .. message, vim.log.levels.INFO)
-end
+    local messages = {}
+    for _, diag in ipairs(diagnostics) do
+        table.insert(messages, diag.message)
+    end
 
--- Настройка горячей клавиши (например <leader>e)
-vim.keymap.set("n", "<leader>b", CopyErrorUnderCursor, { desc = "Copy error under cursor" })
+    local combined = table.concat(messages, " | ")
+    vim.fn.setreg("+", combined)
+    vim.notify("Copied " .. #diagnostics .. " diagnostic(s)", vim.log.levels.INFO)
+end, { desc = "Copy all diagnostics on line" })
