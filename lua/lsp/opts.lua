@@ -17,24 +17,24 @@ local on_attach = function(client, bufnr)
 	nmap("<F4>", vim.lsp.buf.code_action, "Code Action")
 
 	-- Format on save
-	if not client.supports_method("textDocument/willSaveWaitUntil") then
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			buffer = bufnr,
-			callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end
-		})
-	end
-
-	-- Document highlighting
-	if client.supports_method("textDocument/documentHighlight") then
-		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			buffer = bufnr,
-			callback = vim.lsp.buf.document_highlight
-		})
-		vim.api.nvim_create_autocmd("CursorMoved", {
-			buffer = bufnr,
-			callback = vim.lsp.buf.clear_references
-		})
-	end
+	-- if not client.supports_method("textDocument/willSaveWaitUntil") then
+	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 		buffer = bufnr,
+	-- 		callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end
+	-- 	})
+	-- end
+	--
+	-- -- Document highlighting
+	-- if client.supports_method("textDocument/documentHighlight") then
+	-- 	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	-- 		buffer = bufnr,
+	-- 		callback = vim.lsp.buf.document_highlight
+	-- 	})
+	-- 	vim.api.nvim_create_autocmd("CursorMoved", {
+	-- 		buffer = bufnr,
+	-- 		callback = vim.lsp.buf.clear_references
+	-- 	})
+	-- end
 end
 
 return {

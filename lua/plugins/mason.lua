@@ -1,7 +1,7 @@
 local Plugin = { "mason-org/mason.nvim" }
 
 Plugin.dependencies = {
-    -- { "neovim/nvim-lspconfig" },
+    { "neovim/nvim-lspconfig" },
     { "aznhe21/actions-preview.nvim" },
     { "L3MON4D3/LuaSnip" },
     { "j-hui/fidget.nvim",           opts = {} },
