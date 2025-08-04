@@ -10,18 +10,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
------------------
--- Normal mode --
------------------
-
 -- Avoid yanking test when pasting
 keymap("v", "p", "P", opts)
 keymap("v", "Y", "y'>p", opts)
@@ -32,7 +20,7 @@ keymap("v", "$", "$h", opts)
 keymap("n", "<C-3>", [[ :call setreg('A', [])<cr> | "Ayy"Ap  ]], opts)
 
 keymap("n", "<C-S-j>", "<Cmd>copy.<Cr>", opts)
-keymap("v", "<C-S-j>", ":copy.-1<Cr>gv", opts)  -- no use <Cmd> in visual
+keymap("v", "<C-S-j>", ":copy.-1<Cr>gv", opts) -- no use <Cmd> in visual
 
 keymap("t", "<esc>", "<C-\\><C-N>", opts)
 
@@ -56,26 +44,13 @@ keymap("n", "<C-2>", "i<cr><esc>k", opts)
 -- Leave pos alone
 keymap("n", "J", "mzJ`z", opts)
 
--- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-
-vim.keymap.set({ "n", "v" }, "<F3>", function()
-                   require("conform").format({
-                       lsp_fallback = true,
-                       async = false,
-                       timeout_ms = 1000
-                   })
-               end, { desc = "Format file or range (in visual mode)" })
-
--- vim.keymap.set("", "<leader>f", function()
---     require("conform").format({ async = true }, function( err )
---         if not err then
---             local mode = vim.api.nvim_get_mode().mode
---             if vim.startswith(string.lower(mode), "v") then
---                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
---             end
---         end
---     end)
--- end, { desc = "Format code" })
+-- vim.keymap.set({ "n", "v" }, "<F3>", function()
+--     require("conform").format({
+--         lsp_fallback = true,
+--         async = false,
+--         timeout_ms = 1000
+--     })
+-- end, { desc = "Format file or range (in visual mode)" })
 
 -- Disable search highlight
 keymap("n", "<esc>", ":noh<cr>", opts)
@@ -115,10 +90,25 @@ keymap("n", "<C-Down>", ":resize +2<cr>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
 
------------------
--- Visual mode --
------------------
-
 -- Hint: start visual mode with the same area as the previous area and the same mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+
+-- Simpler pure Neovim movement (replaces move.nvim)
+
+-- Move lines up/down in normal mode
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
+
+-- Move characters left/right (simplified - just moves cursor)
+vim.keymap.set("n", "<A-h>", "xhP", opts) -- Cut char and paste before previous
+vim.keymap.set("n", "<A-l>", "xp", opts)  -- Cut char and paste after next
+
+-- Move visual blocks up/down
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+
+-- Move visual blocks left/right (indent/unindent)
+vim.keymap.set("v", "<A-h>", "<gv", opts)
+vim.keymap.set("v", "<A-l>", ">gv", opts)

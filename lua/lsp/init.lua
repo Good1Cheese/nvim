@@ -20,10 +20,10 @@ end
 M.setup = function()
     require("lsp.opts").setup()
 
-    vim.lsp.config("*", {
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-        root_markers = { ".git" },
-    })
+	vim.lsp.config("*", {
+		capabilities = require("blink.cmp").get_lsp_capabilities(),
+		root_markers = { ".git" },
+	})
 
     -- Get servers automatically from directory
     local servers = M.get_servers()
