@@ -54,7 +54,7 @@ function Plugin.config()
 
 		{ "<leader>a", ":Outline<cr>", desc = "Code outlaw" },
 		{ "<leader>l", [[:lua require("actions-preview").code_actions()<cr>]], desc = "Code actions" },
-		{ "<leader>c", ":RunFile<cr>", desc = "RunFile" },
+		{ "<leader>c", ":w<CR>:RunFile<CR>", desc = "RunFile" },
 
 		{ "<leader>E", ":lua MiniFiles.open()<cr>", desc = "Open miniFiles" },
 

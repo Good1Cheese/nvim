@@ -1,14 +1,12 @@
 return {
     "saghen/blink.cmp",
-    -- optional: provides snippets for the snippet source
-    dependencies =
-    {
+    version = "1.*",
+    lazy = false,
+    dependencies = {
         "rafamadriz/friendly-snippets",
         "onsails/lspkind.nvim",
         -- "Kaiser-Yang/blink-cmp-avante",
     },
-    version = "1.*",
-    lazy = false,
     opts = {
         -- "default" (recommended) for mappings similar to built-in completions (C-y to accept)
         -- "super-tab" for mappings similar to vscode (tab to accept)
@@ -22,8 +20,6 @@ return {
         -- C-k: Toggle signature help (if signature.enabled = true)
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-
-
         keymap = {
             preset = "enter",
 
@@ -48,6 +44,8 @@ return {
 
         -- (Default) Only show the documentation popup when manually triggered
         completion = {
+            trigger = { prefetch_on_insert = false },
+
             accept = {
                 auto_brackets = {
                     enabled = true
