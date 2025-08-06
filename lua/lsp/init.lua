@@ -3,38 +3,28 @@ local M = {}
 -- Automatically get list of servers from files in servers/ directory
 M.get_servers = function()
     return {
+        "rust_analyzer",
         "bashls",
         "docker_compose_language_service",
         "dockerls",
         "emmylua_ls",
-        "rust_analyzer",
         "gopls",
         "jdtls",
         "omnisharp",
         "pylsp",
         "superhtml",
-        "yamlls"
+        "yamlls",
+        "jsonls"
     }
 end
 
--- asm-lsp
--- bash-language-server
+-- not lsp's:
 -- clangd
--- docker-compose-language-service
--- dockerfile-language-server
--- emmylua_ls
 -- gofumpt
--- gopls
 -- hadolint
--- jdtls
--- lua-language-server
--- omnisharp
--- python-lsp-server
 -- ruff
 -- shellcheck
 -- shfmt
--- superhtml
--- yaml-language-server
 -- yamlfmt
 
 -- Setup function

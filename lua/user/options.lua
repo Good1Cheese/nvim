@@ -143,6 +143,15 @@ vim.cmd([[
 -- DIAGNOSTICS CONFIGURATION
 -- ============================================================================
 
+
+vim.diagnostic.config({
+    virtual_text = { prefix = "" },
+    virtual_lines = false,
+    signs = true,
+    underline = true,
+    update_in_insert = false
+})
+
 vim.diagnostic.config({
     -- Use the default configuration
     virtual_lines = false
