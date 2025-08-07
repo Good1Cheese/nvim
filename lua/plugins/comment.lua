@@ -3,10 +3,6 @@ local Plugin = { "numToStr/Comment.nvim" }
 -- Plugin.lazy = false
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
-Plugin.dependencies = {
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-}
-
 function Plugin.config()
 	require("Comment").setup({
 		toggler = {
