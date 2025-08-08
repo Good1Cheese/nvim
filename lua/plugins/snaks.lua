@@ -15,10 +15,10 @@ return {
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = true },
-        terminal = {
-            win = { style = "terminal" },
-            shell = "fish"
-        },
+        -- terminal = {
+        --     win = { style = "terminal" },
+        --     shell = "fish"
+        -- },
         statuscolumn = { enabled = true },
         styles = {
             notification = {
@@ -34,7 +34,7 @@ return {
         { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
         { "<leader>u",  function() Snacks.picker.undo() end,               desc = "Undo History" },
         -- Other
-        { "<leader>t",  function() Snacks.terminal() end,                  desc = "Toggle Terminal" },
+        -- { "<leader>t",  function() Snacks.terminal() end,                  desc = "Toggle Terminal" },
         { "<leader>9c", function() Snacks.picker.colorschemes() end,       desc = "Colorschemes" },
         { "<leader>r",  function() Snacks.rename.rename_file() end,        desc = "Rename File" },
         { "<leader>L",  function() Snacks.lazygit() end,                   desc = "Lazygit" },
