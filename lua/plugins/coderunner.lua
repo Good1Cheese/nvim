@@ -5,7 +5,31 @@ Plugin.filetypes = {
 	lua = "cd $dir && lua $fileName",
 	rb = "cd $dir && ruby $fileName",
 	cs = "dotnet run --project $dir",
-	-- python = "steam-run ./.venv/bin/python3 $fileName",
+	rust = function()
+		-- Get the directory of the current file to start the search
+		local current_dir = vim.fn.expand("%:p:h")
+
+		-- Use Neovim's built-in filesystem tools to find Cargo.toml by searching upwards
+		local cargo_root = vim.fs.find('Cargo.toml', { upward = true, path = current_dir, type = 'file' })
+
+		-- vim.fs.find returns a list, so we check if it's empty
+		if not vim.tbl_isempty(cargo_root) then
+			-- If a Cargo.toml is found, we're in a project.
+			-- As a bonus, let's check if it's a test file.
+			if string.find(vim.fn.expand("%:t"), "_test.rs$") then
+				return "cargo test"
+			else
+				return "cargo run"
+			end
+		else
+			-- If no Cargo.toml is found, fall back to the single-file command
+			return {
+				"cd $dir &&",
+				"rustc $fileName &&",
+				"$dir/$fileNameWithoutExt"
+			}
+		end
+	end,
 	python = "python $fileName",
 	cpp = {
 		"cd $dir &&",
