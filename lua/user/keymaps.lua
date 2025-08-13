@@ -52,9 +52,9 @@ map("v", "<A-l>", ">gv", opts)
 -- NEW LINE CREATION
 -- ============================================================================
 
-map("n", "<C-`>", "kA<CR><Esc>j", { desc = "New line above current" })
-map("n", "<C-1>", "A<CR><Esc>k", { desc = "New line below, stay current" })
-map("n", "<C-2>", "i<CR><Esc>k", { desc = "Break line at cursor" })
+map("n", "<C-`>", "kA<CR><Esc>j", opts)
+map("n", "<C-1>", "A<CR><Esc>k", opts)
+map("n", "<C-2>", "i<CR><Esc>k", opts)
 
 -- ============================================================================
 -- SAVE OPERATIONS

@@ -1,5 +1,6 @@
 return {
     "nvim-neotest/neotest",
+	cmd = "Neotest",
     dependencies = {
         "fredrikaverpil/neotest-golang",
         "rouge8/neotest-rust",
