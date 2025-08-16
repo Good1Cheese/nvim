@@ -13,7 +13,7 @@ local on_attach = function(client, bufnr)
     nmap("gr", vim.lsp.buf.references, "References")
     nmap("gs", vim.lsp.buf.signature_help, "Signature Help")
     nmap("<F2>", vim.lsp.buf.rename, "Rename")
-    nmap("<F3>", vim.lsp.buf.format, "Format")
+    -- nmap("<F3>", vim.lsp.buf.format, "Format")
     nmap("<F4>", vim.lsp.buf.code_action, "Code Action")
 
     -- Format on save

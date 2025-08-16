@@ -1,36 +1,31 @@
 local Plugin = { "stevearc/conform.nvim" }
 
-Plugin.event = { "BufReadPre", "BufNewFile" }
+Plugin.event = { "BufWritePre" }
+Plugin.cmd = { "ConformInfo" }
+
+Plugin.keys = {
+	{
+		"<F3>",
+		function()
+			require("conform").format({ async = true })
+		end,
+		mode = "",
+		desc = "Format buffer",
+	},
+}
 
 Plugin.opts = {
+	log_level = vim.log.levels.DEBUG,
+	notify_no_formatters = true,
+
+	default_format_opts = {
+		lsp_format = "fallback",
+	},
+
 	formatters_by_ft = {
-		python = { "ruff_format" },
-		cpp = { "clang-format" },
-		sh = { "shfmt" },
-		yaml = { "yamlfmt" },
-		go = { "gofumpt", "gofmt" },
-		-- rb = { "solargraph" },
-		-- nix = { "nixfmt" },
-		-- gdscript = { "gdformat" },
-		["_"] = { "trim_whitespace" },
-		["*"] = { "trim_whitespace" },
-	},
+		go = { "golangci-lint" },
+	}
 }
 
-
-Plugin.formatters = {
-	["clang-format"] = {
-		command = "clang-format",
-		args = { "--style=file:$HOME/.clang-format" },
-	},
-	gdformat = {
-		cmd = "gdformat",
-		args = "--fast",
-	},
-	["ruff-format"] = {
-		command = "ruff",
-		args = { "format", "$FILENAME" },
-	},
-}
 
 return Plugin
