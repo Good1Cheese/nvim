@@ -11,7 +11,7 @@
     ]
   },
   "runtime": {
-    "version": "Lua 5.1",
+    "version": "Lua5.1",
     "extensions": [".lua", ".lua.txt"],
     "requirePattern": ["?.lua", "?/init.lua"]
   }
