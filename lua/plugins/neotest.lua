@@ -1,9 +1,10 @@
 return {
     "nvim-neotest/neotest",
-	cmd = "Neotest",
+	event = "VeryLazy",
     dependencies = {
         "fredrikaverpil/neotest-golang",
         "rouge8/neotest-rust",
+        "Issafalcon/neotest-dotnet",
         "nvim-neotest/nvim-nio",
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -14,9 +15,9 @@ return {
             adapters = {
                 require("neotest-golang"),
                 require("neotest-rust"),
+				require("neotest-dotnet"),
             },
         })
-
 
         -- ============================================================================
         -- NEOTEST
