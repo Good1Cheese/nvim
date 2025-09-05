@@ -24,6 +24,7 @@ Plugin.opts = {
 
 	formatters_by_ft = {
 		go = { "golangci-lint" },
+		cs = { "csharpier" },
 		["*"] = { "trim_whitespace" },
 	}
 }
