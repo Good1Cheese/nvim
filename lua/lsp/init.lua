@@ -14,6 +14,7 @@ M.get_servers = function()
 		"omnisharp",
 		-- "csharp_ls",
 		"pylsp",
+		"ts_ls",
 		"superhtml",
 		"yamlls",
 		"jsonls"
@@ -21,7 +22,7 @@ M.get_servers = function()
 end
 
 -- asm-lsp clangd jdtls json-lsp omnisharp csharp-language-server
--- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server
+-- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server superhtml typescript-language-server
 
 -- Setup function
 M.setup = function()
@@ -29,6 +30,7 @@ M.setup = function()
 
 	-- Get servers automatically from directory
 	local servers = M.get_servers()
+
 	for _, server in ipairs(servers) do
 		vim.lsp.enable(server)
 	end
