@@ -1,4 +1,4 @@
 return {
-	"typicode/bg.nvim",
+	"kdkasad/bg.nvim",
 	lazy = false,
 }
