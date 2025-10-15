@@ -23,20 +23,12 @@ Plugin.opts = {
 	},
 
 	formatters_by_ft = {
-		python = { lsp_format = "fallback" },
+		python = { "ruff_format", lsp_format = "fallback" },
 		go = { "golangci-lint" },
 		cs = { "csharpier" },
 		["*"] = { "trim_whitespace" },
 	},
 
-	formatters = {
-		["ruff_format"] = {
-			command = "ruff format",
-			args = { "$FILENAME" },
-		}
-	}
-
 }
-
 
 return Plugin

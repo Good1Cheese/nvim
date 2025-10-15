@@ -15,14 +15,15 @@ M.get_servers = function()
 		-- "csharp_ls",
 		"pylsp",
 		"ts_ls",
-		"superhtml",
+		"html",
+		"svelte",
 		"yamlls",
 		"jsonls"
 	}
 end
 
 -- asm-lsp clangd jdtls json-lsp omnisharp csharp-language-server
--- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server superhtml typescript-language-server
+-- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp
 
 -- Setup function
 M.setup = function()
