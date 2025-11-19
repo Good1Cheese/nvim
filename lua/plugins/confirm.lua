@@ -23,6 +23,7 @@ Plugin.opts = {
 	},
 
 	formatters_by_ft = {
+		rust = { "rustfmt", lsp_format = "fallback" },
 		python = { "ruff_format", lsp_format = "fallback" },
 		go = { "golangci-lint" },
 		cs = { "csharpier" },
