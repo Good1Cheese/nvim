@@ -1,8 +1,5 @@
 return {
 	"ThePrimeagen/harpoon",
-	dependencies = {
-		"letieu/harpoon-lualine",
-	},
 	branch = "harpoon2",
 	-- lazy = false,
 	config = function()

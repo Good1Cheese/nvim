@@ -1,5 +1,9 @@
 local Plugin = { "numToStr/Comment.nvim" }
 
+Plugin.dependencies = {
+    { "JoosepAlviste/nvim-ts-context-commentstring" },
+}
+
 -- Plugin.lazy = false
 Plugin.event = { "BufReadPre", "BufNewFile" }
 

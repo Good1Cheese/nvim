@@ -17,7 +17,11 @@ M.get_servers = function()
 		"ts_ls",
 		"html",
 		"svelte",
+		"svelte",
+		"fish_lsp",
 		"yamlls",
+		"tinymist",
+		"marksman",
 		"jsonls"
 	}
 end
@@ -37,7 +41,7 @@ vim.lsp.config('rust_analyzer', {
 })
 
 -- asm-lsp clangd jdtls json-lsp omnisharp csharp-language-server
--- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp
+-- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp fish-lsp tinymist marksman
 
 -- Setup function
 M.setup = function()

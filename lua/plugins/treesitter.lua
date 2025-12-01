@@ -1,40 +1,8 @@
-local Plugin = { "nvim-treesitter/nvim-treesitter" }
-
-Plugin.event = { "BufReadPre", "BufNewFile" }
-
-Plugin.dependencies = {
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
+return {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = "main",
+    build = ":TSUpdate"
 }
 
-Plugin.opts = {
-    ejnsure_installed = { "lua" },
-    sync_install = true,
-    auto_install = true,
-    highlight = {
-        enable = true,
-        use_languagetree = true,
-        indent = {
-            enable = true
-        },
-        additional_vim_regex_highlighting = true,
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-            },
-        },
-    },
-}
-
-function Plugin.config(name, opts)
-    require("nvim-treesitter.configs").setup(opts)
-end
-
-return Plugin
+-- :TSInstall bash csv git_config gomod html javascript lua python sql tmux typescript xml c_sharp dockerfile gitignore gosum htmldjango json markdown requirements ssh_config toml vim css fish go graphql ini jsonc nginx rust svelte tsx vimdoc yaml
