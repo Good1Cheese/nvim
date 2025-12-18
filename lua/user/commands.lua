@@ -7,6 +7,12 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 -- AUTOCMDS
 -- ============================================================================
 
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "go", "rs", "svelte", "js", "mod", "sum", "csv", "sql" },
+	callback = function() vim.treesitter.start() end,
+})
+
 -- sudo write
 vim.api.nvim_create_user_command("Suw", function()
 	local filepath = vim.fn.expand("%:p")

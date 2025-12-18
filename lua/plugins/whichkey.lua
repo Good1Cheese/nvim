@@ -24,7 +24,7 @@ function Plugin.config()
 		{ "<leader>p",     ":Lazy<cr>",                                            desc = "Lazy",              hidden = true },
 		{ "<leader>C",     ":RunClose<cr>",                                        desc = "Close tests",       hidden = true },
 		{ "<leader>e",     ":Oil<cr>",                                             desc = "Explorer",          hidden = true },
-		{ "<leader>q",     ":qall!<cr>",                                           desc = "Quit",              hidden = true },
+		{ "<leader>q",     ":wqa<cr>",                                             desc = "Save & Quit",       hidden = true },
 		{ "<leader>a",     ":Outline<cr>",                                         desc = "Code outlaw" },
 		{ "<leader>l",     [[:lua require("actions-preview").code_actions()<cr>]], desc = "Code actions" },
 		{ "<leader>c",     ":w<CR>:RunFile<CR>",                                   desc = "RunFile" },
