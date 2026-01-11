@@ -124,19 +124,18 @@ return {
             },
         },
         sources = {
-            default = { --[[ "avante", ]] "lsp", "path", "snippets", "buffer" },
+            -- add lazydev to your completion providers
+            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
             providers = {
-                -- avante = {
-                --     module = "blink-cmp-avante",
-                --     name = "Avante",
-                --     opts = {
-                --         -- options for blink-cmp-avante
-                --     }
-                -- }
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    -- make lazydev completions top priority (see `:h blink.cmp`)
+                    score_offset = 100,
+                },
             },
         },
         snippets = { preset = "luasnip" },
-
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
         -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
         -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`

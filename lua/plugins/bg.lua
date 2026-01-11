@@ -1,4 +1,4 @@
 return {
-	"kdkasad/bg.nvim",
-	lazy = false,
+    "kdkasad/bg.nvim",
+    lazy = false,
 }

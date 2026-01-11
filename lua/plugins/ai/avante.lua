@@ -26,7 +26,7 @@ return {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons",
-		"nvim-telescope/telescope.nvim",
+        "nvim-telescope/telescope.nvim",
         "ibhagwan/fzf-lua",
         "folke/snacks.nvim",
         "saghen/blink.cmp",

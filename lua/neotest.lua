@@ -1,6 +1,6 @@
 return {
     "nvim-neotest/neotest",
-	event = "VeryLazy",
+    event = "VeryLazy",
     dependencies = {
         "fredrikaverpil/neotest-golang",
         "rouge8/neotest-rust",
@@ -14,7 +14,7 @@ return {
             adapters = {
                 require("neotest-golang"),
                 require("neotest-rust"),
-				require("neotest-dotnet"),
+                require("neotest-dotnet"),
             },
         })
 
