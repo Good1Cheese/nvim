@@ -15,10 +15,6 @@ return {
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = true },
-        -- terminal = {
-        --     win = { style = "terminal" },
-        --     shell = "fish"
-        -- },
         statuscolumn = { enabled = true },
         styles = {
             notification = {

@@ -4,13 +4,13 @@ Plugin.event = "VeryLazy"
 
 function Plugin.config()
     local t = require("toggleterm.terminal").Terminal
-    local fish = t:new({ cmd = "fish", hidden = true })
+    local shell = t:new({ cmd = "zsh", hidden = true })
 
-    function _fish_toggle()
-        fish:toggle()
+    function _shell_toggle()
+        shell:toggle()
     end
 
-    vim.keymap.set("n", "<leader>t", function() _fish_toggle() end, { desc = "Terminal" })
+    vim.keymap.set("n", "<leader>t", function() _shell_toggle() end, { desc = "Terminal" })
     vim.keymap.set("t", "<esc>", "<C-\\><C-n>", { noremap = true })
 end
 
