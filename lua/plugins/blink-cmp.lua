@@ -57,7 +57,7 @@ return {
                 auto_show_delay_ms = 0,
                 treesitter_highlighting = true,
                 window = {
-                    border = "single"
+                    border = "double"
                 },
             },
 
@@ -71,6 +71,7 @@ return {
             menu = {
                 min_width = 50,
                 max_height = 20,
+                border = "single",
 
                 draw = {
                     treesitter = { "lsp" },
@@ -85,9 +86,7 @@ return {
                                         icon = dev_icon
                                     end
                                 else
-                                    icon = require("lspkind").symbolic(ctx.kind, {
-                                        mode = "symbol",
-                                    })
+                                    icon = require("lspkind").symbol_map[ctx.kind] or ""
                                 end
 
                                 return icon .. ctx.icon_gap
@@ -125,14 +124,8 @@ return {
         },
         sources = {
             -- add lazydev to your completion providers
-            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer" },
             providers = {
-                lazydev = {
-                    name = "LazyDev",
-                    module = "lazydev.integrations.blink",
-                    -- make lazydev completions top priority (see `:h blink.cmp`)
-                    score_offset = 100,
-                },
             },
         },
         snippets = { preset = "luasnip" },
