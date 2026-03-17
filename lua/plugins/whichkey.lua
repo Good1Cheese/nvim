@@ -6,13 +6,13 @@ function Plugin.config()
     local which_key = require("which-key")
 
     which_key.setup({
-        preset = "modern",
+        preset = "helix",
         win = {
             border = "rounded", -- none, single, double, shadow
             title = false,
             padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
             wo = {
-                winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+                winblend = 10,  -- value between 0-100 0 for fully opaque and 100 for fully transparent
             },
         },
     })

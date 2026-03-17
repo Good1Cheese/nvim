@@ -1,3 +1,3 @@
 return {
-	dir = "~/Personal/cdw/cdw-relay.nvim"
+    dir = "~/Personal/cdw/cdw-relay.nvim"
 }

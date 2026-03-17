@@ -9,7 +9,13 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "go", "rs", "svelte", "js", "mod", "sum", "csv", "sql" },
+    pattern = {
+        "bash", "sh", "csv", "gitconfig", "gomod", "html", "javascript", "lua",
+        "python", "sql", "tmux", "typescript", "xml", "cs", "dockerfile",
+        "gitignore", "gosum", "htmldjango", "json", "markdown", "requirements",
+        "sshconfig", "toml", "vim", "css", "go", "graphql", "ini", "nginx",
+        "rust", "svelte", "tsx", "vimdoc", "yaml", "zsh", "editorconfig", "arduino"
+    },
     callback = function() vim.treesitter.start() end,
 })
 
@@ -92,7 +98,7 @@ local function copy_diagnostic_under_cursor()
     local bufnr = vim.api.nvim_get_current_buf()
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
     local lnum = cursor_pos[1] - 1 -- Current line (0-based)
-    local col = cursor_pos[2]   -- Current column (0-based)
+    local col = cursor_pos[2]      -- Current column (0-based)
 
     -- Get all diagnostics on current line
     local diagnostics = vim.diagnostic.get(bufnr, { lnum = lnum })

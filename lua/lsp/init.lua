@@ -22,9 +22,13 @@ M.get_servers = function()
         "yamlls",
         "tinymist",
         "marksman",
-        "jsonls"
+        "jsonls",
+        -- "arduino_language_server",
     }
 end
+
+-- asm-lsp clangd jdtls omnisharp csharp-language-server
+-- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp tinymist marksman taplo emmylua-codeformat json-lsp arduino-language-server
 
 vim.lsp.config('rust_analyzer', {
     settings = {
@@ -40,9 +44,6 @@ vim.lsp.config('rust_analyzer', {
     }
 })
 
--- asm-lsp clangd jdtls omnisharp csharp-language-server
--- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp tinymist marksman taplo emmylua-codeformat json-lsp
-
 -- Setup function
 M.setup = function()
     require("lsp.opts").setup()
@@ -53,6 +54,7 @@ M.setup = function()
     for _, server in ipairs(servers) do
         vim.lsp.enable(server)
     end
+    -- vim.lsp.enable("arduino_language_server")
 end
 
 return M

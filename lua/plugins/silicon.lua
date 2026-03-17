@@ -8,7 +8,7 @@ function Plugin.config()
         font = "JetBrainsMono Nerd Font=35",
         theme = "Coldark-Dark",
         pad_horiz = 100, -- (number) The horizontal padding.
-        pad_vert = 80, -- (number) The vertical padding.
+        pad_vert = 80,   -- (number) The vertical padding.
         to_clipboard = true,
         no_line_number = true,
         line_offset = 1,
