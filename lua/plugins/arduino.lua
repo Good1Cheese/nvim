@@ -1,7 +1,7 @@
 -- Minimal Arduino-Nvim setup for LazyVim
 return {
     "yuukiflow/Arduino-Nvim",
-    dir = "/home/frut/Projects/arduino/Arduino-Nvim",
+    dir = "/home/frut/Personal/arduino/Arduino-Nvim",
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "neovim/nvim-lspconfig",

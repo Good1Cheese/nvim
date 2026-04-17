@@ -11,10 +11,10 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {
         "bash", "sh", "csv", "gitconfig", "gomod", "html", "javascript", "lua",
-        "python", "sql", "tmux", "typescript", "xml", "cs", "dockerfile",
+        "python", "sql", "tmux", "xml", "cs", "dockerfile",
         "gitignore", "gosum", "htmldjango", "json", "markdown", "requirements",
         "sshconfig", "toml", "vim", "css", "go", "graphql", "ini", "nginx",
-        "rust", "svelte", "tsx", "vimdoc", "yaml", "zsh", "editorconfig", "ino", "arduino", "sql"
+        "rust", "svelte", "tsx", "vimdoc", "yaml", "zsh", "editorconfig", "ino", "arduino", "sql", "ts", "tsx"
     },
     callback = function() vim.treesitter.start() end,
 })
