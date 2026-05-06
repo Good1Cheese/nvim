@@ -24,12 +24,13 @@ M.get_servers = function()
         "marksman",
         "jsonls",
         "ts_ls",
+        "clangd"
         -- "arduino_language_server",
     }
 end
 
 -- asm-lsp clangd jdtls omnisharp csharp-language-server
--- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp tinymist marksman taplo emmylua-codeformat json-lsp arduino-language-server typescript-language-server
+-- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp tinymist marksman taplo emmylua-codeformat json-lsp arduino-language-server typescript-language-server clangd clang-format
 
 vim.lsp.config('rust_analyzer', {
     settings = {
@@ -44,6 +45,8 @@ vim.lsp.config('rust_analyzer', {
         },
     }
 })
+
+vim.lsp.config("clangd", require("esp32").lsp_config())
 
 -- Setup function
 M.setup = function()

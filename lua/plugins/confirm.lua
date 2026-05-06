@@ -28,6 +28,7 @@ Plugin.opts = {
         go = { "golangci-lint" },
         lua = { "emmylua_codeformat" },
         cs = { "csharpier" },
+        c = { "clang-format" },
         ["*"] = { "trim_whitespace" },
     },
 

@@ -14,7 +14,9 @@ vim.api.nvim_create_autocmd("FileType", {
         "python", "sql", "tmux", "xml", "cs", "dockerfile",
         "gitignore", "gosum", "htmldjango", "json", "markdown", "requirements",
         "sshconfig", "toml", "vim", "css", "go", "graphql", "ini", "nginx",
-        "rust", "svelte", "tsx", "vimdoc", "yaml", "zsh", "editorconfig", "ino", "arduino", "sql", "ts", "tsx"
+        "rust", "svelte", "tsx", "vimdoc", "yaml", "zsh", "editorconfig",
+        "ino", "arduino", "sql", "ts", "tsx",
+        "c", "cpp"
     },
     callback = function() vim.treesitter.start() end,
 })
