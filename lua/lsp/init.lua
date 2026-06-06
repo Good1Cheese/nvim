@@ -32,18 +32,48 @@ end
 -- asm-lsp clangd jdtls omnisharp csharp-language-server
 -- :MasonInstall bash-language-server shellcheck shfmt docker-compose-language-service dockerfile-language-server hadolint emmylua_ls gofumpt golangci-lint golangci-lint-langserver golines gopls revive python-lsp-server ruff rust-analyzer yaml-language-server svelte-language-server html-lsp tinymist marksman taplo emmylua-codeformat json-lsp arduino-language-server typescript-language-server clangd clang-format mypy
 
-vim.lsp.config('rust_analyzer', {
+vim.lsp.config("rust_analyzer", {
     settings = {
         ["rust-analyzer"] = {
             check = {
-                command = "clippy", -- ← ключевая строка
-                -- extraArgs = {
-                -- 	"--no-deps",
-                -- 	-- "--", "--deny", "warnings",  -- ← строгий режим (опционально)
-                -- },
+                command = "clippy",
             },
         },
     }
+})
+
+vim.lsp.config("jdtls", {
+    cmd = {
+        "env",
+        "JAVA_HOME=/usr/lib/jvm/java-26-openjdk",
+        "/home/frut/.local/share/nvim/mason/packages/jdtls/bin/jdtls",
+    },
+
+    settings = {
+        java = {
+            configuration = {
+                runtimes = {
+                    {
+                        name = "JavaSE-1.8",
+                        path = "/usr/lib/jvm/java-8-openjdk",
+                        default = true,
+                    },
+                    {
+                        name = "JavaSE-26",
+                        path = "/usr/lib/jvm/java-26-openjdk",
+                    },
+                },
+            },
+
+            import = {
+                gradle = {
+                    java = {
+                        home = "/usr/lib/jvm/java-8-openjdk",
+                    },
+                },
+            },
+        },
+    },
 })
 
 -- vim.lsp.config("clangd", require("esp32").lsp_config())

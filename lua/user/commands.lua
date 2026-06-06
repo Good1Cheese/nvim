@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "sshconfig", "toml", "vim", "css", "go", "graphql", "ini", "nginx",
         "rust", "svelte", "tsx", "vimdoc", "yaml", "zsh", "editorconfig",
         "ino", "arduino", "sql", "ts", "tsx",
-        "c", "cpp"
+        "c", "cpp", "java"
     },
     callback = function() vim.treesitter.start() end,
 })
