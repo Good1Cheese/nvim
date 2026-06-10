@@ -1,7 +1,18 @@
+local arduino_dir = vim.fn.expand("~/Personal/arduino/Arduino-Nvim")
+
+local function dir_exists(path)
+    local stat = (vim.uv or vim.loop).fs_stat(path)
+    return stat and stat.type == "directory"
+end
+
+if not dir_exists(arduino_dir) then
+    return {}
+end
+
 -- Minimal Arduino-Nvim setup for LazyVim
 return {
     "yuukiflow/Arduino-Nvim",
-    dir = "/home/frut/Personal/arduino/Arduino-Nvim",
+    dir = arduino_dir,
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "neovim/nvim-lspconfig",
