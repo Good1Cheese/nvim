@@ -17,7 +17,6 @@ M.get_servers = function()
         "ts_ls",
         "html",
         "svelte",
-        "svelte",
         "taplo",
         "yamlls",
         "tinymist",

@@ -1,62 +1,46 @@
 local arduino_dir = vim.fn.expand("~/Personal/arduino/Arduino-Nvim")
 
-local function dir_exists(path)
-    local stat = (vim.uv or vim.loop).fs_stat(path)
-    return stat and stat.type == "directory"
-end
-
-if not dir_exists(arduino_dir) then
+local stat = (vim.uv or vim.loop).fs_stat(arduino_dir)
+if not stat or stat.type ~= "directory" then
     return {}
 end
 
--- Minimal Arduino-Nvim setup for LazyVim
 return {
     "yuukiflow/Arduino-Nvim",
     dir = arduino_dir,
+    ft = "arduino",
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "neovim/nvim-lspconfig",
     },
-    ft = "arduino",
     config = function()
-        -- Set up LSP configuration (registers it)
-        require("Arduino-Nvim.lsp").setup()
+        local ok_lsp, arduino_lsp = pcall(require, "Arduino-Nvim.lsp")
+        if ok_lsp then
+            arduino_lsp.setup()
+        else
+            vim.notify("Arduino-Nvim LSP setup failed: " .. tostring(arduino_lsp), vim.log.levels.WARN)
+        end
 
-        -- Keymaps
+        local ok, arduino = pcall(require, "Arduino-Nvim")
+        if not ok then
+            vim.notify("Arduino-Nvim failed to load: " .. tostring(arduino), vim.log.levels.WARN)
+            return
+        end
+
         local map = vim.keymap.set
-        map("n", "<Leader>au", ":InoUpload<CR>", { silent = true, desc = "Arduino: Upload code" })
-        map("n", "<Leader>ac", ":InoCheck<CR>", { silent = true, desc = "Arduino: Compile/check code" })
-        map("n", "<Leader>as", ":InoStatus<CR>", { silent = true, desc = "Arduino: Show status" })
-        map("n", "<Leader>ag", ":InoGUI<CR>", { silent = true, desc = "Arduino: Open GUI" })
-        map("n", "<Leader>am", ":InoMonitor<CR>", { silent = true, desc = "Arduino: Serial monitor" })
-        map("n", "<Leader>al", ":InoLib<CR>", { silent = true, desc = "Arduino: Library" })
-        map("n", "<Leader>ab", ":InoSelectBoard<CR>", { silent = true, desc = "Arduino: Select board" })
-        map("n", "<Leader>ap", ":InoSelectPort<CR>", { silent = true, desc = "Arduino: Select port" })
-        map("n", "<Leader>ar", ":InoUploadReset<CR>", { silent = true, desc = "Arduino: Upload with reset" })
+        local opts = { silent = true }
+        map("n", "<Leader>au", "<Cmd>InoUpload<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Upload" }))
+        map("n", "<Leader>ac", "<Cmd>InoCheck<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Check" }))
+        map("n", "<Leader>as", "<Cmd>InoStatus<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Status" }))
+        map("n", "<Leader>ag", "<Cmd>InoGUI<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: GUI" }))
+        map("n", "<Leader>am", "<Cmd>InoMonitor<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Monitor" }))
+        map("n", "<Leader>al", "<Cmd>InoLib<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Library" }))
+        map("n", "<Leader>ab", "<Cmd>InoSelectBoard<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Board" }))
+        map("n", "<Leader>ap", "<Cmd>InoSelectPort<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Port" }))
+        map("n", "<Leader>ar", "<Cmd>InoUploadReset<CR>", vim.tbl_extend("force", opts, { desc = "Arduino: Upload reset" }))
 
-        vim.api.nvim_create_autocmd("BufReadPost", {
-            pattern = "*.ino",
-            callback = function()
-                vim.bo.filetype = "arduino"
-                require("Arduino-Nvim")
-            end,
-        })
-
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "arduino",
-            callback = function()
-                require("Arduino-Nvim")
-                vim.lsp.start({
-                    name = "arduino_language_server",
-                    cmd = {
-                        "arduino-language-server",
-                        "-cli", "arduino-cli",
-                        "-cli-config", vim.fn.expand("$HOME/.arduino15/arduino-cli.yaml"),
-                        "-clangd", vim.fn.exepath("clangd"),
-                        "-fqbn", require("Arduino-Nvim").board,
-                    },
-                })
-            end,
-        })
+        -- Arduino-Nvim owns its filetype/LSP lifecycle. Do not create another
+        -- BufReadPost autocmd or start a duplicate language-server client here.
+        _ = arduino
     end,
 }
