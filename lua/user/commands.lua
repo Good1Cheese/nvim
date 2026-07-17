@@ -3,6 +3,17 @@
 -- ============================================================================
 local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
+local mason_tools = require("tools.mason")
+local treesitter_tools = require("tools.treesitter")
+
+vim.api.nvim_create_user_command("NvimTSInstall", treesitter_tools.install, {
+    desc = "Install configured Tree-sitter parsers",
+})
+
+vim.api.nvim_create_user_command("NvimToolsInstall", mason_tools.install_missing, {
+    desc = "Install configured LSP servers, linters, and formatters",
+})
+
 -- ============================================================================
 -- AUTOCMDS
 -- ============================================================================
@@ -10,23 +21,8 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup,
-    pattern = {
-        "bash", "sh", "csv", "gitconfig", "gomod", "html", "javascript", "lua",
-        "python", "sql", "tmux", "xml", "cs", "dockerfile", "gitignore", "gosum",
-        "htmldjango", "json", "markdown", "requirements", "sshconfig", "toml", "vim",
-        "css", "go", "graphql", "ini", "nginx", "rust", "svelte", "tsx", "vimdoc",
-        "yaml", "zsh", "editorconfig", "ino", "arduino", "typescript", "c", "cpp", "java",
-    },
     callback = function(event)
-        -- A missing parser must not break BufRead/FileType processing (for example
-        -- when opening a file from yazi on a fresh installation).
-        local ok, err = pcall(vim.treesitter.start, event.buf)
-        if not ok and vim.g.treesitter_debug_startup then
-            vim.schedule(function()
-                vim.notify("Tree-sitter is unavailable for " .. vim.bo[event.buf].filetype .. ": " .. tostring(err),
-                    vim.log.levels.DEBUG)
-            end)
-        end
+        treesitter_tools.start(event.buf)
     end,
 })
 
