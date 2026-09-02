@@ -2,10 +2,35 @@ return {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
     dependencies = {
-        "folke/trouble.nvim",
         "nvim-lua/plenary.nvim",
     },
-    config = function()
-        require("todo-comments").setup({})
-    end,
+    opts = {},
+    keys = {
+        {
+            "]t",
+            function()
+                require("todo-comments").jump_next()
+            end,
+            desc = "Next TODO comment",
+        },
+        {
+            "[t",
+            function()
+                require("todo-comments").jump_prev()
+            end,
+            desc = "Previous TODO comment",
+        },
+        {
+            "<leader>st",
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            desc = "TODO comments",
+        },
+        {
+            "<leader>xt",
+            "<cmd>Trouble todo toggle<cr>",
+            desc = "TODOs (Trouble)",
+        },
+    },
 }

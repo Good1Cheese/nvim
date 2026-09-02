@@ -1,0 +1,13 @@
+{
+  "Plugin spec module": {
+    "prefix": "Plugin",
+    "body": [
+      "local Plugin = {",
+      "    $1",
+      "}",
+      "",
+      "return Plugin"
+    ],
+    "description": "Create a Lua plugin spec module"
+  }
+}

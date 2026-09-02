@@ -105,3 +105,13 @@ local arrow_keys = { "<Up>", "<Down>", "<Left>", "<Right>" }
 for _, key in ipairs(arrow_keys) do
     map("n", key, "<Cmd>echomsg 'Use hjkl instead!'<CR>", opts)
 end
+
+
+-- ============================================================================
+-- GENERAL COMMANDS
+-- ============================================================================
+map("n", "<leader>p", "<Cmd>Lazy<CR>", { desc = "Lazy" })
+map("n", "<leader>q", "<Cmd>wqa<CR>", { desc = "Save & Quit" })
+map("n", '<leader>9"', ":%s/'/\"/g<CR>", { desc = "Replace all quotes" })
+map("n", "<leader>9s", "<Cmd>Suw<CR>", { desc = "Sudo save" })
+map("n", "<leader>9<CR>", ":.!bash<CR>", { desc = "Execute line in bash" })

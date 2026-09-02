@@ -1,4 +1,13 @@
 return {
     "aznhe21/actions-preview.nvim",
-    cmd = { "ActionsPreview" },
+    keys = {
+        {
+            "<leader>l",
+            function()
+                require("actions-preview").code_actions()
+            end,
+            mode = { "n", "v" },
+            desc = "Code actions",
+        },
+    },
 }

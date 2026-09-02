@@ -6,12 +6,14 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 local mason_tools = require("tools.mason")
 local treesitter_tools = require("tools.treesitter")
 
-vim.api.nvim_create_user_command("NvimTSInstall", treesitter_tools.install, {
-    desc = "Install configured Tree-sitter parsers",
+vim.api.nvim_create_user_command("TSInstallAll", treesitter_tools.install_all, {
+    bang = true,
+    desc = "Install all Tree-sitter parsers from lua/tools/treesitter.lua (! = force reinstall)",
 })
 
-vim.api.nvim_create_user_command("NvimToolsInstall", mason_tools.install_missing, {
-    desc = "Install configured LSP servers, linters, and formatters",
+vim.api.nvim_create_user_command("MasonInstallAll", mason_tools.install_all, {
+    bang = true,
+    desc = "Install all Mason packages from lua/tools/mason.lua (! = reinstall)",
 })
 
 -- ============================================================================
@@ -26,41 +28,53 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- sudo write
+-- Sudo-write the current buffer without putting the password in process argv.
 vim.api.nvim_create_user_command("Suw", function()
     local filepath = vim.fn.expand("%:p")
     if filepath == "" then
         vim.notify("E32: No file name", vim.log.levels.ERROR)
         return
     end
-    -- Save buffer to a temporary file
+
     local tmpfile = vim.fn.tempname()
-    vim.cmd("write! " .. tmpfile)
-    -- Prompt for password
+    vim.cmd("write! " .. vim.fn.fnameescape(tmpfile))
+
     vim.fn.inputsave()
     local password = vim.fn.inputsecret("Password: ")
     vim.fn.inputrestore()
+
     if password == "" then
-        vim.notify("Invalid password, sudo aborted", vim.log.levels.WARN)
+        vim.fn.delete(tmpfile)
+        vim.notify("Empty password, sudo aborted", vim.log.levels.WARN)
         return
     end
-    -- Use sudo to move the file
-    local cmd = string.format("sudo -p '' -S dd if=%s of=%s bs=1048576",
-        vim.fn.shellescape(tmpfile), vim.fn.shellescape(filepath)
-    )
-    local proc = vim.system({ "sh", "-c", string.format("echo %q | %s", password, cmd) }):wait()
-    -- Handle result
+
+    local proc = vim.system({
+        "sudo",
+        "-p", "",
+        "-S",
+        "dd",
+        "if=" .. tmpfile,
+        "of=" .. filepath,
+        "bs=1048576",
+    }, {
+        stdin = password .. "\n",
+        text = true,
+    }):wait()
+
+    vim.fn.delete(tmpfile)
+
     if proc.code == 0 then
         vim.bo.modified = false
         vim.cmd.checktime()
         vim.api.nvim_feedkeys(
             vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "n", true
         )
-    else
-        vim.notify(proc.stderr, vim.log.levels.ERROR)
+        return
     end
 
-    vim.fn.delete(tmpfile)
+    local message = (proc.stderr and proc.stderr ~= "") and proc.stderr or "sudo write failed"
+    vim.notify(message, vim.log.levels.ERROR)
 end, { desc = "Sudo write current buffer" })
 
 -- Highlight yanked text

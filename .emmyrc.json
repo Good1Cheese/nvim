@@ -3,15 +3,8 @@
   "diagnostics": {
     "globals": ["vim"]
   },
-  "workspace": {
-    "library": [
-		"/usr/share/nvim/runtime",
-		"/home/frut/.local/state/LLS-Addons/glua-api-snippets",
-		"/home/frut/.local/share/nvim/lazy"
-    ]
-  },
   "runtime": {
-    "version": "Lua5.1",
+    "version": "LuaJIT",
     "extensions": [".lua", ".lua.txt"],
     "requirePattern": ["?.lua", "?/init.lua"]
   }

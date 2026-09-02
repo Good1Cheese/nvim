@@ -1,5 +1,7 @@
 local M = {}
 
+-- Single, intentionally boring source of truth for external tools managed by
+-- Mason. Keep Mason registry package names here, not nvim-lspconfig names.
 M.packages = {
     -- LSP servers
     "rust-analyzer",
@@ -32,7 +34,7 @@ M.packages = {
     "revive",
     "ruff",
     "clang-format",
-    "emmylua-codeformat",
+    "csharpier",
 }
 
 local function notify_list(title, items, level)
@@ -45,34 +47,42 @@ local function notify_list(title, items, level)
     })
 end
 
-function M.install_missing()
+---Install every package declared in M.packages.
+---By default already-installed packages are skipped. `:MasonInstallAll!` asks
+---Mason to reinstall configured packages as well.
+---@param command_opts? table
+function M.install_all(command_opts)
     local ok, registry = pcall(require, "mason-registry")
     if not ok then
-        vim.notify("Mason is not loaded", vim.log.levels.ERROR)
+        vim.notify("Mason is not loaded", vim.log.levels.ERROR, { title = "Mason" })
         return
     end
 
+    local force = command_opts and command_opts.bang or false
+
     registry.refresh(function()
-        local missing = {}
-        local unknown = {}
+        vim.schedule(function()
+            local to_install = {}
+            local unknown = {}
 
-        for _, name in ipairs(M.packages) do
-            local package_ok, package = pcall(registry.get_package, name)
-            if not package_ok then
-                table.insert(unknown, name)
-            elseif not package:is_installed() then
-                table.insert(missing, name)
+            for _, name in ipairs(M.packages) do
+                local package_ok, package = pcall(registry.get_package, name)
+                if not package_ok then
+                    table.insert(unknown, name)
+                elseif force or not package:is_installed() then
+                    table.insert(to_install, name)
+                end
             end
-        end
 
-        notify_list("Unknown packages", unknown, vim.log.levels.WARN)
+            notify_list("Unknown packages", unknown, vim.log.levels.WARN)
 
-        if #missing == 0 then
-            vim.notify("All configured tools are installed", vim.log.levels.INFO, { title = "Mason" })
-            return
-        end
+            if #to_install == 0 then
+                vim.notify("All configured tools are already installed", vim.log.levels.INFO, { title = "Mason" })
+                return
+            end
 
-        vim.cmd("MasonInstall " .. table.concat(missing, " "))
+            vim.cmd("MasonInstall " .. table.concat(to_install, " "))
+        end)
     end)
 end
 

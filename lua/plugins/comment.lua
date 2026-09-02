@@ -1,10 +1,18 @@
 local Plugin = { "numToStr/Comment.nvim" }
 
 Plugin.dependencies = {
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        config = function()
+            require("ts_context_commentstring").setup({
+                -- Comment.nvim's pre_hook computes the correct commentstring on
+                -- demand, so the CursorHold autocmd is unnecessary work.
+                enable_autocmd = false,
+            })
+        end,
+    },
 }
 
--- Plugin.lazy = false
 Plugin.event = { "BufReadPre", "BufNewFile" }
 
 function Plugin.config()

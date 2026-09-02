@@ -26,23 +26,11 @@ Plugin.opts = {
         rust = { "rustfmt", lsp_format = "fallback" },
         python = { "ruff_format", lsp_format = "fallback" },
         go = { "golangci-lint" },
-        lua = { "emmylua_codeformat" },
+        lua = { lsp_format = "prefer" },
         cs = { "csharpier" },
         c = { "clang-format" },
         ["*"] = { "trim_whitespace" },
     },
-
-    formatters = {
-        emmylua_codeformat = {
-            -- This can be a string or a function that returns a string.
-            -- When defining a new formatter, this is the only field that is required
-            command = "emmylua-codeformat",
-            -- A list of strings, or a function that returns a list of strings
-            -- Return a single string instead of a list to run the command in a shell
-            args = { "format", "-f", "$FILENAME" },
-        },
-    }
-
 }
 
 return Plugin

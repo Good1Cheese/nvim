@@ -2,13 +2,12 @@ return {
     "chrishrb/gx.nvim",
     submodules = false,
     keys = {
-        { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } }
+        { "gx", "<cmd>Browse<cr>", mode = { "n", "x" }, desc = "Smart open link" },
     },
     cmd = { "Browse" },
-    config = function()
-        require("gx").setup({
-            open_browser_app = "librewolf", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
-            -- open_browser_args = { "--background" }, -- specify any arguments, such as --background for macOS' "open".
-        })
-    end,
+    opts = {
+        -- gx.nvim is kept for its GitHub/package/go/search handlers, not just
+        -- for the basic URL opening that Neovim now provides natively.
+        open_browser_app = "librewolf",
+    },
 }

@@ -1,6 +1,3 @@
-local Plugins = {
-    { "kyazdani42/nvim-web-devicons" },
-    { "nvim-lua/plenary.nvim" },
+return {
+    { "nvim-tree/nvim-web-devicons" },
 }
-
-return Plugins

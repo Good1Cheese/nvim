@@ -13,14 +13,29 @@ Plugin.opts = {
         "treesitter",
         "regex",
     },
+    -- This option replaces upstream's denylist, so keep its defaults and add Oil.
     filetypes_denylist = {
-        "neo-tree",
+        "dirbuf",
+        "dirvish",
+        "fugitive",
+        "oil",
     },
 }
 
 function Plugin.config(_, opts)
-    vim.cmd("hi IlluminatedWordRead guibg=#525252")
-    vim.cmd("hi IlluminatedWordWrite guibg=#525252")
+    local group = vim.api.nvim_create_augroup("IlluminateConfig", { clear = true })
+
+    local function set_highlights()
+        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "#525252" })
+        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "#525252" })
+    end
+
+    set_highlights()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+        group = group,
+        callback = set_highlights,
+        desc = "Restore vim-illuminate highlights after colorscheme changes",
+    })
 
     require("illuminate").configure(opts)
 
@@ -33,8 +48,9 @@ function Plugin.config(_, opts)
     map("]]", "next")
     map("[[", "prev")
 
-    -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
+    -- Also set it after loading ftplugins, since a lot overwrite [[ and ]].
     vim.api.nvim_create_autocmd("FileType", {
+        group = group,
         callback = function()
             local buffer = vim.api.nvim_get_current_buf()
             map("]]", "next", buffer)

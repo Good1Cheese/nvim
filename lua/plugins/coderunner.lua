@@ -6,29 +6,24 @@ Plugin.filetypes = {
     rb = "cd $dir && ruby $fileName",
     cs = "dotnet run --project $dir",
     rust = function()
-        -- Get the directory of the current file to start the search
         local current_dir = vim.fn.expand("%:p:h")
+        local cargo_toml = vim.fs.find("Cargo.toml", {
+            upward = true,
+            path = current_dir,
+            type = "file",
+        })[1]
 
-        -- Use Neovim's built-in filesystem tools to find Cargo.toml by searching upwards
-        local cargo_root = vim.fs.find('Cargo.toml', { upward = true, path = current_dir, type = 'file' })
-
-        -- vim.fs.find returns a list, so we check if it's empty
-        if not vim.tbl_isempty(cargo_root) then
-            -- If a Cargo.toml is found, we're in a project.
-            -- As a bonus, let's check if it's a test file.
-            if string.find(vim.fn.expand("%:t"), "_test.rs$") then
-                return "cargo test"
-            else
-                return "cargo run"
-            end
-        else
-            -- If no Cargo.toml is found, fall back to the single-file command
-            return {
-                "cd $dir &&",
-                "rustc $fileName &&",
-                "$dir/$fileNameWithoutExt"
-            }
+        if cargo_toml then
+            local cargo_root = vim.fs.dirname(cargo_toml)
+            local cargo_command = vim.fn.expand("%:t"):find("_test%.rs$") and "cargo test" or "cargo run"
+            return ("cd %s && %s"):format(vim.fn.shellescape(cargo_root), cargo_command)
         end
+
+        return {
+            "cd $dir &&",
+            "rustc $fileName &&",
+            "$dir/$fileNameWithoutExt",
+        }
     end,
     python = "python $fileName",
     cpp = {
@@ -45,23 +40,23 @@ Plugin.filetypes = {
     java = {
         "cd $dir &&",
         "javac $fileName -d out/ &&",
-        "java -classpath out/ $fileName",
+        "java -classpath out/ $fileNameWithoutExt",
     },
     go = function()
         local file = vim.fn.expand("%")
-        if string.find(file, "_test") then
+        if file:find("_test", 1, true) then
             return "ginkgo ."
-        else
-            return {
-                "cd $dir &&",
-                "go build -o /tmp/$fileNameWithoutExt &&",
-                "/tmp/$fileNameWithoutExt",
-            }
         end
+
+        return {
+            "cd $dir &&",
+            "go build -o /tmp/$fileNameWithoutExt &&",
+            "/tmp/$fileNameWithoutExt",
+        }
     end,
     c = function()
         local file = vim.fn.expand("%")
-        if string.find(file, "*disas") then
+        if file:find("disas", 1, true) then
             return {
                 "cd $dir &&",
                 "gcc $fileName",
@@ -69,11 +64,11 @@ Plugin.filetypes = {
             }
         end
 
-        if string.find(file, "solution") then
+        if file:find("solution", 1, true) then
             return {
                 "cd $dir &&",
-                "gcc -std=c18 -lcriterion",
-                "tests.c solution.c",
+                "gcc -std=c18 tests.c solution.c",
+                "-lcriterion",
                 "-o /tmp/tests &&",
                 "/tmp/tests",
             }
@@ -94,30 +89,24 @@ Plugin.filetypes = {
     },
 }
 
-Plugin.cmd = "RunFile"
+Plugin.keys = {
+    { "<leader>c", "<cmd>write<cr><cmd>RunFile<cr>", desc = "Run file" },
+    { "<leader>C", "<cmd>RunClose<cr>", desc = "Close runner" },
+}
+
+Plugin.cmd = {
+    "RunCode",
+    "RunFile",
+    "RunProject",
+    "RunClose",
+    "CRFiletype",
+    "CRProjects",
+}
 
 Plugin.opts = {
     mode = "term",
     focus = false,
     hot_reload = false,
-    -- float = {
-    -- 	close_key = "<ESC>",
-    -- 	-- Window border (see ':h nvim_open_win')
-    -- 	border = "single",
-    --
-    -- 	-- Num from `0 - 1` for measurements
-    -- 	height = 1,
-    -- 	width = 0.8,
-    -- 	x = 0.5,
-    -- 	y = 0.5,
-    --
-    -- 	-- Highlight group for floating window/border (see ':h winhl')
-    -- 	border_hl = "FloatBorder",
-    -- 	float_hl = "Normal",
-    --
-    -- 	-- Transparency (see ':h winblend')
-    -- 	blend = 0,
-    -- },
     filetype = Plugin.filetypes,
 }
 

@@ -4,6 +4,11 @@ return {
     cmd = "Trouble",
     keys = {
         {
+            "<leader>a",
+            "<cmd>Trouble symbols toggle focus=false<cr>",
+            desc = "Code outline",
+        },
+        {
             "<leader>xx",
             "<cmd>Trouble diagnostics toggle<cr>",
             desc = "Diagnostics (Trouble)",

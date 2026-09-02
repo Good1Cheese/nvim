@@ -14,6 +14,12 @@ function Plugin.config()
             untracked = { text = "│" },
         },
         on_attach = function(bufnr)
+            -- jupytext.nvim transforms .ipynb buffers on read/write; its upstream
+            -- documentation recommends disabling gitsigns for those buffers.
+            if vim.api.nvim_buf_get_name(bufnr):match("%.ipynb$") then
+                return false
+            end
+
             local function map(mode, l, r, opts)
                 opts = opts or {}
                 opts.buffer = bufnr

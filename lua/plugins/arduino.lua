@@ -1,6 +1,6 @@
 local arduino_dir = vim.fn.expand("~/Personal/arduino/Arduino-Nvim")
 
-local stat = (vim.uv or vim.loop).fs_stat(arduino_dir)
+local stat = vim.uv.fs_stat(arduino_dir)
 if not stat or stat.type ~= "directory" then
     return {}
 end

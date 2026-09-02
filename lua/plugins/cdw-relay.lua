@@ -1,7 +1,7 @@
 local cdw_relay_dir = vim.fn.expand("~/Personal/cdw/cdw-relay.nvim")
 
 local function dir_exists(path)
-    local stat = (vim.uv or vim.loop).fs_stat(path)
+    local stat = vim.uv.fs_stat(path)
     return stat and stat.type == "directory"
 end
 
