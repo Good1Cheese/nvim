@@ -1,4 +1,4 @@
-local cdw_relay_dir = vim.fn.expand("~/Personal/cdw/cdw-relay.nvim")
+local cdw_relay_dir = vim.fn.expand("~/Projects/cdw/cdw-relay.nvim")
 
 local function dir_exists(path)
     local stat = vim.uv.fs_stat(path)
@@ -16,6 +16,7 @@ return {
         "CdwLogin",
         "CdwLogout",
         "CdwFetch",
+        "CdwTasks",
         "CdwTest",
         "CdwSubmit",
         "CdwRefresh",
