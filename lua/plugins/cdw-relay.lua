@@ -12,6 +12,7 @@ end
 return {
     dir = cdw_relay_dir,
     cmd = {
+        "CdwDashboard",
         "CdwOpen",
         "CdwLogin",
         "CdwLogout",
