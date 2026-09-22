@@ -44,6 +44,7 @@ M.parsers = {
     "xml",
     "yaml",
     "zsh",
+    "kotlin",
 }
 
 local configured = {}

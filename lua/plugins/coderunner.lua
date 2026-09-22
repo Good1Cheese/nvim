@@ -91,7 +91,7 @@ Plugin.filetypes = {
 
 Plugin.keys = {
     { "<leader>c", "<cmd>write<cr><cmd>RunFile<cr>", desc = "Run file" },
-    { "<leader>C", "<cmd>RunClose<cr>", desc = "Close runner" },
+    { "<leader>C", "<C-w>h<cmd>RunClose<cr>", desc = "Close runner" },
 }
 
 Plugin.cmd = {
